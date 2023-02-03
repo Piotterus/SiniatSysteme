@@ -11,6 +11,7 @@ import {
   UpdateHeader,
 } from '../headers/CustomHeaders';
 import CustomFooter from '../footers/CustomFooter';
+import {PinkButton} from '../buttons/CustomButton';
 
 const CustomBackground = props => {
   return (
@@ -22,6 +23,12 @@ const CustomBackground = props => {
         contentContainerStyle={styles.background.scrollViewContainer}>
         {props.children}
       </ScrollView>
+      {props.showButton && (
+        <PinkButton
+          text={'Suchen (425) >>>'}
+          style={{position: 'absolute', bottom: 100}}
+        />
+      )}
       <CustomFooter />
     </SafeAreaView>
   );

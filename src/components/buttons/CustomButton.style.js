@@ -23,16 +23,22 @@ const styles = StyleSheet.create({
     },
     text: {
       position: 'absolute',
-      bottom: 5,
-      width: '60%',
+      bottom: 10,
+      width: '80%',
       textAlign: 'center',
     },
   },
   whiteButton: {
     mainView: {
+      flexDirection: 'row',
+      width: '100%',
       alignItems: 'center',
-      justifyContent: 'center',
-      height: 80,
+      justifyContent: 'space-between',
+      height: 70,
+      borderColor: colors.grey,
+      borderWidth: 0.5,
+      marginTop: 15,
+      paddingHorizontal: 15,
     },
     text: {
       position: 'absolute',

@@ -27,8 +27,12 @@ const icons = {
   ok: require('./icons/ok.png'),
   arrow: {
     right: require('./icons/arrowRight.png'),
+    leftWhite: require('./icons/whiteArrowLeft.png'),
   },
   info: require('./icons/info.png'),
+  check: require('./icons/checkmark.png'),
+  filter: require('./icons/filter.png'),
+  plusCircle: require('./icons/plus-circle.png'),
 };
 
 export default icons;

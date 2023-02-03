@@ -3,22 +3,20 @@ import colors from '../../assets/colors';
 import {ScreenWidth} from '@rneui/base';
 
 const styles = StyleSheet.create({
-  mainView: {
-    height: 70,
+  rowView: {
+    flexDirection: 'row',
     backgroundColor: colors.white,
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
     width: ScreenWidth,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
-  systemHeader: {
-    width: ScreenWidth,
-    alignItems: 'center',
-  },
-  systemText: {
-    position: 'absolute',
-    bottom: 10,
-    width: '80%',
-    textAlign: 'center',
+  textInput: {
+    borderWidth: 2,
+    borderColor: colors.cultured,
+    width: '100%',
+    paddingVertical: 10,
   },
 });
 

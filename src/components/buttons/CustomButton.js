@@ -1,18 +1,17 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Image, Text, TouchableOpacity} from 'react-native';
-import {MainMenuText, SmallText} from '../texts/CustomText';
+import {BoldText, MainMenuText, SmallText} from '../texts/CustomText';
 import styles from './CustomButton.style';
 import icons from '../../assets/icons';
 
 export const PinkButton = props => {
   return (
     <TouchableOpacity
-      disabled={props.disabled !== undefined ? props.disabled : false}
-      onPress={() => props?.onPress()}
+      {...props}
       style={[styles.pinkButtton.mainView, props.style]}>
       <SmallText style={[styles.pinkButtton.text, props.buttonTextStyle]}>
-        {props.label}
+        {props.text}
       </SmallText>
     </TouchableOpacity>
   );
@@ -36,7 +35,8 @@ export const WhiteButton = props => {
     <TouchableOpacity
       {...props}
       style={[styles.whiteButton.mainView, props.style]}>
-      <Text>Text</Text>
+      <BoldText>{props.text}</BoldText>
+      <Image source={icons.arrow.right} />
     </TouchableOpacity>
   );
 };

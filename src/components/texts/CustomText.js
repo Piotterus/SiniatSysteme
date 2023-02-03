@@ -33,3 +33,11 @@ export const MainMenuText = props => {
     </Text>
   );
 };
+
+export const WhiteText = props => {
+  return (
+    <Text {...props} style={[styles.whiteText, props.style]}>
+      {props.children}
+    </Text>
+  );
+};

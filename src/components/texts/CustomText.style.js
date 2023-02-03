@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   mainMenuText: {
+    fontSize: 16,
+    color: colors.white,
+  },
+  whiteText: {
     fontSize: 14,
     color: colors.white,
   },

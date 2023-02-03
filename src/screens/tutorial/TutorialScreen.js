@@ -41,7 +41,7 @@ const TutorialScreen = () => {
         </View>
         <PinkButton
           style={styles.button}
-          label={'Suchen >>>'}
+          text={'Suchen >>>'}
           // onPress={async () => {
           //   if (checkBox) {
           //     await AsyncStorage.setItem('showTutorial', '0');
