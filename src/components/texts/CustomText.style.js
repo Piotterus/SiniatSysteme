@@ -5,13 +5,13 @@ const styles = StyleSheet.create({
   smallText: {
     fontSize: 12,
     color: colors.grey,
-    lineHeight: 18,
+    // lineHeight: 18,
   },
   boldText: {
     fontSize: 13,
     color: colors.grey,
     fontWeight: 'bold',
-    lineHeight: 18,
+    // lineHeight: 18,
   },
   pinkHeaderText: {
     fontSize: 20,

@@ -47,6 +47,56 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
   },
+  systemKarteButton: {
+    mainView: {
+      flexDirection: 'row',
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      // height: 40,
+      borderColor: colors.violet,
+      borderWidth: 1.5,
+      // marginTop: 15,
+      padding: 5,
+      borderRadius: 5,
+      backgroundColor: colors.white,
+    },
+    text: {
+      color: colors.violet,
+    },
+  },
+  productBrochureButton: {
+    mainView: {
+      flexDirection: 'row',
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      // height: 40,
+      borderColor: colors.violet,
+      borderWidth: 1.5,
+      // marginTop: 15,
+      padding: 5,
+      // borderRadius: 5,
+      backgroundColor: colors.white,
+    },
+    text: {
+      color: colors.violet,
+    },
+  },
+  sendButton: {
+    mainView: {
+      flexDirection: 'row',
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 15,
+      backgroundColor: colors.wenge,
+    },
+    text: {
+      color: colors.white,
+      fontSize: 14,
+    },
+  },
 });
 
 export default styles;

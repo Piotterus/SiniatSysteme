@@ -40,3 +40,41 @@ export const WhiteButton = props => {
     </TouchableOpacity>
   );
 };
+
+export const SystemKarteButton = props => {
+  return (
+    <TouchableOpacity
+      {...props}
+      style={[styles.systemKarteButton.mainView, props.style]}>
+      <SmallText style={[styles.systemKarteButton.text, props.textStyle]}>
+        Systemkarte
+      </SmallText>
+      <Image source={icons.arrow.right} />
+    </TouchableOpacity>
+  );
+};
+
+export const ProductBrochureButton = props => {
+  return (
+    <TouchableOpacity
+      {...props}
+      style={[styles.productBrochureButton.mainView, props.style]}>
+      <SmallText style={[styles.productBrochureButton.text, props.textStyle]}>
+        Productbrochure
+      </SmallText>
+      <Image source={icons.arrow.right} />
+    </TouchableOpacity>
+  );
+};
+
+export const SendButton = props => {
+  return (
+    <TouchableOpacity
+      {...props}
+      style={[styles.sendButton.mainView, props.style]}>
+      <SmallText style={[styles.sendButton.text, props.textStyle]}>
+        Speichern / Senden
+      </SmallText>
+    </TouchableOpacity>
+  );
+};

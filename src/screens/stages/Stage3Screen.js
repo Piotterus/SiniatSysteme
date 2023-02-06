@@ -12,6 +12,7 @@ import {
 } from '../../components/filters/CustomFilters';
 import {PinkButton} from '../../components/buttons/CustomButton';
 import {SystemHeader} from '../../components/headers/CustomHeaders';
+import Breadcrumps from '../../components/breadcrumbs/Breadcrumps';
 
 const Stage3Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
@@ -23,10 +24,7 @@ const Stage3Screen = () => {
       />
       <SystemHeader />
       <StageNavigation />
-      <View style={styles.stage2.breadcrumbsView}>
-        <SmallText>Unterdecken und Deckenbekleidungen ></SmallText>
-        <SmallText>Standard, Nassraum, Strahlenschutz</SmallText>
-      </View>
+      <Breadcrumps />
       <View style={styles.stage2.filterView}>
         <SmallText>1. Scritt</SmallText>
         <FilterSelected label={'Feuerwiderstandsdauer [min]'} />

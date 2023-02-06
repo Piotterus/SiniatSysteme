@@ -33,6 +33,11 @@ const icons = {
   check: require('./icons/checkmark.png'),
   filter: require('./icons/filter.png'),
   plusCircle: require('./icons/plus-circle.png'),
+  system: {
+    fire: require('./icons/fireSystem.png'),
+    question: require('./icons/questionSystem.png'),
+  },
+  systemImage: require('./icons/systemImage.png'),
 };
 
 export default icons;

@@ -31,6 +31,7 @@ import Stage1Screen from './src/screens/stages/Stage1Screen';
 import Stage2Screen from './src/screens/stages/Stage2Screen';
 import Stage3Screen from './src/screens/stages/Stage3Screen';
 import SystemListScreen from './src/screens/systems/SystemListScreen';
+import SystemItemScreen from './src/screens/systems/SystemItemScreen';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -65,7 +66,7 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return <SystemListScreen />;
+  return <SystemItemScreen />;
 };
 
 const styles = StyleSheet.create({
