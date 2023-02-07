@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Image,
   Text,
@@ -17,6 +17,8 @@ import {
 import icons from '../../assets/icons';
 import Modal from 'react-native-modal';
 import {PinkButton, WhiteButton} from '../buttons/CustomButton';
+import ErrorContext from '../../contexts/ErrorContext';
+import {useNavigation} from '@react-navigation/native';
 
 const OptionButton = props => {
   return (
@@ -32,6 +34,7 @@ const OptionButton = props => {
 };
 
 export const Stage2Modal = props => {
+  const navigation = useNavigation();
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
       <View style={styles.stage2Modal.headerView}>
@@ -60,14 +63,22 @@ export const Stage2Modal = props => {
       <PinkButton
         text={'Weiter >>>'}
         style={{marginVertical: 20}}
-        onPress={() => props.setVisible(false)}
+        onPress={() => {
+          props.setVisible(false);
+          navigation.navigate('Stage3');
+        }}
       />
-      <Text style={styles.stage2Modal.backText}>{'<<< Überspringen'}</Text>
+      <Text
+        onPress={() => props.setVisible(false)}
+        style={styles.stage2Modal.backText}>
+        {'<<< Überspringen'}
+      </Text>
     </FullModal>
   );
 };
 
 export const Stage1Modal = props => {
+  const navigation = useNavigation();
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
       <View style={styles.stage1Modal.headerView}>
@@ -97,9 +108,28 @@ export const Stage1Modal = props => {
       <PinkButton
         text={'Weiter >>>'}
         style={{marginVertical: 20}}
-        onPress={() => props.setVisible(false)}
+        onPress={() => {
+          props.setVisible(false);
+          navigation.navigate('Stage2');
+        }}
       />
     </FullModal>
+  );
+};
+
+export const ErrorModal = props => {
+  const {errorModalVisible, setErrorModalVisible, error, setError, clearError} =
+    useContext(ErrorContext);
+  // console.log(error?.message);
+  return (
+    <CustomModal visible={errorModalVisible} setVisible={clearError}>
+      <BoldText style={styles.errorModal.errorText}>{error?.message}</BoldText>
+      <TouchableOpacity
+        style={styles.errorModal.okButton}
+        onPress={() => clearError()}>
+        <BoldText style={styles.errorModal.okText}>OK</BoldText>
+      </TouchableOpacity>
+    </CustomModal>
   );
 };
 
@@ -111,5 +141,15 @@ export const FullModal = props => {
       onBackdropPress={() => props.setVisible(false)}>
       <View style={styles.fullModal.mainView}>{props.children}</View>
     </BasicModal>
+  );
+};
+
+const CustomModal = props => {
+  return (
+    <Modal
+      isVisible={props.visible}
+      onBackdropPress={() => props.setVisible(false)}>
+      <View style={styles.customModal.mainView}>{props.children}</View>
+    </Modal>
   );
 };

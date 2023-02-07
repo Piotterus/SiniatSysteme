@@ -1,5 +1,6 @@
 const colors = {
   white: '#FFFFFF',
+  black: '#000000',
   whiteOpacity: '#FFFFFFDD',
   flirt: '#B3007E',
   cultured: '#F6F6F6',

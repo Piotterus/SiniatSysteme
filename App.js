@@ -32,6 +32,11 @@ import Stage2Screen from './src/screens/stages/Stage2Screen';
 import Stage3Screen from './src/screens/stages/Stage3Screen';
 import SystemListScreen from './src/screens/systems/SystemListScreen';
 import SystemItemScreen from './src/screens/systems/SystemItemScreen';
+import {AuthProvider} from './src/contexts/AuthContext';
+import {ErrorProvider} from './src/contexts/ErrorContext';
+import {ApiProvider} from './src/contexts/ApiContext';
+import {UserProvider} from './src/contexts/UserContext';
+import AppStacks from './src/stacks/AppStacks';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -66,7 +71,17 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return <SystemItemScreen />;
+  return (
+    <AuthProvider>
+      <ErrorProvider>
+        <ApiProvider>
+          <UserProvider>
+            <AppStacks />
+          </UserProvider>
+        </ApiProvider>
+      </ErrorProvider>
+    </AuthProvider>
+  );
 };
 
 const styles = StyleSheet.create({

@@ -12,8 +12,10 @@ import {
 } from '../headers/CustomHeaders';
 import CustomFooter from '../footers/CustomFooter';
 import {PinkButton} from '../buttons/CustomButton';
+import {useNavigation} from '@react-navigation/native';
 
 const CustomBackground = props => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.background.mainView}>
       {props.header === 'siniat' && <SiniatHeader />}
@@ -27,6 +29,7 @@ const CustomBackground = props => {
         <PinkButton
           text={'Suchen (425) >>>'}
           style={{position: 'absolute', bottom: 100}}
+          onPress={() => navigation.navigate('SystemList')}
         />
       )}
       <CustomFooter />

@@ -18,8 +18,10 @@ import icons from '../../assets/icons';
 import styles from './SystemScreen.style';
 import {SystemKarteButton} from '../../components/buttons/CustomButton';
 import colors from '../../assets/colors';
+import {useNavigation} from '@react-navigation/native';
 
 const SystemItem = props => {
+  const navigation = useNavigation();
   return (
     <View style={styles.systemListScreen.systemItem}>
       <View style={styles.systemListScreen.systemItemTitleRow}>
@@ -40,7 +42,9 @@ const SystemItem = props => {
           </View>
         );
       })}
-      <TouchableOpacity style={styles.systemListScreen.systemItemPlus}>
+      <TouchableOpacity
+        style={styles.systemListScreen.systemItemPlus}
+        onPress={() => navigation.navigate('SystemItem')}>
         <Image source={icons.plusCircle} />
       </TouchableOpacity>
     </View>
@@ -228,7 +232,7 @@ const SystemListScreen = () => {
         <SmallText>Es wurden</SmallText>
         <SmallText>2 Systemvarianten gefunden</SmallText>
       </View>
-      <View style={styles.systemListScreen.systemListScreen.rowView}>
+      <View style={styles.systemListScreen.rowView}>
         <TextInput
           style={styles.systemListScreen.textInput}
           placeholder={'Suchen'}

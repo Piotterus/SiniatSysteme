@@ -3,6 +3,36 @@ import colors from '../../assets/colors';
 import {ScreenHeight, ScreenWidth} from '@rneui/base';
 
 const styles = StyleSheet.create({
+  customModal: {
+    mainView: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: colors.white,
+      borderRadius: 30,
+      borderColor: colors.wenge,
+      borderWidth: 1,
+      padding: 20,
+    },
+    insideView: {},
+  },
+  errorModal: {
+    okButton: {
+      borderTopColor: colors.wenge,
+      borderTopWidth: 1,
+      width: '90%',
+      marginVertical: 10,
+    },
+    okText: {
+      color: colors.black,
+      alignSelf: 'center',
+      paddingTop: 10,
+    },
+    errorText: {
+      color: colors.black,
+      paddingTop: 10,
+    },
+  },
   fullModal: {
     mainView: {
       flex: 1,
