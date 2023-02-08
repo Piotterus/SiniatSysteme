@@ -5,18 +5,19 @@ import {Text} from 'react-native';
 import {MainMenuButton} from '../../components/buttons/CustomButton';
 import icons from '../../assets/icons';
 import {useNavigation} from '@react-navigation/native';
+import styles from './HomeScreen.style';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   return (
     <CustomBackground header={'siniat'}>
-      <PinkHeaderText>
-        Der Siniat <Text style={{fontWeight: 'bold'}}>Systemselektor</Text>
+      <PinkHeaderText style={styles.titleText}>
+        Der Siniat <Text style={styles.titleTextBold}>Systemselektor</Text>
       </PinkHeaderText>
       <MainMenuButton
         image={icons.mainMenu.wandeColor}
         text={'Wandsysteme - Schachtwände -Vorsatzschalen - Trockenputz'}
-        onPress={() => navigation.navigate('Stage1')}
+        onPress={() => navigation.navigate('Stage1', {})}
       />
       <MainMenuButton
         image={icons.mainMenu.deckenColor}

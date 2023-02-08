@@ -26,6 +26,25 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
   },
+  ring: {
+    mainView: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    animatedRing: {
+      width: 40,
+      height: 40,
+      borderRadius: 20,
+      borderWidth: 0.5,
+      borderColor: colors.wenge,
+      zIndex: -1,
+    },
+  },
 });
 
 export default styles;
