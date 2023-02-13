@@ -73,6 +73,7 @@ const SystemListScreen = () => {
         {
           label: 'System ID',
           value: 'SD51',
+          image: icons.system.question,
         },
         {
           label: 'Fire Resistance',
