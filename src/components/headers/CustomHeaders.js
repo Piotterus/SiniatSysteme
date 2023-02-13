@@ -16,7 +16,7 @@ export const SystemHeader = props => {
   return (
     <View style={styles.systemHeader}>
       <Image source={icons.stage.decken} />
-      <MainMenuText style={styles.systemText}>Decken</MainMenuText>
+      <MainMenuText style={styles.systemText}>{props.text}</MainMenuText>
     </View>
   );
 };

@@ -9,20 +9,23 @@ import StageNavigation from '../../components/stageNavigation/StageNavigation';
 import {WhiteButton} from '../../components/buttons/CustomButton';
 import {FilterSelect} from '../../components/filters/CustomFilters';
 import {SystemHeader} from '../../components/headers/CustomHeaders';
+import {useRoute} from '@react-navigation/native';
 
 const Stage2Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
+  const route = useRoute();
+  console.log(route.params);
   return (
     <CustomBackground header={'siniat'}>
       <Stage2Modal
         visible={stageModalVisible}
         setVisible={setStageModalVisible}
       />
-      <SystemHeader />
+      <SystemHeader text={route.params?.system?.label} />
       <StageNavigation />
       <View style={styles.stage2.breadcrumbsView}>
-        <SmallText>Unterdecken und Deckenbekleidungen ></SmallText>
-        <SmallText>Standard, Nassraum, Strahlenschutz</SmallText>
+        <SmallText>{route.params?.step2?.label} ></SmallText>
+        <SmallText>{route.params?.step3?.label}</SmallText>
       </View>
       <View style={styles.stage2.filterView}>
         <SmallText>1. Scritt</SmallText>

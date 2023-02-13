@@ -66,6 +66,12 @@ const styles = StyleSheet.create({
       top: 0,
       left: 0,
     },
+    optionList: {
+      flex: 1,
+      borderBottomColor: colors.cultured,
+      borderBottomWidth: 2,
+      width: '100%',
+    },
     optionButton: {
       width: '100%',
       paddingLeft: 60,
