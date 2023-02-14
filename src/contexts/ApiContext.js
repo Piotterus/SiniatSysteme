@@ -5,13 +5,13 @@ const ApiContext = createContext();
 export const ApiProvider = props => {
   const [apiUrl, setApiUrl] = useState(() => {
     if (__DEV__) {
-      return 'https://siniat.verbum.com.pl/api/';
+      return 'https://systemselektor.siniat.de/api/';
     } else {
-      return 'https://siniat.verbum.com.pl/api/';
+      return 'https://systemselektor.siniat.de/api/';
     }
   });
   const [apiKey, setApiKey] = useState(
-    '372a6e7dc6b1783bcfd58b0eaa0e74c96311f7b0', //ZMIENIĆ
+    's079zfx2o3q484tye93li9hl8dn5m37fb02uo5sr', //ZMIENIĆ
   );
 
   return (

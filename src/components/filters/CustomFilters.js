@@ -11,10 +11,8 @@ export const FilterSelect = props => {
         <BoldText>{props.label}</BoldText>
         <Image source={icons.info} />
       </View>
-      <TouchableOpacity
-        style={styles.buttonView}
-        onPress={() => props.onPress(true)}>
-        <BoldText>...</BoldText>
+      <TouchableOpacity style={styles.buttonView} onPress={props.onPress}>
+        <BoldText>{props.values}</BoldText>
         <Image source={icons.arrow.right} />
       </TouchableOpacity>
     </View>

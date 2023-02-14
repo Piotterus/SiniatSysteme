@@ -24,8 +24,7 @@ const UseFetch = () => {
     return keyValuePairs.join('&');
   };
 
-  const queryString = data =>
-    objToQueryString({...data, key: apiKey, token: token});
+  const queryString = data => objToQueryString({...data, key: apiKey});
 
   const fetchData = async (callback, endPoint, getData, postData = null) => {
     setIsLoading(true);
@@ -50,6 +49,7 @@ const UseFetch = () => {
     }
     try {
       let response = await fetch(url, options);
+      // console.log(response);
       let responseJson = await response.json();
       console.log(body);
       console.log(responseJson);

@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   View,
   Modal as BasicModal,
+  ScrollView,
 } from 'react-native';
 import styles from './CustomModals.style';
 import colors from '../../assets/colors';
@@ -22,6 +23,17 @@ import {useNavigation} from '@react-navigation/native';
 
 const OptionButton = props => {
   const [checked, setChecked] = useState(props.checked);
+
+  useEffect(() => {
+    setChecked(props.checked);
+  }, [props.checked]);
+
+  useEffect(() => {
+    console.log('Refresh');
+    console.log('Text', props.text);
+    console.log('Checked', checked);
+  });
+
   return (
     <TouchableOpacity
       style={styles.stage1Modal.optionButton}
@@ -41,13 +53,18 @@ const OptionButton = props => {
 
 export const Stage2Modal = props => {
   const navigation = useNavigation();
+  console.log('Values', props.filterList[props.chosenFilter]?.values);
+  console.log(
+    'SelectedValues',
+    props.filterList[props.chosenFilter]?.selectedValues,
+  );
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
       <View style={styles.stage2Modal.headerView}>
-        <WhiteText>Unterdecken und Deckenbekleidungen ></WhiteText>
-        <WhiteText>Nassraum, Strahlenschutz</WhiteText>
+        <WhiteText>{props.breadcrumps1} ></WhiteText>
+        <WhiteText>{props.breadcrumps2}</WhiteText>
         <WhiteText style={styles.stage2Modal.headerText}>
-          Feuerwiderstandsdauer [min]
+          {props.filterList[props.chosenFilter]?.german}
         </WhiteText>
         <TouchableOpacity
           style={styles.stage2Modal.arrow}
@@ -55,23 +72,39 @@ export const Stage2Modal = props => {
           <Image source={icons.arrow.leftWhite} resizeMode={'contain'} />
         </TouchableOpacity>
       </View>
-      <View
-        style={{
-          flex: 1,
-          borderBottomColor: colors.cultured,
-          borderBottomWidth: 2,
-          width: '100%',
-          backgroundColor: colors.cultured,
-        }}>
-        <OptionButton text={'30'} checked={true} />
-        <OptionButton text={'ohne'} />
-      </View>
+      <ScrollView style={styles.stage2Modal.optionList}>
+        {Array.isArray(props.filterList[props.chosenFilter]?.values) &&
+          props.filterList[props.chosenFilter]?.values.map((item, index) => {
+            console.log(
+              'checked',
+              props.filterList[props.chosenFilter]?.selectedValues?.indexOf(
+                item,
+              ) >= 0,
+            );
+            console.log(item);
+            console.log('----');
+            return (
+              <OptionButton
+                key={index}
+                text={item}
+                checked={
+                  props.filterList[props.chosenFilter]?.selectedValues?.indexOf(
+                    item,
+                  ) >= 0
+                }
+                onPress={() => props.chooseValue(item, 'add')}
+              />
+            );
+          })}
+
+        {/*<OptionButton text={'ohne'} />*/}
+      </ScrollView>
       <PinkButton
         text={'Weiter >>>'}
         style={{marginVertical: 20}}
         onPress={() => {
           props.setVisible(false);
-          navigation.navigate('Stage3');
+          navigation.navigate('Stage3', {});
         }}
       />
       <Text
