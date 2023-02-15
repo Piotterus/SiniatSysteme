@@ -28,12 +28,6 @@ const OptionButton = props => {
     setChecked(props.checked);
   }, [props.checked]);
 
-  useEffect(() => {
-    console.log('Refresh');
-    console.log('Text', props.text);
-    console.log('Checked', checked);
-  });
-
   return (
     <TouchableOpacity
       style={styles.stage1Modal.optionButton}
@@ -53,16 +47,16 @@ const OptionButton = props => {
 
 export const Stage2Modal = props => {
   const navigation = useNavigation();
-  console.log('Values', props.filterList[props.chosenFilter]?.values);
-  console.log(
-    'SelectedValues',
-    props.filterList[props.chosenFilter]?.selectedValues,
-  );
+  // console.log('Values', props.filterList[props.chosenFilter]?.values);
+  // console.log(
+  //   'SelectedValues',
+  //   props.filterList[props.chosenFilter]?.selectedValues,
+  // );
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
       <View style={styles.stage2Modal.headerView}>
-        <WhiteText>{props.breadcrumps1} ></WhiteText>
-        <WhiteText>{props.breadcrumps2}</WhiteText>
+        <WhiteText>{props.step2?.label} ></WhiteText>
+        <WhiteText>{props.step3?.label}</WhiteText>
         <WhiteText style={styles.stage2Modal.headerText}>
           {props.filterList[props.chosenFilter]?.german}
         </WhiteText>
@@ -75,14 +69,6 @@ export const Stage2Modal = props => {
       <ScrollView style={styles.stage2Modal.optionList}>
         {Array.isArray(props.filterList[props.chosenFilter]?.values) &&
           props.filterList[props.chosenFilter]?.values.map((item, index) => {
-            console.log(
-              'checked',
-              props.filterList[props.chosenFilter]?.selectedValues?.indexOf(
-                item,
-              ) >= 0,
-            );
-            console.log(item);
-            console.log('----');
             return (
               <OptionButton
                 key={index}
@@ -104,7 +90,12 @@ export const Stage2Modal = props => {
         style={{marginVertical: 20}}
         onPress={() => {
           props.setVisible(false);
-          navigation.navigate('Stage3', {});
+          navigation.navigate('Stage3', {
+            system: props.system,
+            step2: props.step2,
+            step3: props.step3,
+            filter: props.filterList,
+          });
         }}
       />
       <Text
@@ -150,19 +141,12 @@ export const Stage1Modal = props => {
               />
             );
           })}
-        {/*<OptionButton text={'standard'} checked={true} />*/}
-        {/*<OptionButton text={'standard'} />*/}
-        {/*<OptionButton text={'standard'} checked={true} />*/}
-        {/*<OptionButton text={'standard'} />*/}
-        {/*<OptionButton text={'standard'} />*/}
       </View>
       <PinkButton
         text={'Weiter >>>'}
         style={{marginVertical: 20}}
         onPress={() => {
           props.setVisible(false);
-          console.log(props.system.value);
-          console.log(props.option.value);
           const step3 = props.option.optionList.reduce((prev, item) => {
             if (item.chosen === true) {
               if (prev === '') {
@@ -185,11 +169,9 @@ export const Stage1Modal = props => {
               return prev;
             }
           }, '');
-          console.log(step3);
           const filtered = props.option.optionList.filter((item, index) => {
             return item.chosen === true;
           });
-          console.log(filtered);
           navigation.navigate('Stage2', {
             system: {
               value: props.system.value,
@@ -213,7 +195,6 @@ export const Stage1Modal = props => {
 export const ErrorModal = props => {
   const {errorModalVisible, setErrorModalVisible, error, setError, clearError} =
     useContext(ErrorContext);
-  // console.log(error?.message);
   return (
     <CustomModal visible={errorModalVisible} setVisible={clearError}>
       <BoldText style={styles.errorModal.errorText}>{error?.message}</BoldText>
@@ -227,7 +208,6 @@ export const ErrorModal = props => {
 };
 
 export const FullModal = props => {
-  console.log('visible', props.visible);
   return (
     <BasicModal
       visible={props.visible}

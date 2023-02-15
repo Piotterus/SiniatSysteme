@@ -6,8 +6,8 @@ import styles from './Breadcrumps.style';
 const Breadcrumps = props => {
   return (
     <View style={styles.breadcrumbsView}>
-      <SmallText>Unterdecken und Deckenbekleidungen ></SmallText>
-      <SmallText>Standard, Nassraum, Strahlenschutz</SmallText>
+      <SmallText>{props.text1} ></SmallText>
+      <SmallText>{props.text2}</SmallText>
     </View>
   );
 };

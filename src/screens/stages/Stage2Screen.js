@@ -11,6 +11,7 @@ import {FilterSelect} from '../../components/filters/CustomFilters';
 import {SystemHeader} from '../../components/headers/CustomHeaders';
 import {useFocusEffect, useRoute} from '@react-navigation/native';
 import useFetch from '../../hooks/useFetch';
+import Breadcrumps from '../../components/breadcrumbs/Breadcrumps';
 
 const Stage2Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
@@ -29,7 +30,6 @@ const Stage2Screen = () => {
       };
       const response = fetchData(
         res => {
-          console.log(res);
           setFilterList(res.data.filters);
         },
         'system/getFilters',
@@ -79,8 +79,8 @@ const Stage2Screen = () => {
     setFilterList(filters);
   };
 
-  console.log(route.params);
-  console.log(chosenFilter);
+  // console.log(route.params);
+  // console.log(chosenFilter);
   return (
     <CustomBackground header={'siniat'}>
       <Stage2Modal
@@ -88,16 +88,17 @@ const Stage2Screen = () => {
         setVisible={setStageModalVisible}
         filterList={filterList}
         chosenFilter={chosenFilter}
-        breadcrumps1={route.params?.step2?.label}
-        breadcrumps2={route.params?.step3?.label}
+        system={route.params?.system}
+        step2={route.params?.step2}
+        step3={route.params?.step3}
         chooseValue={chooseValue}
       />
       <SystemHeader text={route.params?.system?.label} />
       <StageNavigation />
-      <View style={styles.stage2.breadcrumbsView}>
-        <SmallText>{route.params?.step2?.label} ></SmallText>
-        <SmallText>{route.params?.step3?.label}</SmallText>
-      </View>
+      <Breadcrumps
+        text1={route.params?.step2?.label}
+        text2={route.params?.step3?.label}
+      />
       <View style={styles.stage2.filterView}>
         <SmallText>1. Scritt</SmallText>
         {createFiltersList()}

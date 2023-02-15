@@ -25,11 +25,11 @@ const CustomBackground = props => {
         contentContainerStyle={styles.background.scrollViewContainer}>
         {props.children}
       </ScrollView>
-      {props.showButton && (
+      {props.showButton && props.buttonCount > 0 && (
         <PinkButton
-          text={'Suchen (425) >>>'}
+          text={'Suchen (' + props.buttonCount + ') >>>'}
           style={{position: 'absolute', bottom: 100}}
-          onPress={() => navigation.navigate('SystemList')}
+          onPress={props.buttonOnPress}
         />
       )}
       <CustomFooter />

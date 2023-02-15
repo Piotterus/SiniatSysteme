@@ -13,8 +13,9 @@ const styles = StyleSheet.create({
     },
     filterView: {
       width: '100%',
-      paddingVertical: 20,
+      paddingTop: 20,
       paddingLeft: 20,
+      paddingBottom: 100,
     },
   },
 });

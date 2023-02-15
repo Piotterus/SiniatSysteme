@@ -27,7 +27,7 @@ export const FilterSelected = props => {
         <Image source={icons.info} />
       </View>
       <View style={styles.selectedView}>
-        <BoldText>30, Ohne</BoldText>
+        <BoldText>{props.values}</BoldText>
       </View>
     </View>
   );
