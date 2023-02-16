@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {SystemHeader} from '../../components/headers/CustomHeaders';
 import {Image, TextInput, TouchableOpacity, View} from 'react-native';
@@ -13,6 +13,12 @@ import {
 import {ScreenWidth} from '@rneui/base';
 import styles from './SystemScreen.style';
 import colors from '../../assets/colors';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import useFetch from '../../hooks/useFetch';
 
 const SystemItem = props => {
   return (
@@ -171,10 +177,50 @@ const SystemItemScreen = () => {
       },
     ],
   });
+
+  const route = useRoute();
+  const navigation = useNavigation();
+  const {fetchData} = useFetch();
+
+  useFocusEffect(
+    useCallback(() => {
+      const getData = {
+        returnType: '',
+        method: 'post',
+      };
+      const postData = {
+        system: route.params.data?.system?.value,
+        stage: 'L2',
+        step2: route.params.data?.step2?.value,
+        step3: route.params.data?.step3?.value,
+        selectedFiltersL1: route.params.data?.selectedFiltersL1,
+        selectedFiltersL2: route.params.data?.selectedFiltersL2,
+      };
+      console.log('getData - ', getData);
+      console.log('postData - ', postData);
+      const response = fetchData(
+        res => {
+          console.log(res);
+          // let filters = addSelectedValues(res.data.filters);
+          // setFilterList(filters);
+          setSystemList(res.data);
+        },
+        'system/getSystemsBasedOnFilters',
+        getData,
+        postData,
+      );
+    }, []),
+  );
+
+  console.log(route.params);
+
   return (
     <CustomBackground header={'siniat'}>
       <SystemHeader />
-      <Breadcrumps />
+      <Breadcrumps
+        text1={route.params?.step2?.label}
+        text2={route.params?.step3?.label}
+      />
       <SystemItem system={system} />
       <ProductBrochureButton />
       <TextInput

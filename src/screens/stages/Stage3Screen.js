@@ -105,7 +105,10 @@ const Stage3Screen = () => {
       selectedFiltersL1: selectedFiltersL1,
       selectedFiltersL2: selectedFiltersL2,
     };
-    const response = fetchData(
+    console.log('UpdateSystemCount');
+    console.log(getData);
+    console.log(postData);
+    const response = await fetchData(
       res => {
         console.log(res);
         setSystemCount(res.data);

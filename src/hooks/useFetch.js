@@ -49,7 +49,7 @@ const UseFetch = () => {
     }
     try {
       let response = await fetch(url, options);
-      // console.log(response);
+      console.log(response);
       let responseJson = await response.json();
       console.log(body);
       console.log(responseJson);

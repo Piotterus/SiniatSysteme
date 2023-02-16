@@ -55,7 +55,21 @@ const SystemItem = props => {
         <BoldText style={{width: '40%'}}>{props.data?.systemName}</BoldText>
         <SystemKarteButton style={{width: '30%'}} />
       </View>
-      {createData()}
+      {props.data?.fields.map((item, index) => {
+        return (
+          <View style={styles.systemListScreen.systemItemDataRow} key={i}>
+            <SmallText>{item.label}</SmallText>
+            <BoldText style={{color: colors.violet}}>{item.value}</BoldText>
+            {/*{item.image !== undefined && (*/}
+            {/*  <Image*/}
+            {/*    style={styles.systemListScreen.systemItemDataIcon}*/}
+            {/*    source={icons.system.question}*/}
+            {/*  />*/}
+            {/*)}*/}
+          </View>
+        );
+      })}
+      {/*{createData()}*/}
       {/*{props.data.values.map((item, index) => {*/}
       {/*  return (*/}
       {/*    <View style={styles.systemListScreen.systemItemDataRow} key={index}>*/}
@@ -72,7 +86,15 @@ const SystemItem = props => {
       {/*})}*/}
       <TouchableOpacity
         style={styles.systemListScreen.systemItemPlus}
-        onPress={() => navigation.navigate('SystemItem')}>
+        onPress={() =>
+          navigation.navigate('SystemItem', {
+            system: props.system,
+            step2: props.step2,
+            step3: props.step3,
+            systemId: props.data.systemName,
+            dbId: props.data.id,
+          })
+        }>
         <Image source={icons.plusCircle} />
       </TouchableOpacity>
     </View>
@@ -80,175 +102,7 @@ const SystemItem = props => {
 };
 
 const SystemListScreen = () => {
-  const [systemList, setSystemList] = useState([
-    // {
-    //   title: 'SD51 - CD-N/82/GKF - DF/MW',
-    //   values: [
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //       image: icons.system.fire,
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //       image: icons.system.question,
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //       image: icons.system.question,
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: 'SD51 - CD-N/82/GKF - DF/MW',
-    //   values: [
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: 'SD51 - CD-N/82/GKF - DF/MW',
-    //   values: [
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: 'SD51 - CD-N/82/GKF - DF/MW',
-    //   values: [
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //     {
-    //       label: 'System ID',
-    //       value: 'SD51',
-    //     },
-    //     {
-    //       label: 'Fire Resistance',
-    //       value: 'F 30-A',
-    //     },
-    //     {
-    //       label: 'Fire Resistance Direction',
-    //       value: 'von oben',
-    //     },
-    //   ],
-    // },
-  ]);
+  const [systemList, setSystemList] = useState([]);
 
   const route = useRoute();
   const {fetchData} = useFetch();
@@ -307,7 +161,15 @@ const SystemListScreen = () => {
         <FlatList
           data={systemList}
           renderItem={({item, index, separators}) => {
-            return <SystemItem key={index} data={item} />;
+            return (
+              <SystemItem
+                key={index}
+                data={item}
+                system={route.params.data?.system}
+                step2={route.params.data?.step2}
+                step3={route.params.data?.step3}
+              />
+            );
           }}
           style={styles.systemListScreen.systemList}
           contentContainerStyle={styles.systemListScreen.systemListContainter}
