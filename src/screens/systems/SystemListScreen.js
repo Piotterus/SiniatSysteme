@@ -1,9 +1,10 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useContext, useState} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {SystemHeader} from '../../components/headers/CustomHeaders';
 import {
   FlatList,
   Image,
+  Linking,
   ScrollView,
   TextInput,
   TouchableOpacity,
@@ -24,9 +25,12 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import useFetch from '../../hooks/useFetch';
+import ApiContext from '../../contexts/ApiContext';
+import base64 from 'react-native-base64';
 
 const SystemItem = props => {
   const navigation = useNavigation();
+  const {siteUrl} = useContext(ApiContext);
 
   const createData = () => {
     let dataList = [];
@@ -53,13 +57,26 @@ const SystemItem = props => {
     <View style={styles.systemListScreen.systemItem}>
       <View style={styles.systemListScreen.systemItemTitleRow}>
         <BoldText style={{width: '40%'}}>{props.data?.systemName}</BoldText>
-        <SystemKarteButton style={{width: '30%'}} />
+        <SystemKarteButton
+          style={{width: '30%'}}
+          onPress={() =>
+            Linking.openURL(
+              siteUrl +
+                'pdf-generate/' +
+                props.system?.value +
+                '/' +
+                base64.encode(props.data?.systemID) +
+                '/' +
+                props.data?.id,
+            )
+          }
+        />
       </View>
       {props.data?.fields.map((item, index) => {
         return (
-          <View style={styles.systemListScreen.systemItemDataRow} key={i}>
+          <View style={styles.systemListScreen.systemItemDataRow} key={index}>
             <SmallText>{item.label}</SmallText>
-            <BoldText style={{color: colors.violet}}>{item.value}</BoldText>
+            <BoldText style={{color: colors.violet}}>{item.vale}</BoldText>
             {/*{item.image !== undefined && (*/}
             {/*  <Image*/}
             {/*    style={styles.systemListScreen.systemItemDataIcon}*/}
@@ -103,12 +120,14 @@ const SystemItem = props => {
 
 const SystemListScreen = () => {
   const [systemList, setSystemList] = useState([]);
+  const [suchenText, setSuchenText] = useState('');
 
   const route = useRoute();
   const {fetchData} = useFetch();
 
   useFocusEffect(
     useCallback(() => {
+      console.log('useFocusEffect - SystemList');
       const getData = {
         returnType: '',
         method: 'post',
@@ -140,26 +159,33 @@ const SystemListScreen = () => {
   console.log(route.params);
   return (
     <CustomBackground header={'siniat'}>
-      <SystemHeader />
+      <SystemHeader system={route.params.data?.system} />
+      {/*<SystemHeader text={route.params?.data?.system?.label} />*/}
       <View style={styles.systemListScreen.rowView}>
         <SmallText>Twoje filtry</SmallText>
         <Image source={icons.filter} />
       </View>
       <View style={styles.systemListScreen.rowView}>
         <SmallText>Es wurden</SmallText>
-        <SmallText>2 Systemvarianten gefunden</SmallText>
+        <SmallText>{systemList.length} Systemvarianten gefunden</SmallText>
       </View>
       <View style={styles.systemListScreen.rowView}>
         <TextInput
           style={styles.systemListScreen.textInput}
           placeholder={'Suchen'}
+          value={suchenText}
+          onChangeText={text => setSuchenText(text)}
         />
       </View>
       <ScrollView
         horizontal={true}
         contentContainerStyle={{width: '100%', height: '100%'}}>
         <FlatList
-          data={systemList}
+          data={
+            suchenText.length > 0
+              ? systemList.filter(item => item.systemName.includes(suchenText))
+              : systemList
+          }
           renderItem={({item, index, separators}) => {
             return (
               <SystemItem

@@ -1,6 +1,7 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {SiniatHeader} from '../../components/headers/CustomHeaders';
+import {MainMenuText} from '../../components/texts/CustomText';
 
 const SplashScreen = () => {
   return (
@@ -16,7 +17,8 @@ const SplashScreen = () => {
       {/*  }}*/}
       {/*  resizeMode={'cover'}*/}
       {/*/>*/}
-      <SiniatHeader />
+      <MainMenuText>SPLASH</MainMenuText>
+      {/*<SiniatHeader />*/}
     </SafeAreaView>
   );
 };

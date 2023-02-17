@@ -12,13 +12,16 @@ const styles = StyleSheet.create({
   },
   circle: {
     mainView: {
-      height: 40,
-      width: 40,
+      height: 30,
+      width: 30,
       borderRadius: 20,
       backgroundColor: colors.grey,
       justifyContent: 'center',
       alignItems: 'center',
       marginHorizontal: 5,
+    },
+    inactive: {
+      backgroundColor: colors.greyOpacity,
     },
     text: {
       color: colors.white,
@@ -37,8 +40,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     animatedRing: {
-      width: 40,
-      height: 40,
+      width: 30,
+      height: 30,
       borderRadius: 20,
       borderWidth: 0.5,
       borderColor: colors.wenge,

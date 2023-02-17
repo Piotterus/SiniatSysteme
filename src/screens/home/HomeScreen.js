@@ -6,6 +6,7 @@ import {MainMenuButton} from '../../components/buttons/CustomButton';
 import icons from '../../assets/icons';
 import {useNavigation} from '@react-navigation/native';
 import styles from './HomeScreen.style';
+import colors from '../../assets/colors';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -13,26 +14,36 @@ const HomeScreen = () => {
   const optionList = [
     {
       image: icons.mainMenu.wandeColor,
+      imageStage: icons.stage.wande,
+      color: colors.wande,
       text: 'Wandsysteme - Schachtwände -Vorsatzschalen - Trockenputz',
       value: 'wande',
     },
     {
       image: icons.mainMenu.deckenColor,
+      imageStage: icons.stage.decken,
+      color: colors.decken,
       text: 'Deckensysteme',
       value: 'decken',
     },
     {
       image: icons.mainMenu.dacherColor,
+      imageStage: icons.stage.dacher,
+      color: colors.dacher,
       text: 'Dachsysteme',
       value: 'dacher',
     },
     {
       image: icons.mainMenu.stutzenColor,
+      imageStage: icons.stage.stutzen,
+      color: colors.stutzen,
       text: 'Stützen - und Trägerbekleidungen',
       value: 'stutzen',
     },
     {
       image: icons.mainMenu.kabelkanaleColor,
+      imageStage: icons.stage.kabelkanale,
+      color: colors.kabelkanale,
       text: 'Kabelkanäle',
       value: 'kabelkanale',
     },
@@ -57,31 +68,6 @@ const HomeScreen = () => {
           />
         );
       })}
-      {/*<MainMenuButton
-        image={icons.mainMenu.wandeColor}
-        text={'Wandsysteme - Schachtwände -Vorsatzschalen - Trockenputz'}
-        onPress={() => navigation.navigate('Stage1', {step1: 'wande'})}
-      />
-      <MainMenuButton
-        image={icons.mainMenu.deckenColor}
-        text={'Deckensysteme'}
-        onPress={() => navigation.navigate('Stage1', {step1: 'decken'})}
-      />
-      <MainMenuButton
-        image={icons.mainMenu.dacherColor}
-        text={'Dachsysteme'}
-        onPress={() => navigation.navigate('Stage1', {step1: 'dacher'})}
-      />
-      <MainMenuButton
-        image={icons.mainMenu.stutzenColor}
-        text={'Stützen - und Trägerbekleidungen'}
-        onPress={() => navigation.navigate('Stage1', {step1: 'stutzen'})}
-      />
-      <MainMenuButton
-        image={icons.mainMenu.kabelkanaleColor}
-        text={'Kabelkanäle'}
-        onPress={() => navigation.navigate('Stage1', {step1: 'kabelkanale'})}
-      />*/}
     </CustomBackground>
   );
 };

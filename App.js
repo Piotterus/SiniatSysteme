@@ -37,6 +37,7 @@ import {ErrorProvider} from './src/contexts/ErrorContext';
 import {ApiProvider} from './src/contexts/ApiContext';
 import {UserProvider} from './src/contexts/UserContext';
 import AppStacks from './src/stacks/AppStacks';
+import {SystemProvider} from './src/contexts/SystemContext';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -76,7 +77,9 @@ const App: () => Node = () => {
       <ErrorProvider>
         <ApiProvider>
           <UserProvider>
-            <AppStacks />
+            <SystemProvider>
+              <AppStacks />
+            </SystemProvider>
           </UserProvider>
         </ApiProvider>
       </ErrorProvider>

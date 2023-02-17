@@ -5,6 +5,7 @@ const colors = {
   flirt: '#B3007E',
   cultured: '#F6F6F6',
   grey: '#555756',
+  greyOpacity: '#55575655',
   wenge: '#4E0041',
   wande: '#77B800',
   decken: '#0065BD',

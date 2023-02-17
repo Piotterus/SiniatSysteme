@@ -54,13 +54,13 @@ export const SystemKarteButton = props => {
   );
 };
 
-export const ProductBrochureButton = props => {
+export const ProductButton = props => {
   return (
     <TouchableOpacity
       {...props}
       style={[styles.productBrochureButton.mainView, props.style]}>
       <SmallText style={[styles.productBrochureButton.text, props.textStyle]}>
-        Productbrochure
+        {props.text}
       </SmallText>
       <Image source={icons.arrow.right} />
     </TouchableOpacity>

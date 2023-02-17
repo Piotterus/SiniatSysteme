@@ -1,12 +1,12 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useContext} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {SystemHeader} from '../../components/headers/CustomHeaders';
-import {Image, TextInput, TouchableOpacity, View} from 'react-native';
+import {Image, Linking, TextInput, TouchableOpacity, View} from 'react-native';
 import {BoldText, SmallText} from '../../components/texts/CustomText';
 import Breadcrumps from '../../components/breadcrumbs/Breadcrumps';
 import icons from '../../assets/icons';
 import {
-  ProductBrochureButton,
+  ProductButton,
   SendButton,
   SystemKarteButton,
 } from '../../components/buttons/CustomButton';
@@ -19,20 +19,40 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import useFetch from '../../hooks/useFetch';
+import base64 from 'react-native-base64';
+import ApiContext from '../../contexts/ApiContext';
 
 const SystemItem = props => {
+  const {siteUrl} = useContext(ApiContext);
+  // console.log('-- SYSTEM ITEM --');
+  // console.log(siteUrl);
+  // console.log(props.systemType?.value);
+  // console.log(props.system);
+  // console.log(props.system?.systemID);
+  // console.log(base64.encode(props.system?.systemID));
+  // console.log(props.system?.id);
+  // console.log(
+  //   siteUrl +
+  //     'pdf-generate/' +
+  //     props.systemType?.value +
+  //     '/' +
+  //     base64.encode(props.system?.systemID) +
+  //     '/' +
+  //     props.system?.id,
+  // );
   return (
     <View style={styles.systemItemScreen.systemItem.mainView}>
       <BoldText style={styles.systemItemScreen.systemItem.title}>
-        {props.system.title}
+        {props.system?.systemName}
       </BoldText>
       <View style={styles.systemItemScreen.systemItem.descriptionRow}>
         <BoldText
-          style={[styles.systemItemScreen.systemItem.desciptionRowItem, ,]}>
-          {props.system.description}
+          style={[styles.systemItemScreen.systemItem.desciptionRowItem]}>
+          Für detailliertere Informationen öffnen Sie bitte die Systemkarte oder
+          die verknüpften Dokumente.
         </BoldText>
         <Image
-          source={icons.systemImage}
+          source={{uri: props.system?.image}}
           style={[
             styles.systemItemScreen.systemItem.desciptionRowItem,
             {marginLeft: 30},
@@ -41,12 +61,23 @@ const SystemItem = props => {
       </View>
       <SystemKarteButton
         style={styles.systemItemScreen.systemItem.systemKarteButton}
+        onPress={() =>
+          Linking.openURL(
+            siteUrl +
+              'pdf-generate/' +
+              props.systemType?.value +
+              '/' +
+              base64.encode(props.system?.systemID) +
+              '/' +
+              props.system?.id,
+          )
+        }
       />
       <View style={styles.systemItemScreen.systemItem.systemItem}>
         <View style={styles.systemItemScreen.systemItem.systemItemTitleRow}>
           <BoldText>GRUNDINFORMATION</BoldText>
         </View>
-        {props.system.values.map((item, index) => {
+        {props.system?.fields?.basic.map((item, index) => {
           return (
             <View
               style={styles.systemItemScreen.systemItem.systemItemDataRow}
@@ -67,7 +98,7 @@ const SystemItem = props => {
         <View style={styles.systemItemScreen.systemItem.systemItemTitleRow}>
           <BoldText>GENAUE INFORMATION</BoldText>
         </View>
-        {props.system.extraValues.map((item, index) => {
+        {props.system?.fields?.extra.map((item, index) => {
           return (
             <View
               style={styles.systemItemScreen.systemItem.systemItemDataRow}
@@ -91,92 +122,7 @@ const SystemItem = props => {
 };
 
 const SystemItemScreen = () => {
-  const [system, setSystem] = useState({
-    title: 'SD51 - CD-N/82/GKF - DF/MW',
-    description:
-      'Für detailliertere Informationen öffnen Sie bitte die Systemkarte oder die verknüpften Dokumente.',
-    image: icons.systemImage,
-    values: [
-      {
-        label: 'System ID',
-        value: 'SD51',
-      },
-      {
-        label: 'Fire Resistance',
-        value: 'F 30-A',
-        image: icons.system.fire,
-      },
-      {
-        label: 'Fire Resistance Direction',
-        value: 'von oben',
-        image: icons.system.question,
-      },
-      {
-        label: 'System ID',
-        value: 'SD51',
-      },
-      {
-        label: 'Fire Resistance',
-        value: 'F 30-A',
-      },
-      {
-        label: 'Fire Resistance Direction',
-        value: 'von oben',
-      },
-      {
-        label: 'System ID',
-        value: 'SD51',
-      },
-      {
-        label: 'Fire Resistance',
-        value: 'F 30-A',
-      },
-      {
-        label: 'Fire Resistance Direction',
-        value: 'von oben',
-      },
-    ],
-    extraValues: [
-      {
-        label: 'System ID',
-        value: 'SD51',
-      },
-      {
-        label: 'Fire Resistance',
-        value: 'F 30-A',
-        image: icons.system.fire,
-      },
-      {
-        label: 'Fire Resistance Direction',
-        value: 'von oben',
-        image: icons.system.question,
-      },
-      {
-        label: 'System ID',
-        value: 'SD51',
-      },
-      {
-        label: 'Fire Resistance',
-        value: 'F 30-A',
-      },
-      {
-        label: 'Fire Resistance Direction',
-        value: 'von oben',
-      },
-      {
-        label: 'System ID',
-        value: 'SD51',
-      },
-      {
-        label: 'Fire Resistance',
-        value: 'F 30-A',
-      },
-      {
-        label: 'Fire Resistance Direction',
-        value: 'von oben',
-      },
-    ],
-  });
+  const [system, setSystem] = useState({});
 
   const route = useRoute();
   const navigation = useNavigation();
@@ -185,29 +131,22 @@ const SystemItemScreen = () => {
   useFocusEffect(
     useCallback(() => {
       const getData = {
-        returnType: '',
-        method: 'post',
-      };
-      const postData = {
-        system: route.params.data?.system?.value,
-        stage: 'L2',
-        step2: route.params.data?.step2?.value,
-        step3: route.params.data?.step3?.value,
-        selectedFiltersL1: route.params.data?.selectedFiltersL1,
-        selectedFiltersL2: route.params.data?.selectedFiltersL2,
+        system: route.params?.system?.value,
+        systemId: route.params.systemId,
+        dbId: route.params.dbId,
       };
       console.log('getData - ', getData);
-      console.log('postData - ', postData);
       const response = fetchData(
         res => {
           console.log(res);
           // let filters = addSelectedValues(res.data.filters);
           // setFilterList(filters);
-          setSystemList(res.data);
+          // setSystemList(res.data);
+          setSystem(res.data);
         },
-        'system/getSystemsBasedOnFilters',
+        'system/getSingleSystem',
         getData,
-        postData,
+        null,
       );
     }, []),
   );
@@ -216,13 +155,33 @@ const SystemItemScreen = () => {
 
   return (
     <CustomBackground header={'siniat'}>
-      <SystemHeader />
+      <SystemHeader system={route.params.system} />
       <Breadcrumps
         text1={route.params?.step2?.label}
         text2={route.params?.step3?.label}
       />
-      <SystemItem system={system} />
-      <ProductBrochureButton />
+      <SystemItem system={system} systemType={route.params?.system} />
+      {system?.brochure !== '' && system?.brochure !== undefined && (
+        <ProductButton
+          onPress={() => Linking.openURL(system?.brochure)}
+          text={'Productbrochure'}
+        />
+      )}
+      {system?.constructionProof !== '' &&
+        system?.constructionProof !== undefined && (
+          <ProductButton
+            onPress={() => Linking.openURL(system?.constructionProof)}
+            text={'Brandschutznachweis'}
+          />
+        )}
+      {system?.soundProtection !== '' &&
+        system?.soundProtection !== undefined && (
+          <ProductButton
+            onPress={() => Linking.openURL(system?.soundProtection)}
+            text={'Schallschutznachweis'}
+          />
+        )}
+      {/*Montageanleitung - assembly Construction*/}
       <TextInput
         multiline={true}
         numberOfLines={4}

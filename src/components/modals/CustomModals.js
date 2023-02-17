@@ -54,7 +54,11 @@ export const Stage2Modal = props => {
   // );
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
-      <View style={styles.stage2Modal.headerView}>
+      <View
+        style={[
+          styles.stage2Modal.headerView,
+          {backgroundColor: props.system?.color},
+        ]}>
         <WhiteText>{props.step2?.label} ></WhiteText>
         <WhiteText>{props.step3?.label}</WhiteText>
         <WhiteText style={styles.stage2Modal.headerText}>
@@ -116,7 +120,11 @@ export const Stage1Modal = props => {
 
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
-      <View style={styles.stage1Modal.headerView}>
+      <View
+        style={[
+          styles.stage1Modal.headerView,
+          {backgroundColor: props.system?.color},
+        ]}>
         <WhiteText style={styles.stage1Modal.headerText}>
           {props.system?.text}
         </WhiteText>
@@ -173,10 +181,7 @@ export const Stage1Modal = props => {
             return item.chosen === true;
           });
           navigation.navigate('Stage2', {
-            system: {
-              value: props.system.value,
-              label: props.system.text,
-            },
+            system: props.system,
             step2: {
               value: props.option.value,
               label: props.option.label,
@@ -201,6 +206,19 @@ export const ErrorModal = props => {
       <TouchableOpacity
         style={styles.errorModal.okButton}
         onPress={() => clearError()}>
+        <BoldText style={styles.errorModal.okText}>OK</BoldText>
+      </TouchableOpacity>
+    </CustomModal>
+  );
+};
+
+export const TooltipModal = props => {
+  return (
+    <CustomModal visible={props.visible} setVisible={props.setVisible}>
+      <BoldText style={styles.errorModal.errorText}>{props.text}</BoldText>
+      <TouchableOpacity
+        style={styles.errorModal.okButton}
+        onPress={() => props.setVisible(false)}>
         <BoldText style={styles.errorModal.okText}>OK</BoldText>
       </TouchableOpacity>
     </CustomModal>

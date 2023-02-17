@@ -135,7 +135,12 @@ const Stage3Screen = () => {
         values = filterList[i].selectedValues.join(', ');
       }
       filters.push(
-        <FilterSelected key={i} label={filterList[i].german} values={values} />,
+        <FilterSelected
+          key={i}
+          label={filterList[i].german}
+          values={values}
+          tooltip={filterList[i].tooltip}
+        />,
       );
     }
     return filters;
@@ -157,6 +162,7 @@ const Stage3Screen = () => {
           label={filterList[i].german}
           onPress={() => chooseFilter(i)}
           values={values}
+          tooltip={filterList[i].tooltip}
         />,
       );
     }
@@ -215,7 +221,7 @@ const Stage3Screen = () => {
         step3={route.params?.step3}
         chooseValue={chooseValue}
       />
-      <SystemHeader text={route.params?.system?.label} />
+      <SystemHeader system={route.params.system} />
       <StageNavigation />
       <Breadcrumps
         text1={route.params?.step2?.label}

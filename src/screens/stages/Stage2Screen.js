@@ -52,6 +52,7 @@ const Stage2Screen = () => {
           label={filterList[i].german}
           onPress={() => chooseFilter(i)}
           values={values}
+          tooltip={filterList[i].tooltip}
         />,
       );
     }
@@ -79,7 +80,8 @@ const Stage2Screen = () => {
     setFilterList(filters);
   };
 
-  // console.log(route.params);
+  console.log('Stage2');
+  console.log(route.params);
   // console.log(chosenFilter);
   return (
     <CustomBackground header={'siniat'}>
@@ -93,7 +95,7 @@ const Stage2Screen = () => {
         step3={route.params?.step3}
         chooseValue={chooseValue}
       />
-      <SystemHeader text={route.params?.system?.label} />
+      <SystemHeader system={route.params.system} />
       <StageNavigation />
       <Breadcrumps
         text1={route.params?.step2?.label}

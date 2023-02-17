@@ -384,7 +384,7 @@ const Stage1Screen = () => {
         chooseOption={(option1, option2) => chooseOption(option1, option2)}
         system={route.params.system}
       />
-      <SystemHeader text={route.params.system.text} />
+      <SystemHeader system={route.params.system} />
       <StageNavigation />
       {optionList[step1] !== undefined &&
         optionList[step1].map((item, index) => {

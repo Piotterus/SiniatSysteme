@@ -9,6 +9,7 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
+import {useRoute} from '@react-navigation/native';
 
 const Ring = props => {
   const ring = useSharedValue(1);
@@ -55,19 +56,36 @@ const Ring = props => {
 
 const NavigationCircle = props => {
   return (
-    <View style={styles.circle.mainView}>
-      <Ring />
+    <View
+      style={[
+        styles.circle.mainView,
+        !props.active ? styles.circle.inactive : '',
+      ]}>
+      {props.ring && <Ring />}
       <Text style={styles.circle.text}>{props.text}</Text>
     </View>
   );
 };
 
 const StageNavigation = () => {
+  const route = useRoute();
   return (
     <View style={styles.mainView}>
-      <NavigationCircle text={'1'} />
-      <NavigationCircle text={'2'} />
-      <NavigationCircle text={'3'} />
+      <NavigationCircle
+        text={'1'}
+        ring={route.name === 'Stage1'}
+        active={true}
+      />
+      <NavigationCircle
+        text={'2'}
+        ring={route.name === 'Stage2'}
+        active={route.name === 'Stage2' || route.name === 'Stage3'}
+      />
+      <NavigationCircle
+        text={'3'}
+        ring={route.name === 'Stage3'}
+        active={route.name === 'Stage3'}
+      />
     </View>
   );
 };

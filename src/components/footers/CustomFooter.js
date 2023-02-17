@@ -4,15 +4,16 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import icons from '../../assets/icons';
 import styles from './CustomFooter.style';
 import {SmallText} from '../texts/CustomText';
+import {useNavigation, useRoute} from '@react-navigation/native';
 // import {useNavigation, useRoute} from '@react-navigation/native';
 
 const FooterItem = props => {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.extra.item}
       onPress={() => {
-        // navigation.navigate(props.navigateTo);
+        navigation.navigate(props.navigateTo);
         props.setOpen(false);
       }}>
       <SmallText style={styles.extra.text}>{props.text}</SmallText>
@@ -22,22 +23,17 @@ const FooterItem = props => {
 
 const CustomFooter = props => {
   const [open, setOpen] = useState(false);
-  // const navigation = useNavigation();
-  // const route = useRoute();
+  const navigation = useNavigation();
+  const route = useRoute();
 
   return (
     <View style={styles.mainView}>
       <TouchableOpacity
         style={[
           styles.button,
-          // route.name === 'Home' ? styles.buttonActive : '',
+          route.name === 'Home' ? styles.buttonActive : '',
         ]}
-        // onPress={() =>
-        //   props.homeRef !== undefined
-        //     ? props.homeRef.current.reload()
-        //     : navigation.navigate('Home')
-        // }
-      >
+        onPress={() => navigation.navigate('Home')}>
         <Image source={icons.menu.home} />
       </TouchableOpacity>
       <TouchableOpacity

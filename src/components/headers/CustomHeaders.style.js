@@ -10,6 +10,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: ScreenWidth,
   },
+  backArrow: {
+    position: 'absolute',
+    left: 10,
+    padding: 10,
+  },
   systemHeader: {
     width: ScreenWidth,
     alignItems: 'center',

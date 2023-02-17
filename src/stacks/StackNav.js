@@ -7,6 +7,10 @@ import Stage3Screen from '../screens/stages/Stage3Screen';
 import SystemListScreen from '../screens/systems/SystemListScreen';
 import SystemItemScreen from '../screens/systems/SystemItemScreen';
 import TutorialScreen from '../screens/tutorial/TutorialScreen';
+import AboutScreen from '../screens/singlePage/AboutScreen';
+import ContactScreen from '../screens/singlePage/ContactScreen';
+import PallasScreen from '../screens/singlePage/PallasScreen';
+import PrivacyScreen from '../screens/singlePage/PrivacyScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -81,6 +85,34 @@ const StackNav = () => {
             gestureEnabled: false,
           }}>
           {props => <TutorialScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen
+          name={'About'}
+          option={{
+            gestureEnabled: false,
+          }}>
+          {props => <AboutScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen
+          name={'Contact'}
+          option={{
+            gestureEnabled: false,
+          }}>
+          {props => <ContactScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen
+          name={'Pallas'}
+          option={{
+            gestureEnabled: false,
+          }}>
+          {props => <PallasScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen
+          name={'Privacy'}
+          option={{
+            gestureEnabled: false,
+          }}>
+          {props => <PrivacyScreen {...props} />}
         </Stack.Screen>
       </>
     </Stack.Navigator>
