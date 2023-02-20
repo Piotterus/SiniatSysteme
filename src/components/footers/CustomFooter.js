@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import colors from '../../assets/colors';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import icons from '../../assets/icons';
 import styles from './CustomFooter.style';
 import {SmallText} from '../texts/CustomText';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {ScreenHeight, ScreenWidth} from '@rneui/base';
 // import {useNavigation, useRoute} from '@react-navigation/native';
 
 const FooterItem = props => {
@@ -45,31 +52,35 @@ const CustomFooter = props => {
         <Image source={icons.menu.more} />
       </TouchableOpacity>
       {open && (
-        <View style={styles.extra.mainView}>
-          <FooterItem
-            text={'Über Siniat Selektor'}
-            navigateTo={'About'}
-            setOpen={setOpen}
-          />
-          <View style={styles.extra.line} />
-          <FooterItem
-            text={'Loyalitätsprogramm'}
-            navigateTo={'Pallas'}
-            setOpen={setOpen}
-          />
-          <View style={styles.extra.line} />
-          <FooterItem
-            text={'Kontakt'}
-            navigateTo={'Contact'}
-            setOpen={setOpen}
-          />
-          <View style={styles.extra.line} />
-          <FooterItem
-            text={'Datenschutzbestimmungen'}
-            navigateTo={'Privacy'}
-            setOpen={setOpen}
-          />
-        </View>
+        <TouchableOpacity
+          onPress={() => setOpen(false)}
+          style={styles.extra.overView}>
+          <View style={styles.extra.mainView}>
+            <FooterItem
+              text={'Über Siniat Selektor'}
+              navigateTo={'About'}
+              setOpen={setOpen}
+            />
+            <View style={styles.extra.line} />
+            <FooterItem
+              text={'Loyalitätsprogramm'}
+              navigateTo={'Pallas'}
+              setOpen={setOpen}
+            />
+            <View style={styles.extra.line} />
+            <FooterItem
+              text={'Kontakt'}
+              navigateTo={'Contact'}
+              setOpen={setOpen}
+            />
+            <View style={styles.extra.line} />
+            <FooterItem
+              text={'Datenschutzbestimmungen'}
+              navigateTo={'Privacy'}
+              setOpen={setOpen}
+            />
+          </View>
+        </TouchableOpacity>
       )}
     </View>
   );

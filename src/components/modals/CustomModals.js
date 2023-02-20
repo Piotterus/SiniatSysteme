@@ -8,7 +8,14 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './CustomModals.style';
-import colors from '../../assets/colors';
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withRepeat,
+  withTiming,
+} from 'react-native-reanimated';
 import {
   BoldText,
   MainMenuText,
@@ -20,6 +27,7 @@ import Modal from 'react-native-modal';
 import {PinkButton, WhiteButton} from '../buttons/CustomButton';
 import ErrorContext from '../../contexts/ErrorContext';
 import {useNavigation} from '@react-navigation/native';
+import colors from '../../assets/colors';
 
 const OptionButton = props => {
   const [checked, setChecked] = useState(props.checked);
@@ -221,6 +229,50 @@ export const TooltipModal = props => {
         onPress={() => props.setVisible(false)}>
         <BoldText style={styles.errorModal.okText}>OK</BoldText>
       </TouchableOpacity>
+    </CustomModal>
+  );
+};
+
+export const WallHeightModal = props => {
+  const ring = useSharedValue(30);
+  const style = useAnimatedStyle(() => {
+    return {
+      opacity: (30 - ring.value) / 10 + 1,
+      height: interpolate(ring.value, [0, 1], [0, 1]),
+      width: interpolate(ring.value, [0, 1], [0, 1]),
+      // transform: [
+      //   {
+      //     scale: interpolate(ring.value, [0, 1], [0, 1]),
+      //   },
+      // ],
+      // borderWidth: interpolate(borderWidth.value, [0, 1], [0, 1]),
+    };
+  });
+
+  useEffect(() => {
+    ring.value = withDelay(
+      500,
+      withRepeat(
+        withTiming(40, {
+          duration: 1500,
+        }),
+        -1,
+        // withTiming(3, {
+        //   duration: 2000,
+        // }),
+        // -1,
+      ),
+    );
+  }, []);
+  return (
+    <CustomModal visible={props.visible} setVisible={props.setVisible}>
+      <View style={styles.wallHeightModal.overRingView}>
+        <Animated.View style={[styles.wallHeightModal.animatedRing, style]} />
+        <Text style={styles.wallHeightModal.ringText}>i</Text>
+      </View>
+      <SmallText style={styles.wallHeightModal.infoText}>
+        {props.text}
+      </SmallText>
     </CustomModal>
   );
 };

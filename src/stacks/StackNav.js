@@ -77,7 +77,7 @@ const StackNav = () => {
           }}>
           {props => <SystemItemScreen {...props} />}
         </Stack.Screen>
-        <Stack.Screen
+        {/*<Stack.Screen
           name={'Tutorial'}
           option={{
             title: 'Tutorial',
@@ -85,7 +85,7 @@ const StackNav = () => {
             gestureEnabled: false,
           }}>
           {props => <TutorialScreen {...props} />}
-        </Stack.Screen>
+        </Stack.Screen>*/}
         <Stack.Screen
           name={'About'}
           option={{

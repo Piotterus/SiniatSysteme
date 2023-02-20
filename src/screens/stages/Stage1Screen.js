@@ -274,7 +274,7 @@ const Stage1Screen = () => {
         ],
       },
     ],
-    stutzen: [
+    stutzentrager: [
       {
         label: 'Stahl',
         value: 'stahl',
@@ -348,7 +348,11 @@ const Stage1Screen = () => {
       setModalOptions(option);
       setStageModalVisible(true);
     } else {
-      navigation.navigate('Stage2');
+      navigation.navigate('Stage2', {
+        system: route.params.system,
+        step2: option,
+        step3: {},
+      });
     }
   };
 
@@ -396,26 +400,6 @@ const Stage1Screen = () => {
             />
           );
         })}
-      {/*<WhiteButton
-        text={'Freicośtam'}
-        onPress={() => setStageModalVisible(true)}
-      />
-      <WhiteButton
-        text={'Freicośtam'}
-        onPress={() => setStageModalVisible(true)}
-      />
-      <WhiteButton
-        text={'Freicośtam'}
-        onPress={() => setStageModalVisible(true)}
-      />
-      <WhiteButton
-        text={'Freicośtam'}
-        onPress={() => setStageModalVisible(true)}
-      />
-      <WhiteButton
-        text={'Freicośtam'}
-        onPress={() => setStageModalVisible(true)}
-      />*/}
     </CustomBackground>
   );
 };

@@ -5,13 +5,13 @@ import ApiContext from '../../contexts/ApiContext';
 import {SafeAreaView} from 'react-native';
 
 const ContactScreen = () => {
-  const {apiUrl} = useContext(ApiContext);
+  const {siteUrl} = useContext(ApiContext);
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <WebView
         style={{flex: 1}}
-        source={{uri: apiUrl + 'kontakt'}}
+        source={{uri: siteUrl + 'kontakt'}}
         cacheEnabled={false}
       />
       <CustomFooter />

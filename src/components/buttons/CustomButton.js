@@ -73,7 +73,7 @@ export const SendButton = props => {
       {...props}
       style={[styles.sendButton.mainView, props.style]}>
       <SmallText style={[styles.sendButton.text, props.textStyle]}>
-        Speichern / Senden
+        Systemkarte
       </SmallText>
     </TouchableOpacity>
   );

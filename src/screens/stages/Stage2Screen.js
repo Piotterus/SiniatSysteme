@@ -1,23 +1,39 @@
 import React, {useCallback, useState} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
-import {Stage1Modal, Stage2Modal} from '../../components/modals/CustomModals';
+import {
+  Stage1Modal,
+  Stage2Modal,
+  WallHeightModal,
+} from '../../components/modals/CustomModals';
 import {Image, View} from 'react-native';
 import styles from './StagesScreen.style';
 import icons from '../../assets/icons';
 import {MainMenuText, SmallText} from '../../components/texts/CustomText';
 import StageNavigation from '../../components/stageNavigation/StageNavigation';
-import {WhiteButton} from '../../components/buttons/CustomButton';
-import {FilterSelect} from '../../components/filters/CustomFilters';
+import {PinkButton, WhiteButton} from '../../components/buttons/CustomButton';
+import {
+  FilterInput,
+  FilterSelect,
+  FilterSelected,
+} from '../../components/filters/CustomFilters';
 import {SystemHeader} from '../../components/headers/CustomHeaders';
-import {useFocusEffect, useRoute} from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import useFetch from '../../hooks/useFetch';
 import Breadcrumps from '../../components/breadcrumbs/Breadcrumps';
 
 const Stage2Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
+  const [wallHeightModalVisible, setWallHeightModalVisible] = useState(false);
+  const [wallHeightModalShowed, setWallHeightModalShowed] = useState(false);
+  const [wallHeightModalText, setWallHeightModalText] = useState('');
   const [filterList, setFilterList] = useState({});
   const [chosenFilter, setChosenFilter] = useState();
   const route = useRoute();
+  const navigation = useNavigation();
   const {fetchData} = useFetch();
 
   useFocusEffect(
@@ -42,19 +58,51 @@ const Stage2Screen = () => {
   const createFiltersList = () => {
     let filters = [];
     for (let i in filterList) {
-      let values = '...';
-      if (filterList[i].selectedValues !== undefined) {
-        values = filterList[i].selectedValues.join(', ');
+      console.log(filterList[i].name);
+      console.log(filterList[i].values);
+      console.log(filterList[i]?.selectedValues);
+      if (filterList[i].type === 'from') {
+        let value = '';
+        if (filterList[i].selectedValues !== undefined) {
+          value = filterList[i].selectedValues.join(', ');
+        }
+        filters.push(
+          <FilterInput
+            key={i}
+            label={filterList[i].german}
+            value={value}
+            tooltip={filterList[i].tooltip}
+            onChangeText={enterValue}
+            index={i}
+          />,
+        );
+      } else {
+        if (filterList[i].values.length === 1) {
+          let values = filterList[i].values.join(', ');
+          filters.push(
+            <FilterSelected
+              key={i}
+              label={filterList[i].german}
+              values={values}
+              tooltip={filterList[i].tooltip}
+            />,
+          );
+        } else {
+          let values = '...';
+          if (filterList[i].selectedValues !== undefined) {
+            values = filterList[i].selectedValues.join(', ');
+          }
+          filters.push(
+            <FilterSelect
+              key={i}
+              label={filterList[i].german}
+              onPress={() => chooseFilter(i)}
+              values={values}
+              tooltip={filterList[i].tooltip}
+            />,
+          );
+        }
       }
-      filters.push(
-        <FilterSelect
-          key={i}
-          label={filterList[i].german}
-          onPress={() => chooseFilter(i)}
-          values={values}
-          tooltip={filterList[i].tooltip}
-        />,
-      );
     }
     return filters;
   };
@@ -80,6 +128,52 @@ const Stage2Screen = () => {
     setFilterList(filters);
   };
 
+  const enterValue = (value, index) => {
+    let filters = {...filterList};
+    console.log('EnterValue');
+    console.log(value, index);
+    // if (filters[index].selectedValues !== undefined) {
+    //   const index = filters[index].selectedValues.indexOf(value);
+    //   if (index >= 0) {
+    //     const deleted = filters[index].selectedValues.splice(index, 1);
+    //   } else {
+    //     filters[index].selectedValues.push(value);
+    //   }
+    // } else {
+    const selected = [value];
+    filters[index].selectedValues = selected;
+    // }
+    setFilterList(filters);
+  };
+
+  const checkWallHeight = () => {
+    if (!wallHeightModalShowed) {
+      if (filterList.wallHeight !== undefined) {
+        if (filterList.wallHeight.selectedValues !== undefined) {
+        } else {
+          setWallHeightModalText(
+            'Sie haben die Höhe der Wand nicht angegeben. Bitte geben Sie eine Mindesthöhe ein und wir zeigen Ihnen die für Sie passenden Systeme an.',
+          );
+          setWallHeightModalShowed(true);
+          setWallHeightModalVisible(true);
+          return true;
+        }
+      }
+      if (filterList.spanWidth !== undefined) {
+        if (filterList.spanWidth.selectedValues !== undefined) {
+        } else {
+          setWallHeightModalText(
+            'Sie haben die Spannweite nicht angegeben. Bitte geben Sie eine Spannweite ein und wir zeigen Ihnen die für Sie passenden Systeme an.',
+          );
+          setWallHeightModalShowed(true);
+          setWallHeightModalVisible(true);
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   console.log('Stage2');
   console.log(route.params);
   // console.log(chosenFilter);
@@ -95,7 +189,12 @@ const Stage2Screen = () => {
         step3={route.params?.step3}
         chooseValue={chooseValue}
       />
-      <SystemHeader system={route.params.system} />
+      <WallHeightModal
+        visible={wallHeightModalVisible}
+        setVisible={setWallHeightModalVisible}
+        text={wallHeightModalText}
+      />
+      <SystemHeader system={route.params?.system} />
       <StageNavigation />
       <Breadcrumps
         text1={route.params?.step2?.label}
@@ -104,14 +203,25 @@ const Stage2Screen = () => {
       <View style={styles.stage2.filterView}>
         <SmallText>1. Scritt</SmallText>
         {createFiltersList()}
-        {/*<FilterSelect
-          label={'Feuerwiderstandsdauer [min]'}
-          onPress={setStageModalVisible}
+        <PinkButton
+          text={'Weiter >>>'}
+          style={{marginVertical: 20, width: '100%'}}
+          onPress={() => {
+            let wallHeightShow = checkWallHeight();
+            if (!wallHeightShow) {
+              console.log(route.params?.system.value === 'kabelkanale');
+              if (route.params?.system.value === 'kabelkanale') {
+              } else {
+                navigation.navigate('Stage3', {
+                  system: route.params?.system,
+                  step2: route.params?.step2,
+                  step3: route.params?.step3,
+                  filter: filterList,
+                });
+              }
+            }
+          }}
         />
-        <FilterSelect
-          label={'Brandschutzrichtung'}
-          onPress={setStageModalVisible}
-        />*/}
       </View>
     </CustomBackground>
   );

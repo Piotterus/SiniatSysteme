@@ -7,6 +7,7 @@ import icons from '../../assets/icons';
 import {MainMenuText, SmallText} from '../../components/texts/CustomText';
 import StageNavigation from '../../components/stageNavigation/StageNavigation';
 import {
+  FilterInput,
   FilterSelect,
   FilterSelected,
 } from '../../components/filters/CustomFilters';
@@ -152,19 +153,51 @@ const Stage3Screen = () => {
       if (filterList[i].stage !== 'L2') {
         continue;
       }
-      let values = '...';
-      if (filterList[i].selectedValues !== undefined) {
-        values = filterList[i].selectedValues.join(', ');
+      console.log(filterList[i].name);
+      console.log(filterList[i].values);
+      console.log(filterList[i]?.selectedValues);
+      if (filterList[i].type === 'from') {
+        let value = '';
+        if (filterList[i].selectedValues !== undefined) {
+          value = filterList[i].selectedValues.join(', ');
+        }
+        filters.push(
+          <FilterInput
+            key={i}
+            label={filterList[i].german}
+            value={value}
+            tooltip={filterList[i].tooltip}
+            onChangeText={enterValue}
+            index={i}
+          />,
+        );
+      } else {
+        if (filterList[i].values.length === 1) {
+          let values = filterList[i].values.join(', ');
+          filters.push(
+            <FilterSelected
+              key={i}
+              label={filterList[i].german}
+              values={values}
+              tooltip={filterList[i].tooltip}
+            />,
+          );
+        } else {
+          let values = '...';
+          if (filterList[i].selectedValues !== undefined) {
+            values = filterList[i].selectedValues.join(', ');
+          }
+          filters.push(
+            <FilterSelect
+              key={i}
+              label={filterList[i].german}
+              onPress={() => chooseFilter(i)}
+              values={values}
+              tooltip={filterList[i].tooltip}
+            />,
+          );
+        }
       }
-      filters.push(
-        <FilterSelect
-          key={i}
-          label={filterList[i].german}
-          onPress={() => chooseFilter(i)}
-          values={values}
-          tooltip={filterList[i].tooltip}
-        />,
-      );
     }
     return filters;
   };
@@ -188,6 +221,24 @@ const Stage3Screen = () => {
       const selected = [value];
       filters[chosenFilter].selectedValues = selected;
     }
+    setFilterList(filters);
+  };
+
+  const enterValue = (value, index) => {
+    let filters = {...filterList};
+    console.log('EnterValue');
+    console.log(value, index);
+    // if (filters[index].selectedValues !== undefined) {
+    //   const index = filters[index].selectedValues.indexOf(value);
+    //   if (index >= 0) {
+    //     const deleted = filters[index].selectedValues.splice(index, 1);
+    //   } else {
+    //     filters[index].selectedValues.push(value);
+    //   }
+    // } else {
+    const selected = [value];
+    filters[index].selectedValues = selected;
+    // }
     setFilterList(filters);
   };
 

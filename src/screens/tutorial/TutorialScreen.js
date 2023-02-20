@@ -11,7 +11,7 @@ import colors from '../../assets/colors';
 
 const TutorialScreen = () => {
   const [checkBox, setCheckBox] = useState(false);
-  // const {setShowTutorial} = useContext(TutorialContext);
+  const {setShowTutorial} = useContext(TutorialContext);
 
   return (
     <CustomBackground header={'siniat'}>
@@ -42,12 +42,12 @@ const TutorialScreen = () => {
         <PinkButton
           style={styles.button}
           text={'Suchen >>>'}
-          // onPress={async () => {
-          //   if (checkBox) {
-          //     await AsyncStorage.setItem('showTutorial', '0');
-          //   }
-          //   setShowTutorial('0');
-          // }}
+          onPress={async () => {
+            if (checkBox) {
+              await AsyncStorage.setItem('showTutorial', '0');
+            }
+            setShowTutorial('0');
+          }}
         />
         <View style={styles.checkBoxView}>
           <CheckBox

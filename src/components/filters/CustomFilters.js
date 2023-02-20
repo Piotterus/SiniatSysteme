@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
+import {Image, TextInput, TouchableOpacity, View} from 'react-native';
 import {BoldText} from '../texts/CustomText';
 import icons from '../../assets/icons';
 import styles from './CustomFilters.style';
@@ -29,14 +29,51 @@ export const FilterSelect = props => {
 };
 
 export const FilterSelected = props => {
+  const [tooltipModalVisible, setTooltipModalVisible] = useState(false);
   return (
     <View style={styles.mainView}>
+      <TooltipModal
+        text={props.tooltip}
+        visible={tooltipModalVisible}
+        setVisible={setTooltipModalVisible}
+      />
       <View style={styles.labelView}>
         <BoldText>{props.label}</BoldText>
-        <Image source={icons.info} />
+        <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
+          <Image source={icons.info} />
+        </TouchableOpacity>
       </View>
       <View style={styles.selectedView}>
         <BoldText>{props.values}</BoldText>
+      </View>
+    </View>
+  );
+};
+
+export const FilterInput = props => {
+  const [tooltipModalVisible, setTooltipModalVisible] = useState(false);
+  return (
+    <View style={styles.mainView}>
+      <TooltipModal
+        text={props.tooltip}
+        visible={tooltipModalVisible}
+        setVisible={setTooltipModalVisible}
+      />
+      <View style={styles.labelView}>
+        <BoldText>{props.label}</BoldText>
+        <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
+          <Image source={icons.info} />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.buttonView}>
+        <TextInput
+          onChangeText={text => props.onChangeText(text, props.index)}
+          style={{padding: 0, width: '100%'}}
+          keyboardType={'numeric'}
+          value={props.value}
+        />
+        {/*<BoldText>{props.values}</BoldText>*/}
+        {/*<Image source={icons.arrow.right} />*/}
       </View>
     </View>
   );

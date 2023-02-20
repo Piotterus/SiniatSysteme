@@ -7,6 +7,7 @@ import icons from '../../assets/icons';
 import {useNavigation} from '@react-navigation/native';
 import styles from './HomeScreen.style';
 import colors from '../../assets/colors';
+import {WallHeightModal} from '../../components/modals/CustomModals';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -38,7 +39,7 @@ const HomeScreen = () => {
       imageStage: icons.stage.stutzen,
       color: colors.stutzen,
       text: 'Stützen - und Trägerbekleidungen',
-      value: 'stutzen',
+      value: 'stutzentrager',
     },
     {
       image: icons.mainMenu.kabelkanaleColor,

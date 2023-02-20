@@ -277,7 +277,7 @@ export const SystemProvider = props => {
     {
       image: icons.mainMenu.stutzenColor,
       text: 'Stützen - und Trägerbekleidungen',
-      value: 'stutzen',
+      value: 'stutzentrager',
       optionList: [
         {
           label: 'Stahl',

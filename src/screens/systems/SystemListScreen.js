@@ -39,8 +39,10 @@ const SystemItem = props => {
     for (let i in data) {
       dataList.push(
         <View style={styles.systemListScreen.systemItemDataRow} key={i}>
-          <SmallText>{i}</SmallText>
-          <BoldText style={{color: colors.violet}}>{data[i]}</BoldText>
+          <SmallText style={{alignSelf: 'flex-start'}}>{i}</SmallText>
+          <BoldText style={{color: colors.violet, alignSelf: 'flex-end'}}>
+            {data[i]}
+          </BoldText>
           {/*{item.image !== undefined && (*/}
           {/*  <Image*/}
           {/*    style={styles.systemListScreen.systemItemDataIcon}*/}
@@ -75,8 +77,12 @@ const SystemItem = props => {
       {props.data?.fields.map((item, index) => {
         return (
           <View style={styles.systemListScreen.systemItemDataRow} key={index}>
-            <SmallText>{item.label}</SmallText>
-            <BoldText style={{color: colors.violet}}>{item.vale}</BoldText>
+            <SmallText style={{alignSelf: 'flex-start'}}>
+              {item.label}
+            </SmallText>
+            <BoldText style={{color: colors.violet, alignSelf: 'flex-end'}}>
+              {item.vale}
+            </BoldText>
             {/*{item.image !== undefined && (*/}
             {/*  <Image*/}
             {/*    style={styles.systemListScreen.systemItemDataIcon}*/}
@@ -123,6 +129,7 @@ const SystemListScreen = () => {
   const [suchenText, setSuchenText] = useState('');
 
   const route = useRoute();
+  const navigation = useNavigation();
   const {fetchData} = useFetch();
 
   useFocusEffect(
@@ -161,10 +168,12 @@ const SystemListScreen = () => {
     <CustomBackground header={'siniat'}>
       <SystemHeader system={route.params.data?.system} />
       {/*<SystemHeader text={route.params?.data?.system?.label} />*/}
-      <View style={styles.systemListScreen.rowView}>
-        <SmallText>Twoje filtry</SmallText>
+      <TouchableOpacity
+        style={styles.systemListScreen.rowView}
+        onPress={() => navigation.goBack()}>
+        <SmallText>Meine Filter</SmallText>
         <Image source={icons.filter} />
-      </View>
+      </TouchableOpacity>
       <View style={styles.systemListScreen.rowView}>
         <SmallText>Es wurden</SmallText>
         <SmallText>{systemList.length} Systemvarianten gefunden</SmallText>

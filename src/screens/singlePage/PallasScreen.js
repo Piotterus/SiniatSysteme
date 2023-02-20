@@ -5,13 +5,13 @@ import ApiContext from '../../contexts/ApiContext';
 import {SafeAreaView} from 'react-native';
 
 const PallasScreen = () => {
-  const {apiUrl} = useContext(ApiContext);
+  const {siteUrl} = useContext(ApiContext);
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <WebView
         style={{flex: 1}}
-        source={{uri: apiUrl + 'pallas'}}
+        source={{uri: siteUrl + 'pallas'}}
         cacheEnabled={false}
       />
       <CustomFooter />

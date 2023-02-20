@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
       paddingVertical: 5,
     },
     systemItemDataRow: {
-      flexDirection: 'row',
+      // flexDirection: 'row',
       width: ScreenWidth * 0.8,
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
       },
       systemItemDataRow: {
-        flexDirection: 'row',
+        // flexDirection: 'row',
         width: ScreenWidth * 0.8,
         alignItems: 'center',
         justifyContent: 'space-between',

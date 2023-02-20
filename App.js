@@ -38,6 +38,7 @@ import {ApiProvider} from './src/contexts/ApiContext';
 import {UserProvider} from './src/contexts/UserContext';
 import AppStacks from './src/stacks/AppStacks';
 import {SystemProvider} from './src/contexts/SystemContext';
+import {TutorialProvider} from './src/contexts/TutorialContext';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -78,7 +79,9 @@ const App: () => Node = () => {
         <ApiProvider>
           <UserProvider>
             <SystemProvider>
-              <AppStacks />
+              <TutorialProvider>
+                <AppStacks />
+              </TutorialProvider>
             </SystemProvider>
           </UserProvider>
         </ApiProvider>

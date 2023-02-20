@@ -13,6 +13,7 @@ const colors = {
   stutzen: '#D80073',
   kabelkanale: '#FF7900',
   violet: '#B50980',
+  spanishGray: '#90929D',
 };
 
 export default colors;

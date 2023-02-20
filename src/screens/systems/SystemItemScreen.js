@@ -24,22 +24,6 @@ import ApiContext from '../../contexts/ApiContext';
 
 const SystemItem = props => {
   const {siteUrl} = useContext(ApiContext);
-  // console.log('-- SYSTEM ITEM --');
-  // console.log(siteUrl);
-  // console.log(props.systemType?.value);
-  // console.log(props.system);
-  // console.log(props.system?.systemID);
-  // console.log(base64.encode(props.system?.systemID));
-  // console.log(props.system?.id);
-  // console.log(
-  //   siteUrl +
-  //     'pdf-generate/' +
-  //     props.systemType?.value +
-  //     '/' +
-  //     base64.encode(props.system?.systemID) +
-  //     '/' +
-  //     props.system?.id,
-  // );
   return (
     <View style={styles.systemItemScreen.systemItem.mainView}>
       <BoldText style={styles.systemItemScreen.systemItem.title}>
@@ -75,15 +59,21 @@ const SystemItem = props => {
       />
       <View style={styles.systemItemScreen.systemItem.systemItem}>
         <View style={styles.systemItemScreen.systemItem.systemItemTitleRow}>
-          <BoldText>GRUNDINFORMATION</BoldText>
+          <BoldText>GRUNDDATEN</BoldText>
         </View>
         {props.system?.fields?.basic.map((item, index) => {
           return (
             <View
               style={styles.systemItemScreen.systemItem.systemItemDataRow}
               key={index}>
-              <SmallText>{item.label}</SmallText>
-              <BoldText style={styles.systemItemScreen.systemItem.violetText}>
+              <SmallText style={{alignSelf: 'flex-start'}}>
+                {item.label}
+              </SmallText>
+              <BoldText
+                style={[
+                  styles.systemItemScreen.systemItem.violetText,
+                  {alignSelf: 'flex-end'},
+                ]}>
                 {item.value}
               </BoldText>
               {item.image !== undefined && (
@@ -96,15 +86,21 @@ const SystemItem = props => {
           );
         })}
         <View style={styles.systemItemScreen.systemItem.systemItemTitleRow}>
-          <BoldText>GENAUE INFORMATION</BoldText>
+          <BoldText>ANGABEN</BoldText>
         </View>
         {props.system?.fields?.extra.map((item, index) => {
           return (
             <View
               style={styles.systemItemScreen.systemItem.systemItemDataRow}
               key={index}>
-              <SmallText>{item.label}</SmallText>
-              <BoldText style={styles.systemItemScreen.systemItem.violetText}>
+              <SmallText style={{alignSelf: 'flex-start'}}>
+                {item.label}
+              </SmallText>
+              <BoldText
+                style={[
+                  styles.systemItemScreen.systemItem.violetText,
+                  {alignSelf: 'flex-end'},
+                ]}>
                 {item.value}
               </BoldText>
               {item.image !== undefined && (
@@ -123,10 +119,12 @@ const SystemItem = props => {
 
 const SystemItemScreen = () => {
   const [system, setSystem] = useState({});
+  const [note, setNote] = useState('');
 
   const route = useRoute();
   const navigation = useNavigation();
   const {fetchData} = useFetch();
+  const {siteUrl} = useContext(ApiContext);
 
   useFocusEffect(
     useCallback(() => {
@@ -193,8 +191,25 @@ const SystemItemScreen = () => {
         }}
         placeholder={'Hinweisfeld für Anmerkungen zum Bauvorhaben'}
         placeholderTextColor={colors.grey}
+        value={note}
+        onChangeText={text => setNote(text)}
       />
-      <SendButton style={{marginTop: 20}} />
+      <SendButton
+        style={{marginTop: 20}}
+        onPress={() =>
+          Linking.openURL(
+            siteUrl +
+              'pdf-generate/' +
+              route.params?.system?.value +
+              '/' +
+              base64.encode(system?.systemID) +
+              '/' +
+              system?.id +
+              '/' +
+              base64.encode(note),
+          )
+        }
+      />
     </CustomBackground>
   );
 };

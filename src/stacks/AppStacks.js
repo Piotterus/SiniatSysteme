@@ -9,6 +9,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import Activity from '../components/activity/Activity';
 import StackNav from './StackNav';
 import {ErrorModal} from '../components/modals/CustomModals';
+import TutorialContext from '../contexts/TutorialContext';
+import TutorialScreen from '../screens/tutorial/TutorialScreen';
 // import {Alert} from 'react-native';
 // import messaging from '@react-native-firebase/messaging';
 // import {useState} from '.';
@@ -27,6 +29,8 @@ const AppStacks = () => {
     setFcmToken,
   } = useContext(AuthContext);
   const {fetchData} = useFetch();
+  const {showTutorial} = useContext(TutorialContext);
+  console.log('ShowTutorial: ' + showTutorial);
 
   // useEffect(() => {
   //   requestUserPermission();
@@ -111,6 +115,10 @@ const AppStacks = () => {
 
   if (isSettingUp) {
     return <SplashScreen />;
+  }
+
+  if (showTutorial === '1') {
+    return <TutorialScreen />;
   }
 
   return (

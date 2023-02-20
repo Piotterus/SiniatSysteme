@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import colors from '../../assets/colors';
+import {ScreenHeight, ScreenWidth} from '@rneui/base';
 
 const styles = StyleSheet.create({
   mainView: {
@@ -17,6 +18,13 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.flirt,
   },
   extra: {
+    overView: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      width: ScreenWidth,
+      height: ScreenHeight,
+    },
     mainView: {
       position: 'absolute',
       backgroundColor: colors.whiteOpacity,
