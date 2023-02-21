@@ -143,9 +143,9 @@ const SystemListScreen = () => {
         system: route.params.data?.system?.value,
         stage: 'L2',
         step2: route.params.data?.step2?.value,
-        step3: route.params.data?.step3?.value,
-        selectedFiltersL1: route.params.data?.selectedFiltersL1,
-        selectedFiltersL2: route.params.data?.selectedFiltersL2,
+        step3: route.params.data?.step3?.value ?? '',
+        selectedFiltersL1: route.params.data?.selectedFiltersL1 ?? [],
+        selectedFiltersL2: route.params.data?.selectedFiltersL2 ?? [],
       };
       console.log('getData - ', getData);
       console.log('postData - ', postData);
@@ -189,26 +189,30 @@ const SystemListScreen = () => {
       <ScrollView
         horizontal={true}
         contentContainerStyle={{width: '100%', height: '100%'}}>
-        <FlatList
-          data={
-            suchenText.length > 0
-              ? systemList.filter(item => item.systemName.includes(suchenText))
-              : systemList
-          }
-          renderItem={({item, index, separators}) => {
-            return (
-              <SystemItem
-                key={index}
-                data={item}
-                system={route.params.data?.system}
-                step2={route.params.data?.step2}
-                step3={route.params.data?.step3}
-              />
-            );
-          }}
-          style={styles.systemListScreen.systemList}
-          contentContainerStyle={styles.systemListScreen.systemListContainter}
-        />
+        <View style={{flex: 1}}>
+          <FlatList
+            data={
+              suchenText.length > 0
+                ? systemList.filter(item =>
+                    item.systemName.includes(suchenText),
+                  )
+                : systemList
+            }
+            renderItem={({item, index, separators}) => {
+              return (
+                <SystemItem
+                  key={index}
+                  data={item}
+                  system={route.params.data?.system}
+                  step2={route.params.data?.step2}
+                  step3={route.params.data?.step3}
+                />
+              );
+            }}
+            style={styles.systemListScreen.systemList}
+            contentContainerStyle={styles.systemListScreen.systemListContainter}
+          />
+        </View>
       </ScrollView>
     </CustomBackground>
   );

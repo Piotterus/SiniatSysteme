@@ -32,6 +32,7 @@ const Stage3Screen = () => {
 
   useFocusEffect(
     useCallback(() => {
+      console.log('Stage3 Callback Called');
       console.log('Params', route.params.filter);
       const getData = {
         system: route.params?.system?.value,
@@ -43,27 +44,50 @@ const Stage3Screen = () => {
         res => {
           console.log(res);
           let filters = addSelectedValues(res.data.filters);
+          filters = sortFilterValues(filters);
           setFilterList(filters);
         },
         'system/getFilters',
         getData,
         null,
       );
-    }, []),
+    }, [route.params]),
   );
 
   const addSelectedValues = filters => {
-    console.log('UseEffect');
+    // console.log('UseEffect');
     for (let i in filters) {
-      console.log(i);
+      // console.log(i);
       if (route.params.filter[i] !== undefined) {
-        console.log(route.params.filter[i]);
-        console.log(route.params.filter[i].name);
+        // console.log(route.params.filter[i]);
+        // console.log(route.params.filter[i].name);
         if (route.params.filter[i].selectedValues !== undefined) {
-          console.log(route.params.filter[i].selectedValues);
+          // console.log(route.params.filter[i].selectedValues);
           filters[i].selectedValues = route.params.filter[i].selectedValues;
         }
       }
+    }
+    return filters;
+  };
+
+  const sortFilterValues = filters => {
+    for (let i in filters) {
+      let sortedValues = filters[i].values.sort((item1, item2) => {
+        if (!isNaN(parseFloat(item1))) {
+          item1 = parseFloat(item1);
+        }
+        if (!isNaN(parseFloat(item2))) {
+          item2 = parseFloat(item2);
+        }
+        if (typeof item1 === typeof item2) {
+          return item1 > item2;
+        } else if (typeof item1 === 'number') {
+          return 1;
+        } else if (typeof item2 === 'number') {
+          return -1;
+        }
+      });
+      filters[i].values = sortedValues;
     }
     return filters;
   };
@@ -106,9 +130,9 @@ const Stage3Screen = () => {
       selectedFiltersL1: selectedFiltersL1,
       selectedFiltersL2: selectedFiltersL2,
     };
-    console.log('UpdateSystemCount');
-    console.log(getData);
-    console.log(postData);
+    // console.log('UpdateSystemCount');
+    // console.log(getData);
+    // console.log(postData);
     const response = await fetchData(
       res => {
         console.log(res);
@@ -153,9 +177,9 @@ const Stage3Screen = () => {
       if (filterList[i].stage !== 'L2') {
         continue;
       }
-      console.log(filterList[i].name);
-      console.log(filterList[i].values);
-      console.log(filterList[i]?.selectedValues);
+      // console.log(filterList[i].name);
+      // console.log(filterList[i].values);
+      // console.log(filterList[i]?.selectedValues);
       if (filterList[i].type === 'from') {
         let value = '';
         if (filterList[i].selectedValues !== undefined) {
@@ -208,7 +232,7 @@ const Stage3Screen = () => {
   };
 
   const chooseValue = (value, status) => {
-    console.log('chooseValue');
+    // console.log('chooseValue');
     let filters = {...filterList};
     if (filters[chosenFilter].selectedValues !== undefined) {
       const index = filters[chosenFilter].selectedValues.indexOf(value);
@@ -226,8 +250,8 @@ const Stage3Screen = () => {
 
   const enterValue = (value, index) => {
     let filters = {...filterList};
-    console.log('EnterValue');
-    console.log(value, index);
+    // console.log('EnterValue');
+    // console.log(value, index);
     // if (filters[index].selectedValues !== undefined) {
     //   const index = filters[index].selectedValues.indexOf(value);
     //   if (index >= 0) {

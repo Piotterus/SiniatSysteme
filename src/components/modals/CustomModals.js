@@ -27,7 +27,7 @@ import Modal from 'react-native-modal';
 import {PinkButton, WhiteButton} from '../buttons/CustomButton';
 import ErrorContext from '../../contexts/ErrorContext';
 import {useNavigation} from '@react-navigation/native';
-import colors from '../../assets/colors';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const OptionButton = props => {
   const [checked, setChecked] = useState(props.checked);
@@ -60,6 +60,27 @@ export const Stage2Modal = props => {
   //   'SelectedValues',
   //   props.filterList[props.chosenFilter]?.selectedValues,
   // );
+  let sortedArray = [];
+  if (Array.isArray(props.filterList[props.chosenFilter]?.values)) {
+    sortedArray = props.filterList[props.chosenFilter]?.values.sort(
+      (item1, item2) => {
+        // console.log(item1, item2);
+        // console.log(typeof item1, typeof item2);
+        if (!isNaN(parseFloat(item1))) {
+          // console.log('item 1 parsed');
+          item1 = parseFloat(item1);
+        }
+        if (!isNaN(parseFloat(item2))) {
+          // console.log('item 2 parsed');
+          item2 = parseFloat(item2);
+        }
+        // console.log(item1, item2);
+        // console.log(item1 > item2);
+        return item1 > item2;
+      },
+    );
+  }
+
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
       <View
@@ -102,12 +123,30 @@ export const Stage2Modal = props => {
         style={{marginVertical: 20}}
         onPress={() => {
           props.setVisible(false);
-          navigation.navigate('Stage3', {
-            system: props.system,
-            step2: props.step2,
-            step3: props.step3,
-            filter: props.filterList,
-          });
+          console.log('KABELKANALE CHECK');
+          console.log(props?.system.value === 'kabelkanale');
+          if (props?.system.value === 'kabelkanale') {
+            console.log('KABELKANALE');
+            const [selectedFiltersL1, selectedFiltersL2] =
+              props.getSelectedFilters();
+            const data = {
+              system: props?.system,
+              step2: props?.step2,
+              step3: props?.step3,
+              stage: 'L2',
+              selectedFiltersL1: selectedFiltersL1,
+              selectedFiltersL2: selectedFiltersL2,
+              filterList: props.filterList,
+            };
+            navigation.navigate('SystemList', {data: data});
+          } else {
+            navigation.navigate('Stage3', {
+              system: props.system,
+              step2: props.step2,
+              step3: props.step3,
+              filter: props.filterList,
+            });
+          }
         }}
       />
       <Text
@@ -282,7 +321,9 @@ export const FullModal = props => {
     <BasicModal
       visible={props.visible}
       onBackdropPress={() => props.setVisible(false)}>
-      <View style={styles.fullModal.mainView}>{props.children}</View>
+      <SafeAreaView style={styles.fullModal.mainView}>
+        {props.children}
+      </SafeAreaView>
     </BasicModal>
   );
 };

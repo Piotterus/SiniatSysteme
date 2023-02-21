@@ -331,7 +331,7 @@ const Stage1Screen = () => {
   );
 
   useEffect(() => {
-    console.log('Changes NextOption || OptionList');
+    // console.log('Changes NextOption || OptionList');
     if (Array.isArray(optionList[step1])) {
       optionList[step1].forEach((item, index) => {
         if (item.value === nextOption) {
@@ -342,7 +342,7 @@ const Stage1Screen = () => {
   }, [nextOption, optionList]);
 
   const goNext = option => {
-    console.log(option);
+    // console.log(option);
     setNextOption(option.value);
     if (option.optionList !== undefined) {
       setModalOptions(option);
@@ -357,11 +357,11 @@ const Stage1Screen = () => {
   };
 
   const chooseOption = (option1, option2) => {
-    console.log('Option1', option1);
-    console.log('Option2', option2);
+    // console.log('Option1', option1);
+    // console.log('Option2', option2);
     let newOptionList = optionList;
     newOptionList[step1].forEach((item1, index1) => {
-      console.log(item1);
+      // console.log(item1);
       if (item1.value === option1) {
         item1.optionList.forEach((item2, index2) => {
           if (item2.value === option2) {
@@ -370,15 +370,11 @@ const Stage1Screen = () => {
         });
       }
     });
-    console.log(newOptionList[step1]);
+    // console.log(newOptionList[step1]);
     setOptionList(newOptionList);
   };
 
-  useEffect(() => {
-    console.log('Stage1Screen Refreshed');
-  });
-
-  console.log(JSON.stringify(optionList));
+  // console.log(JSON.stringify(optionList));
   return (
     <CustomBackground header={'siniat'}>
       <Stage1Modal

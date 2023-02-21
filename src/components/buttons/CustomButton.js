@@ -35,8 +35,8 @@ export const WhiteButton = props => {
     <TouchableOpacity
       {...props}
       style={[styles.whiteButton.mainView, props.style]}>
-      <BoldText>{props.text}</BoldText>
-      <Image source={icons.arrow.right} />
+      <BoldText style={{maxWidth: '90%'}}>{props.text}</BoldText>
+      <Image style={{maxWidth: '10%'}} source={icons.arrow.right} />
     </TouchableOpacity>
   );
 };

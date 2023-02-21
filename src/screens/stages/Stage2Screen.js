@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {
   Stage1Modal,
@@ -36,31 +36,86 @@ const Stage2Screen = () => {
   const navigation = useNavigation();
   const {fetchData} = useFetch();
 
+  useEffect(() => {
+    console.log('FilterList UseEffect');
+    console.log(filterList);
+  }, [filterList]);
+  console.log('FilterList --- ');
+  console.log(filterList);
   useFocusEffect(
-    useCallback(() => {
-      const getData = {
-        system: route.params?.system?.value,
-        step2: route.params?.step2?.value,
-        step3: route.params?.step3?.value,
-        stage: 'L1',
-      };
-      const response = fetchData(
-        res => {
-          setFilterList(res.data.filters);
-        },
-        'system/getFilters',
-        getData,
-        null,
-      );
-    }, []),
+    useCallback(
+      filterList => {
+        console.log('CallBackCalled');
+        console.log(filterList);
+        const getData = {
+          system: route.params?.system?.value,
+          step2: route.params?.step2?.value,
+          step3: route.params?.step3?.value,
+          stage: 'L1',
+        };
+        const response = fetchData(
+          res => {
+            console.log('RES FETCHDATA');
+            console.log(res);
+            console.log(filterList);
+            let filters = addSelectedValues(res.data.filters);
+            filters = sortFilterValues(filters);
+            setFilterList(filters);
+          },
+          'system/getFilters',
+          getData,
+          null,
+        );
+      },
+      [route.params],
+    ),
   );
+
+  const addSelectedValues = filters => {
+    console.log('UseEffect');
+    console.log(filterList);
+    for (let i in filters) {
+      console.log(i);
+      if (filterList[i] !== undefined) {
+        console.log(filterList[i]);
+        console.log(filterList[i].name);
+        if (filterList[i].selectedValues !== undefined) {
+          // console.log(route.params.filter[i].selectedValues);
+          filters[i].selectedValues = filterList[i].selectedValues;
+        }
+      }
+    }
+    return filters;
+  };
+
+  const sortFilterValues = filters => {
+    for (let i in filters) {
+      let sortedValues = filters[i].values.sort((item1, item2) => {
+        if (!isNaN(parseFloat(item1))) {
+          item1 = parseFloat(item1);
+        }
+        if (!isNaN(parseFloat(item2))) {
+          item2 = parseFloat(item2);
+        }
+        if (typeof item1 === typeof item2) {
+          return item1 > item2;
+        } else if (typeof item1 === 'number') {
+          return 1;
+        } else if (typeof item2 === 'number') {
+          return -1;
+        }
+      });
+      filters[i].values = sortedValues;
+    }
+    return filters;
+  };
 
   const createFiltersList = () => {
     let filters = [];
     for (let i in filterList) {
-      console.log(filterList[i].name);
-      console.log(filterList[i].values);
-      console.log(filterList[i]?.selectedValues);
+      // console.log(filterList[i].name);
+      // console.log(filterList[i].values);
+      // console.log(filterList[i]?.selectedValues);
       if (filterList[i].type === 'from') {
         let value = '';
         if (filterList[i].selectedValues !== undefined) {
@@ -113,7 +168,8 @@ const Stage2Screen = () => {
   };
 
   const chooseValue = (value, status) => {
-    let filters = filterList;
+    console.log('ChooseValue');
+    let filters = {...filterList};
     if (filters[chosenFilter].selectedValues !== undefined) {
       const index = filters[chosenFilter].selectedValues.indexOf(value);
       if (index >= 0) {
@@ -129,9 +185,10 @@ const Stage2Screen = () => {
   };
 
   const enterValue = (value, index) => {
-    let filters = {...filterList};
     console.log('EnterValue');
-    console.log(value, index);
+    let filters = {...filterList};
+    // console.log('EnterValue');
+    // console.log(value, index);
     // if (filters[index].selectedValues !== undefined) {
     //   const index = filters[index].selectedValues.indexOf(value);
     //   if (index >= 0) {
@@ -174,9 +231,33 @@ const Stage2Screen = () => {
     return false;
   };
 
+  const getSelectedFilters = () => {
+    let selectedFiltersL1 = [];
+    let selectedFiltersL2 = [];
+    for (let i in filterList) {
+      if (
+        filterList[i].selectedValues !== undefined &&
+        filterList[i].selectedValues.length > 0
+      ) {
+        let filter = {
+          id: filterList[i].id,
+          name: filterList[i].name,
+          type: filterList[i].type,
+          value: filterList[i].selectedValues,
+        };
+        if (filterList[i].stage === 'L1') {
+          selectedFiltersL1.push(filter);
+        } else if (filterList[i].stage === 'L2') {
+          selectedFiltersL2.push(filter);
+        }
+      }
+    }
+    return [selectedFiltersL1, selectedFiltersL2];
+  };
+
   console.log('Stage2');
   console.log(route.params);
-  // console.log(chosenFilter);
+  console.log(filterList);
   return (
     <CustomBackground header={'siniat'}>
       <Stage2Modal
@@ -188,6 +269,7 @@ const Stage2Screen = () => {
         step2={route.params?.step2}
         step3={route.params?.step3}
         chooseValue={chooseValue}
+        getSelectedFilters={getSelectedFilters}
       />
       <WallHeightModal
         visible={wallHeightModalVisible}
@@ -209,8 +291,22 @@ const Stage2Screen = () => {
           onPress={() => {
             let wallHeightShow = checkWallHeight();
             if (!wallHeightShow) {
+              console.log('KABELKANALE CHECK');
               console.log(route.params?.system.value === 'kabelkanale');
               if (route.params?.system.value === 'kabelkanale') {
+                console.log('KABELKANALE');
+                const [selectedFiltersL1, selectedFiltersL2] =
+                  getSelectedFilters();
+                const data = {
+                  system: route.params?.system,
+                  step2: route.params?.step2,
+                  step3: route.params?.step3,
+                  stage: 'L2',
+                  selectedFiltersL1: selectedFiltersL1,
+                  selectedFiltersL2: selectedFiltersL2,
+                  filterList: filterList,
+                };
+                navigation.navigate('SystemList', {data: data});
               } else {
                 navigation.navigate('Stage3', {
                   system: route.params?.system,

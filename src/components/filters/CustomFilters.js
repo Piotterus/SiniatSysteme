@@ -16,9 +16,13 @@ export const FilterSelect = props => {
       />
       <View style={styles.labelView}>
         <BoldText>{props.label}</BoldText>
-        <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
-          <Image source={icons.info} />
-        </TouchableOpacity>
+        {props.tooltip !== undefined &&
+          props.tooltip !== null &&
+          props.tooltip !== '' && (
+            <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
+              <Image source={icons.info} />
+            </TouchableOpacity>
+          )}
       </View>
       <TouchableOpacity style={styles.buttonView} onPress={props.onPress}>
         <BoldText>{props.values}</BoldText>
@@ -39,9 +43,13 @@ export const FilterSelected = props => {
       />
       <View style={styles.labelView}>
         <BoldText>{props.label}</BoldText>
-        <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
-          <Image source={icons.info} />
-        </TouchableOpacity>
+        {props.tooltip !== undefined &&
+          props.tooltip !== null &&
+          props.tooltip !== '' && (
+            <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
+              <Image source={icons.info} />
+            </TouchableOpacity>
+          )}
       </View>
       <View style={styles.selectedView}>
         <BoldText>{props.values}</BoldText>
@@ -61,9 +69,13 @@ export const FilterInput = props => {
       />
       <View style={styles.labelView}>
         <BoldText>{props.label}</BoldText>
-        <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
-          <Image source={icons.info} />
-        </TouchableOpacity>
+        {props.tooltip !== undefined &&
+          props.tooltip !== null &&
+          props.tooltip !== '' && (
+            <TouchableOpacity onPress={() => setTooltipModalVisible(true)}>
+              <Image source={icons.info} />
+            </TouchableOpacity>
+          )}
       </View>
       <View style={styles.buttonView}>
         <TextInput
