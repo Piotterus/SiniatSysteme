@@ -56,7 +56,7 @@ const Stage2Screen = () => {
         const response = fetchData(
           res => {
             console.log('RES FETCHDATA');
-            console.log(res);
+            console.log(res.data.filters);
             console.log(filterList);
             let filters = addSelectedValues(res.data.filters);
             filters = sortFilterValues(filters);
@@ -89,6 +89,7 @@ const Stage2Screen = () => {
   };
 
   const sortFilterValues = filters => {
+    console.log('SortFilterValues');
     for (let i in filters) {
       let sortedValues = filters[i].values.sort((item1, item2) => {
         if (!isNaN(parseFloat(item1))) {
@@ -100,9 +101,9 @@ const Stage2Screen = () => {
         if (typeof item1 === typeof item2) {
           return item1 > item2;
         } else if (typeof item1 === 'number') {
-          return 1;
-        } else if (typeof item2 === 'number') {
           return -1;
+        } else if (typeof item2 === 'number') {
+          return 1;
         }
       });
       filters[i].values = sortedValues;

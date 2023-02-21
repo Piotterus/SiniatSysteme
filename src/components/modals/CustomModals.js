@@ -60,27 +60,28 @@ export const Stage2Modal = props => {
   //   'SelectedValues',
   //   props.filterList[props.chosenFilter]?.selectedValues,
   // );
-  let sortedArray = [];
-  if (Array.isArray(props.filterList[props.chosenFilter]?.values)) {
-    sortedArray = props.filterList[props.chosenFilter]?.values.sort(
-      (item1, item2) => {
-        // console.log(item1, item2);
-        // console.log(typeof item1, typeof item2);
-        if (!isNaN(parseFloat(item1))) {
-          // console.log('item 1 parsed');
-          item1 = parseFloat(item1);
-        }
-        if (!isNaN(parseFloat(item2))) {
-          // console.log('item 2 parsed');
-          item2 = parseFloat(item2);
-        }
-        // console.log(item1, item2);
-        // console.log(item1 > item2);
-        return item1 > item2;
-      },
-    );
-  }
-
+  // let sortedArray = [];
+  // if (Array.isArray(props.filterList[props.chosenFilter]?.values)) {
+  //   sortedArray = props.filterList[props.chosenFilter]?.values.sort(
+  //     (item1, item2) => {
+  //       // console.log(item1, item2);
+  //       // console.log(typeof item1, typeof item2);
+  //       if (!isNaN(parseFloat(item1))) {
+  //         // console.log('item 1 parsed');
+  //         item1 = parseFloat(item1);
+  //       }
+  //       if (!isNaN(parseFloat(item2))) {
+  //         // console.log('item 2 parsed');
+  //         item2 = parseFloat(item2);
+  //       }
+  //       // console.log(item1, item2);
+  //       // console.log(item1 > item2);
+  //       return item1 > item2;
+  //     },
+  //   );
+  // }
+  console.log('Stage2Modal Values');
+  console.log(props.filterList[props.chosenFilter]?.values);
   return (
     <FullModal visible={props.visible} setVisible={props.setVisible}>
       <View
@@ -318,13 +319,15 @@ export const WallHeightModal = props => {
 
 export const FullModal = props => {
   return (
-    <BasicModal
-      visible={props.visible}
-      onBackdropPress={() => props.setVisible(false)}>
-      <SafeAreaView style={styles.fullModal.mainView}>
-        {props.children}
-      </SafeAreaView>
-    </BasicModal>
+    <SafeAreaView style={{flex: 1}}>
+      <BasicModal
+        visible={props.visible}
+        onBackdropPress={() => props.setVisible(false)}>
+        <SafeAreaView style={styles.fullModal.mainView}>
+          {props.children}
+        </SafeAreaView>
+      </BasicModal>
+    </SafeAreaView>
   );
 };
 
