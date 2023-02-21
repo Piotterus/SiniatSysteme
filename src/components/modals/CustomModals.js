@@ -27,7 +27,7 @@ import Modal from 'react-native-modal';
 import {PinkButton, WhiteButton} from '../buttons/CustomButton';
 import ErrorContext from '../../contexts/ErrorContext';
 import {useNavigation} from '@react-navigation/native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 const OptionButton = props => {
   const [checked, setChecked] = useState(props.checked);
@@ -319,15 +319,15 @@ export const WallHeightModal = props => {
 
 export const FullModal = props => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <BasicModal
-        visible={props.visible}
-        onBackdropPress={() => props.setVisible(false)}>
+    <BasicModal
+      visible={props.visible}
+      onBackdropPress={() => props.setVisible(false)}>
+      <SafeAreaProvider>
         <SafeAreaView style={styles.fullModal.mainView}>
           {props.children}
         </SafeAreaView>
-      </BasicModal>
-    </SafeAreaView>
+      </SafeAreaProvider>
+    </BasicModal>
   );
 };
 
