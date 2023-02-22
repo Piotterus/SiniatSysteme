@@ -4,7 +4,7 @@ import {ScreenHeight, ScreenWidth} from '@rneui/base';
 
 const styles = StyleSheet.create({
   mainView: {
-    height: 80,
+    height: 60,
     flexDirection: 'row',
     backgroundColor: colors.white,
   },
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       backgroundColor: colors.whiteOpacity,
       borderTopLeftRadius: 20,
-      bottom: 80,
+      bottom: 60,
       right: 0,
       width: '50%',
       alignItems: 'center',

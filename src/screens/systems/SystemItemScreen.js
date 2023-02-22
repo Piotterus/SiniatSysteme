@@ -182,15 +182,17 @@ const SystemItemScreen = () => {
       {/*Montageanleitung - assembly Construction*/}
       <TextInput
         multiline={true}
-        numberOfLines={4}
+        // numberOfLines={4}
         style={{
           borderWidth: 0.5,
           borderColor: colors.grey,
           width: '100%',
           marginTop: 20,
+          paddingVertical: 20,
+          paddingHorizontal: 10,
         }}
         placeholder={'Hinweisfeld für Anmerkungen zum Bauvorhaben'}
-        placeholderTextColor={colors.grey}
+        placeholderTextColor={colors.greyOpacity}
         value={note}
         onChangeText={text => setNote(text)}
       />
