@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {ScrollView, View} from 'react-native';
+import {KeyboardAvoidingView, Platform, ScrollView, View} from 'react-native';
 import styles from './CustomBackground.style';
 import {
   BackHeader,
@@ -18,7 +18,9 @@ const CustomBackground = props => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.background.mainView}>
-      <View style={{flex: 1, alignItems: 'center', width: '100%'}}>
+      <KeyboardAvoidingView
+        style={{flex: 1, alignItems: 'center', width: '100%'}}
+        behavior={Platform.OS === 'ios' ? 'padding' : ''}>
         {props.header === 'siniat' && <SiniatHeader />}
         <ScrollView
           keyboardShouldPersistTaps={'handled'}
@@ -37,7 +39,7 @@ const CustomBackground = props => {
           />
         )}
         <CustomFooter />
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
