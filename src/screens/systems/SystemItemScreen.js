@@ -37,9 +37,10 @@ const SystemItem = props => {
         </BoldText>
         <Image
           source={{uri: props.system?.image}}
+          resizeMode={'contain'}
           style={[
             styles.systemItemScreen.systemItem.desciptionRowItem,
-            {marginLeft: 30},
+            {marginLeft: 30, minHeight: 100},
           ]}
         />
       </View>

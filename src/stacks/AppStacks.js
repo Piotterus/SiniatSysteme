@@ -118,7 +118,11 @@ const AppStacks = () => {
   }
 
   if (showTutorial === '1') {
-    return <TutorialScreen />;
+    return (
+      <SafeAreaProvider>
+        <TutorialScreen />
+      </SafeAreaProvider>
+    );
   }
 
   return (
