@@ -193,9 +193,22 @@ const SystemListScreen = () => {
           <FlatList
             data={
               suchenText.length > 0
-                ? systemList.filter(item =>
-                    item.systemName.includes(suchenText),
-                  )
+                ? systemList.filter(item => {
+                    if (
+                      item.systemName
+                        .toLowerCase()
+                        .includes(suchenText.toLowerCase())
+                    ) {
+                      return true;
+                    } else {
+                      let foundItem = item.fields.find((field, index) => {
+                        return field.vale
+                          .toLowerCase()
+                          .includes(suchenText.toLowerCase());
+                      });
+                      return foundItem !== undefined;
+                    }
+                  })
                 : systemList
             }
             renderItem={({item, index, separators}) => {

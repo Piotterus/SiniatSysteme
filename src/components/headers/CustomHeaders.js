@@ -12,7 +12,9 @@ export const SiniatHeader = () => {
 
   return (
     <View style={styles.mainView}>
-      <Image source={icons.logo} />
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Image source={icons.logo} />
+      </TouchableOpacity>
       {route.name !== 'Home' && (
         <TouchableOpacity
           onPress={() => navigation.goBack()}
