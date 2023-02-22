@@ -300,8 +300,8 @@ const Stage3Screen = () => {
       <SystemHeader system={route.params.system} />
       <StageNavigation />
       <Breadcrumps
-        text1={route.params?.step2?.label}
-        text2={route.params?.step3?.label}
+        text1={route.params?.step2?.breadcrumb}
+        text2={route.params?.step3?.breadcrumb}
       />
       <View style={styles.stage2.filterView}>
         <SmallText>1. Scritt</SmallText>

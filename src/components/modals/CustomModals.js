@@ -89,8 +89,8 @@ export const Stage2Modal = props => {
           styles.stage2Modal.headerView,
           {backgroundColor: props.system?.color},
         ]}>
-        <WhiteText>{props.step2?.label} ></WhiteText>
-        <WhiteText>{props.step3?.label}</WhiteText>
+        <WhiteText>{props.step2?.breadcrumb} ></WhiteText>
+        <WhiteText>{props.step3?.breadcrumb}</WhiteText>
         <WhiteText style={styles.stage2Modal.headerText}>
           {props.filterList[props.chosenFilter]?.german}
         </WhiteText>
@@ -174,9 +174,9 @@ export const Stage1Modal = props => {
           {backgroundColor: props.system?.color},
         ]}>
         <WhiteText style={styles.stage1Modal.headerText}>
-          {props.system?.text}
+          {props.system?.breadcrumb}
         </WhiteText>
-        <WhiteText>{props.option?.label}</WhiteText>
+        <WhiteText>{props.option?.breadcrumb}</WhiteText>
         <TouchableOpacity
           style={styles.stage1Modal.arrow}
           onPress={() => props.setVisible(false)}>
@@ -225,6 +225,20 @@ export const Stage1Modal = props => {
               return prev;
             }
           }, '');
+          const step3Breadcrumb = props.option.optionList.reduce(
+            (prev, item) => {
+              if (item.chosen === true) {
+                if (prev === '') {
+                  return item.breadcrumb;
+                } else {
+                  return prev + ' | ' + item.breadcrumb;
+                }
+              } else {
+                return prev;
+              }
+            },
+            '',
+          );
           const filtered = props.option.optionList.filter((item, index) => {
             return item.chosen === true;
           });
@@ -233,10 +247,12 @@ export const Stage1Modal = props => {
             step2: {
               value: props.option.value,
               label: props.option.label,
+              breadcrumb: props.option.breadcrumb,
             },
             step3: {
               value: step3,
               label: step3Label,
+              breadcrumb: step3Breadcrumb,
             },
           });
         }}

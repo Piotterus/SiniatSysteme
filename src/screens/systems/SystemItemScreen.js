@@ -155,8 +155,8 @@ const SystemItemScreen = () => {
     <CustomBackground header={'siniat'}>
       <SystemHeader system={route.params.system} />
       <Breadcrumps
-        text1={route.params?.step2?.label}
-        text2={route.params?.step3?.label}
+        text1={route.params?.step2?.breadcrumb}
+        text2={route.params?.step3?.breadcrumb}
       />
       <SystemItem system={system} systemType={route.params?.system} />
       {system?.brochure !== '' && system?.brochure !== undefined && (

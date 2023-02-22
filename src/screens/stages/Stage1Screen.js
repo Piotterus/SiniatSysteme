@@ -23,30 +23,36 @@ const Stage1Screen = () => {
     wande: [
       {
         label: 'Metallständerwände',
+        breadcrumb: 'Metallständerwände',
         value: 'metallstanderwande',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
           {
             label: 'Nassraum',
+            breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
           },
           {
             label: 'Strahlenschutz',
+            breadcrumb: 'Strahlenschutz',
             value: 'strahlenschutz',
             chosen: false,
           },
           {
             label: 'Einbruchhemmung',
+            breadcrumb: 'Einbruchhemmung',
             value: 'einbruchhemmung',
             chosen: false,
           },
@@ -55,15 +61,18 @@ const Stage1Screen = () => {
       {
         label:
           '"Brandwände" Nichtragende raumabschliessende Wände mit prüftechnisch nachgewiesener Stoßbeanspruchung',
+        breadcrumb: 'Brandwände',
         value: 'brandwande',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
@@ -71,20 +80,24 @@ const Stage1Screen = () => {
       },
       {
         label: 'Holzständerwände',
+        breadcrumb: 'Holzständerwände',
         value: 'holzstanderwande',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
           {
             label: 'Außenwand',
+            breadcrumb: 'Außenwand',
             value: 'ausenwand',
             chosen: false,
           },
@@ -92,25 +105,30 @@ const Stage1Screen = () => {
       },
       {
         label: 'Schachtwände/Vorsatzschalen',
+        breadcrumb: 'Schachtwände/Vorsatzschalen',
         value: 'schachtwande-vorsatzschalen',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
           {
             label: 'Nassraum',
+            breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
           },
           {
             label: 'Strahlenschutz',
+            breadcrumb: 'Strahlenschutz',
             value: 'strahlenschutz',
             chosen: false,
           },
@@ -118,20 +136,24 @@ const Stage1Screen = () => {
       },
       {
         label: 'Trockenputz',
+        breadcrumb: 'Trockenputz',
         value: 'trockenputz',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
           {
             label: 'Nassraum',
+            breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
           },
@@ -141,15 +163,18 @@ const Stage1Screen = () => {
     decken: [
       {
         label: 'Freitragende Unterdecken',
+        breadcrumb: 'Freitragende Unterdecken',
         value: 'freitragende-unterdecken',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
@@ -157,30 +182,36 @@ const Stage1Screen = () => {
       },
       {
         label: 'Unterdecken und Deckenbekleidungen',
+        breadcrumb: 'Unterdecken und Deckenbekleidungen',
         value: 'unterdecken-und-deckenbekleidungen',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
           {
             label: 'Nassraum',
+            breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
           },
           {
             label: 'Strahlenschutz',
+            breadcrumb: 'Strahlenschutz',
             value: 'strahlenschutz',
             chosen: false,
           },
           {
             label: 'Außendecken',
+            breadcrumb: 'Außendecken',
             value: 'ausendecken',
             chosen: false,
           },
@@ -188,20 +219,24 @@ const Stage1Screen = () => {
       },
       {
         label: 'Ertüchtigung Massivdecken',
+        breadcrumb: 'Ertüchtigung Massivdecken',
         value: 'ertuchtigung-massivdecken',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
           {
             label: 'Nassraum',
+            breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
           },
@@ -209,15 +244,18 @@ const Stage1Screen = () => {
       },
       {
         label: 'Ertüchtigung Holzbalkendecken',
+        breadcrumb: 'Ertüchtigung Holzbalkendecken',
         value: 'ertuchtigung-holzbalkendecken',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
@@ -225,15 +263,18 @@ const Stage1Screen = () => {
       },
       {
         label: 'Ertüchtigung Trapezblechdecken',
+        breadcrumb: 'Ertüchtigung Trapezblechdecken',
         value: 'trapezblechdecken',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
@@ -243,15 +284,18 @@ const Stage1Screen = () => {
     dacher: [
       {
         label: 'Holzbalkendächer',
+        breadcrumb: 'Holzbalkendächer',
         value: 'dacher',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
@@ -259,15 +303,18 @@ const Stage1Screen = () => {
       },
       {
         label: 'Trapezblechdächer Ertüchtigung Trapezblechdächer',
+        breadcrumb: 'Trapezblechdächer Ertüchtigung Trapezblechdächer',
         value: 'trapezblechdacher-ertuchtigung-trapezblechdacher',
         optionList: [
           {
             label: 'Standard',
+            breadcrumb: 'Standard',
             value: 'standard',
             chosen: false,
           },
           {
             label: 'Feuchtraum',
+            breadcrumb: 'Feuchtraum',
             value: 'feuchtraum',
             chosen: false,
           },
@@ -277,15 +324,18 @@ const Stage1Screen = () => {
     stutzentrager: [
       {
         label: 'Stahl',
+        breadcrumb: 'Stahl',
         value: 'stahl',
         optionList: [
           {
             label: 'Stahlstütze',
+            breadcrumb: 'Stahlstütze',
             value: 'stahlstutze',
             chosen: false,
           },
           {
             label: 'Stahlträger',
+            breadcrumb: 'Stahlträger',
             value: 'stahltrager',
             chosen: false,
           },
@@ -293,15 +343,18 @@ const Stage1Screen = () => {
       },
       {
         label: 'Holz',
+        breadcrumb: 'Holz',
         value: 'holz',
         optionList: [
           {
             label: 'Holzstütze',
+            breadcrumb: 'Holzstütze',
             value: 'holzstutze',
             chosen: false,
           },
           {
             label: 'Holzbalken',
+            breadcrumb: 'Holzbalken',
             value: 'holzbalken',
             chosen: false,
           },
@@ -311,10 +364,12 @@ const Stage1Screen = () => {
     kabelkanale: [
       {
         label: 'E-Kanäle',
+        breadcrumb: 'E-Kanäle',
         value: 'e-kanale',
       },
       {
         label: 'I-Kanäle',
+        breadcrumb: 'I-Kanäle',
         value: 'i-kanale',
       },
     ],

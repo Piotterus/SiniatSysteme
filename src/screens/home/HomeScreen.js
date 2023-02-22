@@ -17,7 +17,8 @@ const HomeScreen = () => {
       image: icons.mainMenu.wandeColor,
       imageStage: icons.stage.wande,
       color: colors.wande,
-      text: 'Wandsysteme - Schachtwände -Vorsatzschalen - Trockenputz',
+      text: 'Wändsysteme - Schachtwände -Vorsatzschalen - Trockenputz',
+      breadcrumb: 'Wände',
       value: 'wande',
     },
     {
@@ -25,6 +26,7 @@ const HomeScreen = () => {
       imageStage: icons.stage.decken,
       color: colors.decken,
       text: 'Deckensysteme',
+      breadcrumb: 'Decken',
       value: 'decken',
     },
     {
@@ -32,6 +34,7 @@ const HomeScreen = () => {
       imageStage: icons.stage.dacher,
       color: colors.dacher,
       text: 'Dachsysteme',
+      breadcrumb: 'Dächer',
       value: 'dacher',
     },
     {
@@ -39,6 +42,7 @@ const HomeScreen = () => {
       imageStage: icons.stage.stutzen,
       color: colors.stutzen,
       text: 'Stützen - und Trägerbekleidungen',
+      breadcrumb: 'Stützen- Trägerbekleidungen',
       value: 'stutzentrager',
     },
     {
@@ -46,6 +50,7 @@ const HomeScreen = () => {
       imageStage: icons.stage.kabelkanale,
       color: colors.kabelkanale,
       text: 'Kabelkanäle',
+      breadcrumb: 'Kabelkanäle',
       value: 'kabelkanale',
     },
   ];
