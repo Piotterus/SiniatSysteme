@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import colors from '../../assets/colors';
 import {ScreenHeight, ScreenWidth} from '@rneui/base';
 
 const styles = StyleSheet.create({
   mainView: {
-    height: 60,
+    height: Platform.OS === 'ios' ? 40 : 50,
     flexDirection: 'row',
     backgroundColor: colors.white,
   },

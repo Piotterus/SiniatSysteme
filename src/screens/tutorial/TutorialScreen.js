@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {Image, Text, View} from 'react-native';
 import icons from '../../assets/icons';
@@ -8,13 +8,14 @@ import {CheckBox, ScreenWidth} from '@rneui/base';
 import {PinkButton} from '../../components/buttons/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from '../../assets/colors';
+import TutorialContext from '../../contexts/TutorialContext';
 
 const TutorialScreen = () => {
   const [checkBox, setCheckBox] = useState(false);
   const {setShowTutorial} = useContext(TutorialContext);
 
   return (
-    <CustomBackground header={'siniat'}>
+    <CustomBackground header={'tutorial'}>
       <Image
         source={icons.tutorialHeader}
         resizeMode={'contain'}

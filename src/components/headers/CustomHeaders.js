@@ -26,6 +26,14 @@ export const SiniatHeader = () => {
   );
 };
 
+export const TutorialHeader = () => {
+  return (
+    <View style={styles.mainView}>
+      <Image source={icons.logo} />
+    </View>
+  );
+};
+
 export const SystemHeader = props => {
   return (
     <View style={styles.systemHeader}>

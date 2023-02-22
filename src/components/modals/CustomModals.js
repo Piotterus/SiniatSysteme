@@ -124,37 +124,37 @@ export const Stage2Modal = props => {
         style={{marginVertical: 20}}
         onPress={() => {
           props.setVisible(false);
-          console.log('KABELKANALE CHECK');
-          console.log(props?.system.value === 'kabelkanale');
-          if (props?.system.value === 'kabelkanale') {
-            console.log('KABELKANALE');
-            const [selectedFiltersL1, selectedFiltersL2] =
-              props.getSelectedFilters();
-            const data = {
-              system: props?.system,
-              step2: props?.step2,
-              step3: props?.step3,
-              stage: 'L2',
-              selectedFiltersL1: selectedFiltersL1,
-              selectedFiltersL2: selectedFiltersL2,
-              filterList: props.filterList,
-            };
-            navigation.navigate('SystemList', {data: data});
-          } else {
-            navigation.navigate('Stage3', {
-              system: props.system,
-              step2: props.step2,
-              step3: props.step3,
-              filter: props.filterList,
-            });
-          }
+          // console.log('KABELKANALE CHECK');
+          // console.log(props?.system.value === 'kabelkanale');
+          // if (props?.system.value === 'kabelkanale') {
+          //   console.log('KABELKANALE');
+          //   const [selectedFiltersL1, selectedFiltersL2] =
+          //     props.getSelectedFilters();
+          //   const data = {
+          //     system: props?.system,
+          //     step2: props?.step2,
+          //     step3: props?.step3,
+          //     stage: 'L2',
+          //     selectedFiltersL1: selectedFiltersL1,
+          //     selectedFiltersL2: selectedFiltersL2,
+          //     filterList: props.filterList,
+          //   };
+          //   navigation.navigate('SystemList', {data: data});
+          // } else {
+          //   navigation.navigate('Stage3', {
+          //     system: props.system,
+          //     step2: props.step2,
+          //     step3: props.step3,
+          //     filter: props.filterList,
+          //   });
+          // }
         }}
       />
-      <Text
+      {/*<Text
         onPress={() => props.setVisible(false)}
         style={styles.stage2Modal.backText}>
         {'<<< Überspringen'}
-      </Text>
+      </Text>*/}
     </FullModal>
   );
 };
