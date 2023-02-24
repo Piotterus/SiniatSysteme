@@ -256,6 +256,45 @@ const Stage2Screen = () => {
     return [selectedFiltersL1, selectedFiltersL2];
   };
 
+  const processFilters = () => {
+    // let filters = {...filterList};
+    for (let i in filterList) {
+      if (filterList[i].selectedValues !== undefined) {
+        if (
+          i === 'soundReduction' ||
+          (i === 'fireResistance' &&
+            route.params?.system.value !== 'stutzentrager')
+        ) {
+          console.log(filterList[i]);
+          let minimalValue = '';
+          filterList[i].selectedValues.forEach((item, index) => {
+            if (
+              !isNaN(parseFloat(item)) &&
+              (minimalValue === '' || minimalValue > parseFloat(item))
+            ) {
+              minimalValue = parseFloat(item);
+            }
+          });
+          if (minimalValue !== '') {
+            filterList[i].values.forEach((item, index) => {
+              if (
+                !isNaN(parseFloat(item)) &&
+                minimalValue < parseFloat(item) &&
+                !filterList[i].selectedValues.includes(item)
+              ) {
+                filterList[i].selectedValues.push(item);
+              }
+            });
+          }
+        }
+      }
+    }
+    for (let i in filterList) {
+      console.log(filterList[i].name);
+      console.log(filterList[i].selectedValues);
+    }
+  };
+
   console.log('Stage2');
   console.log(route.params);
   console.log(filterList);
@@ -292,6 +331,7 @@ const Stage2Screen = () => {
           onPress={() => {
             let wallHeightShow = checkWallHeight();
             if (!wallHeightShow) {
+              processFilters();
               console.log('KABELKANALE CHECK');
               console.log(route.params?.system.value === 'kabelkanale');
               if (route.params?.system.value === 'kabelkanale') {

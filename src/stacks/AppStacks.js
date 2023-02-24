@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import AuthContext from '../contexts/AuthContext';
 import useFetch from '../hooks/useFetch';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,6 +11,7 @@ import StackNav from './StackNav';
 import {ErrorModal} from '../components/modals/CustomModals';
 import TutorialContext from '../contexts/TutorialContext';
 import TutorialScreen from '../screens/tutorial/TutorialScreen';
+import UpdateAppScreen from '../screens/updateApp/UpdateAppScreen';
 // import {Alert} from 'react-native';
 // import messaging from '@react-native-firebase/messaging';
 // import {useState} from '.';
@@ -30,6 +31,7 @@ const AppStacks = () => {
   } = useContext(AuthContext);
   const {fetchData} = useFetch();
   const {showTutorial} = useContext(TutorialContext);
+  const [updateRequired, setUpdateRequired] = useState(true);
   console.log('ShowTutorial: ' + showTutorial);
 
   // useEffect(() => {
@@ -124,6 +126,14 @@ const AppStacks = () => {
       </SafeAreaProvider>
     );
   }
+
+  // if (updateRequired) {
+  //   return (
+  //     <SafeAreaProvider>
+  //       <UpdateAppScreen />
+  //     </SafeAreaProvider>
+  //   );
+  // }
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
