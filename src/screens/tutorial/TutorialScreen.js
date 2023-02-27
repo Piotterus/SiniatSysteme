@@ -23,10 +23,10 @@ const TutorialScreen = () => {
           aspectRatio: 1.11,
           width: ScreenWidth,
           height: undefined,
-          top: -30,
+          // top: -30,
         }}
       />
-      <View style={styles.greyView}>
+      <View style={styles.whiteView}>
         <View style={styles.textView}>
           <BoldText style={styles.centerText}>
             Mit dem Siniat Systemselektor zur richtigen Lösung.
@@ -52,7 +52,7 @@ const TutorialScreen = () => {
         />
         <View style={styles.checkBoxView}>
           <CheckBox
-            containerStyle={{backgroundColor: colors.cultured}}
+            containerStyle={{backgroundColor: colors.white}}
             checked={checkBox}
             onPress={() => setCheckBox(prev => !prev)}
             uncheckedColor={colors.flirt}

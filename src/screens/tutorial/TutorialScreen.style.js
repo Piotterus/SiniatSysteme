@@ -3,12 +3,13 @@ import colors from '../../assets/colors';
 import {ScreenWidth} from '@rneui/base';
 
 const styles = StyleSheet.create({
-  greyView: {
+  whiteView: {
     width: ScreenWidth,
     alignItems: 'center',
-    backgroundColor: colors.cultured,
+    backgroundColor: colors.white,
     flex: 1,
-    // paddingTop: 20,
+    top: -1,
+    paddingTop: 20,
   },
   textView: {
     alignItems: 'center',

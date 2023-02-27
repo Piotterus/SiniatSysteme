@@ -12,23 +12,14 @@ import {ErrorModal} from '../components/modals/CustomModals';
 import TutorialContext from '../contexts/TutorialContext';
 import TutorialScreen from '../screens/tutorial/TutorialScreen';
 import UpdateAppScreen from '../screens/updateApp/UpdateAppScreen';
+import {getVersion} from 'react-native-device-info';
 // import {Alert} from 'react-native';
 // import messaging from '@react-native-firebase/messaging';
 // import {useState} from '.';
 
 const AppStacks = () => {
-  const {
-    isSettingUp,
-    setIsSettingUp,
-    isLoggedIn,
-    isLoading,
-    setToken,
-    setIsLoggedIn,
-    login,
-    logout,
-    fcmToken,
-    setFcmToken,
-  } = useContext(AuthContext);
+  const {isSettingUp, setIsSettingUp, isLoading, login, fcmToken, setFcmToken} =
+    useContext(AuthContext);
   const {fetchData} = useFetch();
   const {showTutorial} = useContext(TutorialContext);
   const [updateRequired, setUpdateRequired] = useState(true);
@@ -98,19 +89,24 @@ const AppStacks = () => {
 
   useEffect(() => {
     const setup = async () => {
-      const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
-      const token = await AsyncStorage.getItem('token');
-
-      // console.log(`isLoggedIn: ${isLoggedIn}`);
-      if (isLoggedIn !== '1') {
-        setIsSettingUp(false);
-      } else {
-        // console.log('Ustawienie tokena: ' + token);
-        // await setToken(token);
-        // await setIsLoggedIn(true);
-        await setIsSettingUp(false);
-        login(token);
-      }
+      const getData = {
+        appVersion: getVersion(),
+      };
+      let response = fetchData(
+        res => {
+          console.log('CheckVersion');
+          console.log(res);
+          if (res.data.update === 'yes') {
+            setUpdateRequired(true);
+          } else {
+            setUpdateRequired(false);
+          }
+        },
+        'system/checkVersion',
+        getData,
+        null,
+      );
+      await setIsSettingUp(false);
     };
     setup();
   }, []);
@@ -127,13 +123,13 @@ const AppStacks = () => {
     );
   }
 
-  // if (updateRequired) {
-  //   return (
-  //     <SafeAreaProvider>
-  //       <UpdateAppScreen />
-  //     </SafeAreaProvider>
-  //   );
-  // }
+  if (updateRequired) {
+    return (
+      <SafeAreaProvider>
+        <UpdateAppScreen />
+      </SafeAreaProvider>
+    );
+  }
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
