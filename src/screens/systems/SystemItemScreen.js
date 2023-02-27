@@ -21,6 +21,7 @@ import {
 import useFetch from '../../hooks/useFetch';
 import base64 from 'react-native-base64';
 import ApiContext from '../../contexts/ApiContext';
+import ImageModal from '../../components/modals/ImageModal';
 
 const SystemItem = props => {
   const {siteUrl} = useContext(ApiContext);
@@ -35,14 +36,18 @@ const SystemItem = props => {
           Für detailliertere Informationen öffnen Sie bitte die Systemkarte oder
           die verknüpften Dokumente.
         </BoldText>
-        <Image
-          source={{uri: props.system?.image}}
-          resizeMode={'contain'}
+        <TouchableOpacity
+          onPress={() => props.setImageModalVisible(true)}
           style={[
             styles.systemItemScreen.systemItem.desciptionRowItem,
             {marginLeft: 30, minHeight: 100},
-          ]}
-        />
+          ]}>
+          <Image
+            source={{uri: props.system?.image}}
+            resizeMode={'contain'}
+            style={[styles.systemItemScreen.systemItem.desciptionRowItem]}
+          />
+        </TouchableOpacity>
       </View>
       <SystemKarteButton
         style={styles.systemItemScreen.systemItem.systemKarteButton}
@@ -121,6 +126,9 @@ const SystemItem = props => {
 const SystemItemScreen = () => {
   const [system, setSystem] = useState({});
   const [note, setNote] = useState('');
+  const [imageModalVisible, setImageModalVisible] = useState(false);
+  const [imageWidth, setImageWidth] = useState(0);
+  const [imageHeight, setImageHeight] = useState(0);
 
   const route = useRoute();
   const navigation = useNavigation();
@@ -150,16 +158,34 @@ const SystemItemScreen = () => {
     }, []),
   );
 
+  if (system?.image !== undefined) {
+    Image.getSize(system?.image, (width, height) => {
+      setImageWidth(width);
+      setImageHeight(height);
+    });
+  }
+
   console.log(route.params);
 
   return (
     <CustomBackground header={'siniat'}>
+      <ImageModal
+        visible={imageModalVisible}
+        imageModal={system?.image}
+        imageWidth={imageWidth}
+        imageHeight={imageHeight}
+        setVisible={setImageModalVisible}
+      />
       <SystemHeader system={route.params.system} />
       <Breadcrumps
         text1={route.params?.step2?.breadcrumb}
         text2={route.params?.step3?.breadcrumb}
       />
-      <SystemItem system={system} systemType={route.params?.system} />
+      <SystemItem
+        system={system}
+        systemType={route.params?.system}
+        setImageModalVisible={setImageModalVisible}
+      />
       {system?.brochure !== '' && system?.brochure !== undefined && (
         <ProductButton
           onPress={() => Linking.openURL(system?.brochure)}
@@ -180,7 +206,6 @@ const SystemItemScreen = () => {
             text={'Schallschutznachweis'}
           />
         )}
-      {/*Montageanleitung - assembly Construction*/}
       <TextInput
         multiline={true}
         // numberOfLines={4}

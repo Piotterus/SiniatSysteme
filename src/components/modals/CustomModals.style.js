@@ -168,6 +168,13 @@ const styles = StyleSheet.create({
       padding: 10,
     },
   },
+  imageModal: {
+    mainView: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      overflow: 'hidden',
+    },
+  },
 });
 
 export default styles;
