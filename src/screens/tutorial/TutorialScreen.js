@@ -62,8 +62,7 @@ const TutorialScreen = () => {
         </View>
         <SmallText
           style={styles.purpleText}
-          // onPress={() => setShowTutorial('0')}
-        >
+          onPress={() => setShowTutorial('0')}>
           ÜBERSPRINGEN
         </SmallText>
       </View>
