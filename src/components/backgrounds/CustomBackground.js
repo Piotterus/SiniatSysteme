@@ -24,12 +24,15 @@ const CustomBackground = props => {
         behavior={Platform.OS === 'ios' ? 'padding' : ''}>
         {props.header === 'siniat' && <SiniatHeader />}
         {props.header === 'tutorial' && <TutorialHeader />}
-        <ScrollView
-          keyboardShouldPersistTaps={'handled'}
-          style={styles.background.scrollView}
-          contentContainerStyle={styles.background.scrollViewContainer}>
-          {props.children}
-        </ScrollView>
+        {props.list === 'flat' && props.children}
+        {props.list !== 'flat' && (
+          <ScrollView
+            keyboardShouldPersistTaps={'handled'}
+            style={styles.background.scrollView}
+            contentContainerStyle={styles.background.scrollViewContainer}>
+            {props.children}
+          </ScrollView>
+        )}
         {props.showButton && (
           <PinkButton
             text={

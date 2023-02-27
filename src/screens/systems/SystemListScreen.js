@@ -165,9 +165,9 @@ const SystemListScreen = () => {
 
   console.log(route.params);
   return (
-    <CustomBackground header={'siniat'}>
-      <SystemHeader system={route.params.data?.system} />
-      {/*<SystemHeader text={route.params?.data?.system?.label} />*/}
+    <CustomBackground header={'siniat'} list={'flat'}>
+      {/*<SystemHeader system={route.params.data?.system} />
+      <SystemHeader text={route.params?.data?.system?.label} />
       <TouchableOpacity
         style={styles.systemListScreen.rowView}
         onPress={() => navigation.goBack()}>
@@ -185,48 +185,74 @@ const SystemListScreen = () => {
           value={suchenText}
           onChangeText={text => setSuchenText(text)}
         />
-      </View>
-      <ScrollView
+      </View>*/}
+      {/*<ScrollView
         horizontal={true}
-        contentContainerStyle={{width: '100%', height: '100%'}}>
-        <View style={{flex: 1}}>
-          <FlatList
-            data={
-              suchenText.length > 0
-                ? systemList.filter(item => {
-                    if (
-                      item.systemName
-                        .toLowerCase()
-                        .includes(suchenText.toLowerCase())
-                    ) {
-                      return true;
-                    } else {
-                      let foundItem = item.fields.find((field, index) => {
-                        return field.vale
-                          .toLowerCase()
-                          .includes(suchenText.toLowerCase());
-                      });
-                      return foundItem !== undefined;
-                    }
-                  })
-                : systemList
-            }
-            renderItem={({item, index, separators}) => {
-              return (
-                <SystemItem
-                  key={index}
-                  data={item}
-                  system={route.params.data?.system}
-                  step2={route.params.data?.step2}
-                  step3={route.params.data?.step3}
-                />
-              );
-            }}
-            style={styles.systemListScreen.systemList}
-            contentContainerStyle={styles.systemListScreen.systemListContainter}
-          />
-        </View>
-      </ScrollView>
+        contentContainerStyle={{width: '100%', height: '100%'}}>*/}
+      {/*<View style={{flex: 1}}>*/}
+      <FlatList
+        ListHeaderComponent={
+          <>
+            <SystemHeader system={route.params.data?.system} />
+            <SystemHeader text={route.params?.data?.system?.label} />
+            <TouchableOpacity
+              style={styles.systemListScreen.rowView}
+              onPress={() => navigation.goBack()}>
+              <SmallText>Meine Filter</SmallText>
+              <Image source={icons.filter} />
+            </TouchableOpacity>
+            <View style={styles.systemListScreen.rowView}>
+              <SmallText>Es wurden</SmallText>
+              <SmallText>
+                {systemList.length} Systemvarianten gefunden
+              </SmallText>
+            </View>
+            <View style={styles.systemListScreen.rowView}>
+              <TextInput
+                style={styles.systemListScreen.textInput}
+                placeholder={'Suchen'}
+                value={suchenText}
+                onChangeText={text => setSuchenText(text)}
+              />
+            </View>
+          </>
+        }
+        data={
+          suchenText.length > 0
+            ? systemList.filter(item => {
+                if (
+                  item.systemName
+                    .toLowerCase()
+                    .includes(suchenText.toLowerCase())
+                ) {
+                  return true;
+                } else {
+                  let foundItem = item.fields.find((field, index) => {
+                    return field.vale
+                      .toLowerCase()
+                      .includes(suchenText.toLowerCase());
+                  });
+                  return foundItem !== undefined;
+                }
+              })
+            : systemList
+        }
+        renderItem={({item, index, separators}) => {
+          return (
+            <SystemItem
+              key={index}
+              data={item}
+              system={route.params.data?.system}
+              step2={route.params.data?.step2}
+              step3={route.params.data?.step3}
+            />
+          );
+        }}
+        style={styles.systemListScreen.systemList}
+        contentContainerStyle={styles.systemListScreen.systemListContainter}
+      />
+      {/*</View>*/}
+      {/*</ScrollView>*/}
     </CustomBackground>
   );
 };
