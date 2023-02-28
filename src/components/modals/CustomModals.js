@@ -43,7 +43,9 @@ const OptionButton = props => {
         props.onPress();
         setChecked(prev => !prev);
       }}>
-      <SmallText>{props.text}</SmallText>
+      <SmallText style={{fontWeight: 'bold', fontSize: 13}}>
+        {props.text}
+      </SmallText>
       {checked && (
         <View style={styles.stage1Modal.checkImage}>
           <Image source={icons.check} resizeMode={'contain'} />

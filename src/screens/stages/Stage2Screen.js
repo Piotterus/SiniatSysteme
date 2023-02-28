@@ -323,7 +323,7 @@ const Stage2Screen = () => {
         text2={route.params?.step3?.breadcrumb}
       />
       <View style={styles.stage2.filterView}>
-        <SmallText>1. Scritt</SmallText>
+        <SmallText>1. Schritt</SmallText>
         {createFiltersList()}
         <PinkButton
           text={'Weiter >>>'}
