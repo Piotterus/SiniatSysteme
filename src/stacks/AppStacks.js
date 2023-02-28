@@ -115,18 +115,18 @@ const AppStacks = () => {
     return <SplashScreen />;
   }
 
-  if (showTutorial === '1') {
-    return (
-      <SafeAreaProvider>
-        <TutorialScreen />
-      </SafeAreaProvider>
-    );
-  }
-
   if (updateRequired) {
     return (
       <SafeAreaProvider>
         <UpdateAppScreen />
+      </SafeAreaProvider>
+    );
+  }
+
+  if (showTutorial === '1') {
+    return (
+      <SafeAreaProvider>
+        <TutorialScreen />
       </SafeAreaProvider>
     );
   }
