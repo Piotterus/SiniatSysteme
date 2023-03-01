@@ -1,5 +1,7 @@
 const icons = {
   logo: require('./icons/logo.png'),
+  iconBig: require('./icons/iconBig.png'),
+  splash: require('./icons/splash.png'),
   menu: {
     home: require('./icons/menuHome.png'),
     more: require('./icons/menuMore.png'),

@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.cultured,
+    backgroundColor: colors.white,
+    width: '100%',
   },
   headerText: {
     marginVertical: 30,

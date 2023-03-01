@@ -2,10 +2,14 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {SiniatHeader} from '../../components/headers/CustomHeaders';
 import {MainMenuText} from '../../components/texts/CustomText';
+import {Image} from 'react-native';
+import icons from '../../assets/icons';
+import {ScreenHeight, ScreenWidth} from '@rneui/base';
 
 const SplashScreen = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       {/*<Image*/}
       {/*  source={icons.background.splash}*/}
       {/*  style={{*/}
@@ -17,7 +21,11 @@ const SplashScreen = () => {
       {/*  }}*/}
       {/*  resizeMode={'cover'}*/}
       {/*/>*/}
-      <MainMenuText>SPLASH</MainMenuText>
+      <Image
+        source={icons.splash}
+        style={{height: ScreenHeight}}
+        resizeMode={'contain'}
+      />
       {/*<SiniatHeader />*/}
     </SafeAreaView>
   );

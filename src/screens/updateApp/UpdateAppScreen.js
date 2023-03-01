@@ -5,6 +5,7 @@ import {Image, Linking, Platform, View} from 'react-native';
 import {PinkButton} from '../../components/buttons/CustomButton';
 import styles from './UpdateAppScreen.style';
 import icons from '../../assets/icons';
+import {ScreenWidth} from '@rneui/base';
 
 const UpdateAppScreen = () => {
   const storeUrl =
@@ -14,7 +15,8 @@ const UpdateAppScreen = () => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.mainView}>
-        <Image source={icons.logo} />
+        {/*<Image source={icons.logo} />*/}
+        <Image source={icons.iconBig} resizeMode={'contain'} />
         <PinkHeaderText style={styles.headerText}>
           Das neue App-Update ist jetzt verfügbar.
         </PinkHeaderText>
