@@ -34,11 +34,15 @@ const Stage3Screen = () => {
     useCallback(() => {
       console.log('Stage3 Callback Called');
       console.log('Params', route.params.filter);
+      console.log(route.params.selectedFiltersL1);
       const getData = {
         system: route.params?.system?.value,
         step2: route.params?.step2?.value,
         step3: route.params?.step3?.value,
         stage: 'L2',
+      };
+      const postData = {
+        selectedFilters: route.params.selectedFiltersL1,
       };
       const response = fetchData(
         res => {
@@ -49,7 +53,7 @@ const Stage3Screen = () => {
         },
         'system/getFilters',
         getData,
-        null,
+        postData,
       );
     }, [route.params]),
   );

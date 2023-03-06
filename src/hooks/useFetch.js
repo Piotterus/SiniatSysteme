@@ -49,6 +49,10 @@ const UseFetch = () => {
     }
     try {
       let response = await fetch(url, options);
+      console.log('UseFetch');
+      console.log(url);
+      console.log(getData);
+      console.log(postData);
       console.log(response);
       let responseJson = await response.json();
       console.log(body);

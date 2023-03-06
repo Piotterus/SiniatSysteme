@@ -349,10 +349,14 @@ const Stage2Screen = () => {
                 };
                 navigation.navigate('SystemList', {data: data});
               } else {
+                const [selectedFiltersL1, selectedFiltersL2] =
+                  getSelectedFilters();
                 navigation.navigate('Stage3', {
                   system: route.params?.system,
                   step2: route.params?.step2,
                   step3: route.params?.step3,
+                  selectedFiltersL1: selectedFiltersL1,
+                  selectedFiltersL2: selectedFiltersL2,
                   filter: filterList,
                 });
               }
