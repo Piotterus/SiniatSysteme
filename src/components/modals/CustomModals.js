@@ -105,18 +105,20 @@ export const Stage2Modal = props => {
       <ScrollView style={styles.stage2Modal.optionList}>
         {Array.isArray(props.filterList[props.chosenFilter]?.values) &&
           props.filterList[props.chosenFilter]?.values.map((item, index) => {
-            return (
-              <OptionButton
-                key={index}
-                text={item}
-                checked={
-                  props.filterList[props.chosenFilter]?.selectedValues?.indexOf(
-                    item,
-                  ) >= 0
-                }
-                onPress={() => props.chooseValue(item, 'add')}
-              />
-            );
+            if (item !== 'n/a') {
+              return (
+                <OptionButton
+                  key={index}
+                  text={item}
+                  checked={
+                    props.filterList[
+                      props.chosenFilter
+                    ]?.selectedValues?.indexOf(item) >= 0
+                  }
+                  onPress={() => props.chooseValue(item, 'add')}
+                />
+              );
+            }
           })}
 
         {/*<OptionButton text={'ohne'} />*/}
