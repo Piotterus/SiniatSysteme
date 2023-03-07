@@ -16,12 +16,7 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import {
-  BoldText,
-  MainMenuText,
-  SmallText,
-  WhiteText,
-} from '../texts/CustomText';
+import {BoldText, SmallText, WhiteText} from '../texts/CustomText';
 import icons from '../../assets/icons';
 import Modal from 'react-native-modal';
 import {PinkButton, WhiteButton} from '../buttons/CustomButton';

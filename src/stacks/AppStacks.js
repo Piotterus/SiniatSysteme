@@ -22,7 +22,7 @@ const AppStacks = () => {
     useContext(AuthContext);
   const {fetchData} = useFetch();
   const {showTutorial} = useContext(TutorialContext);
-  const [updateRequired, setUpdateRequired] = useState(true);
+  const [updateRequired, setUpdateRequired] = useState(false);
   console.log('ShowTutorial: ' + showTutorial);
 
   // useEffect(() => {

@@ -1,10 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
-import {Image, Text, View} from 'react-native';
-import icons from '../../assets/icons';
 import StageNavigation from '../../components/stageNavigation/StageNavigation';
-import {MainMenuText, SmallText} from '../../components/texts/CustomText';
-import styles from './StagesScreen.style';
 import {WhiteButton} from '../../components/buttons/CustomButton';
 import {FullModal, Stage1Modal} from '../../components/modals/CustomModals';
 import {SystemHeader} from '../../components/headers/CustomHeaders';

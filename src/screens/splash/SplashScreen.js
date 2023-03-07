@@ -1,7 +1,5 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {SiniatHeader} from '../../components/headers/CustomHeaders';
-import {MainMenuText} from '../../components/texts/CustomText';
 import {Image} from 'react-native';
 import icons from '../../assets/icons';
 import {ScreenHeight, ScreenWidth} from '@rneui/base';

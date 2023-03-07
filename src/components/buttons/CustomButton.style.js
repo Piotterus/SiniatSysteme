@@ -19,13 +19,31 @@ const styles = StyleSheet.create({
     mainView: {
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 20,
+      marginTop: 10,
+      paddingBottom: 10,
+      flexDirection: 'row',
+      width: '100%',
+      borderBottomWidth: 0.75,
+      borderBottomColor: colors.spanishGray,
+    },
+    imageSquare: {
+      flex: 1,
+      borderRadius: 10,
+    },
+    textView: {
+      flex: 2,
+      paddingLeft: 15,
     },
     text: {
-      position: 'absolute',
-      bottom: 10,
-      width: '80%',
-      textAlign: 'center',
+      // position: 'absolute',
+      // bottom: 10,
+      // flex: 2,
+      // textAlign: 'center',
+      // marginLeft: 15,
+    },
+    lowerText: {
+      fontSize: 12,
+      marginTop: 10,
     },
   },
   whiteButton: {

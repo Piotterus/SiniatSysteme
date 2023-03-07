@@ -34,6 +34,14 @@ export const MainMenuText = props => {
   );
 };
 
+export const HeaderMenuText = props => {
+  return (
+    <Text {...props} style={[styles.headerMenuText, props.style]}>
+      {props.children}
+    </Text>
+  );
+};
+
 export const WhiteText = props => {
   return (
     <Text {...props} style={[styles.whiteText, props.style]}>

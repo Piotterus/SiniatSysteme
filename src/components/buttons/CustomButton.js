@@ -1,6 +1,6 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {Image, Text, TouchableOpacity} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {BoldText, MainMenuText, SmallText} from '../texts/CustomText';
 import styles from './CustomButton.style';
 import icons from '../../assets/icons';
@@ -22,10 +22,21 @@ export const MainMenuButton = props => {
     <TouchableOpacity
       {...props}
       style={[styles.mainMenuButton.mainView, props.style]}>
-      <Image source={props.image} />
-      <MainMenuText style={[styles.mainMenuButton.text, props.textStyle]}>
-        {props.text}
-      </MainMenuText>
+      <Image
+        source={props.image}
+        style={styles.mainMenuButton.imageSquare}
+        resizeMode={'cover'}
+      />
+      <View style={styles.mainMenuButton.textView}>
+        <MainMenuText style={[styles.mainMenuButton.text, props.textStyle]}>
+          {props.text}
+        </MainMenuText>
+        {props.lowerText !== undefined && props.lowerText !== '' && (
+          <MainMenuText style={styles.mainMenuButton.lowerText}>
+            {props.lowerText}
+          </MainMenuText>
+        )}
+      </View>
     </TouchableOpacity>
   );
 };

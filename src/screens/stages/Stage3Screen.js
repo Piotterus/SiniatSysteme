@@ -3,8 +3,7 @@ import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {Stage2Modal} from '../../components/modals/CustomModals';
 import {Image, View} from 'react-native';
 import styles from './StagesScreen.style';
-import icons from '../../assets/icons';
-import {MainMenuText, SmallText} from '../../components/texts/CustomText';
+import {SmallText} from '../../components/texts/CustomText';
 import StageNavigation from '../../components/stageNavigation/StageNavigation';
 import {
   FilterInput,
@@ -202,16 +201,18 @@ const Stage3Screen = () => {
         );
       } else {
         if (filterList[i].values.length === 1) {
-          let values = filterList[i].values.join(', ');
-          filters.push(
-            <FilterSelected
-              key={i}
-              label={filterList[i].german}
-              values={values}
-              tooltip={filterList[i].tooltip}
-            />,
-          );
-        } else {
+          if (filterList[i].values[0] !== 'n/a') {
+            let values = filterList[i].values.join(', ');
+            filters.push(
+              <FilterSelected
+                key={i}
+                label={filterList[i].german}
+                values={values}
+                tooltip={filterList[i].tooltip}
+              />,
+            );
+          }
+        } else if (filterList[i].values.length > 1) {
           let values = '...';
           if (filterList[i].selectedValues !== undefined) {
             values = filterList[i].selectedValues.join(', ');
