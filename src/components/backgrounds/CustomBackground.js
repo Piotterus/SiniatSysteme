@@ -51,7 +51,7 @@ const CustomBackground = props => {
 
   useEffect(() => {
     if (keyboardStatus === 'open') {
-      // scrollViewRef?.current?.scrollToEnd({animated: true});
+      scrollViewRef?.current?.scrollToEnd({animated: true});
     }
   }, [keyboardStatus]);
 
@@ -66,7 +66,7 @@ const CustomBackground = props => {
         {props.list !== 'flat' && (
           <ScrollView
             keyboardShouldPersistTaps={'handled'}
-            automaticallyAdjustKeyboardInsets={true}
+            // automaticallyAdjustKeyboardInsets={true}
             ref={scrollViewRef}
             style={styles.background.scrollView}
             contentContainerStyle={styles.background.scrollViewContainer}>
