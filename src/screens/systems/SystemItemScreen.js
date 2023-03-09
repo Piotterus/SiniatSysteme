@@ -211,14 +211,15 @@ const SystemItemScreen = () => {
         // numberOfLines={4}
         style={{
           borderWidth: 0.5,
-          borderColor: colors.grey,
+          borderColor: colors.black,
           width: '100%',
           marginTop: 20,
           paddingVertical: 20,
           paddingHorizontal: 10,
+          backgroundColor: colors.white,
         }}
         placeholder={'Hinweisfeld für Anmerkungen zum Bauvorhaben'}
-        placeholderTextColor={colors.greyOpacity}
+        placeholderTextColor={colors.grey}
         value={note}
         onChangeText={text => setNote(text)}
       />

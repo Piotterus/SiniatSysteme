@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       backgroundColor: colors.whiteOpacity,
       borderTopLeftRadius: 20,
-      bottom: 60,
+      bottom: Platform.OS === 'ios' ? 40 : 50,
       right: 0,
       width: '50%',
       alignItems: 'center',

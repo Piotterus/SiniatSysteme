@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     },
     lowerText: {
       fontSize: 12,
-      marginTop: 10,
+      marginTop: 8,
+      lineHeight: 16,
     },
   },
   whiteButton: {
