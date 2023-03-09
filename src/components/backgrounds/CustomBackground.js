@@ -51,7 +51,7 @@ const CustomBackground = props => {
 
   useEffect(() => {
     if (keyboardStatus === 'open') {
-      scrollViewRef?.current?.scrollToEnd({animated: true});
+      // scrollViewRef?.current?.scrollToEnd({animated: true});
     }
   }, [keyboardStatus]);
 
