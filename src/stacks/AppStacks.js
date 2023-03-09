@@ -13,6 +13,7 @@ import TutorialContext from '../contexts/TutorialContext';
 import TutorialScreen from '../screens/tutorial/TutorialScreen';
 import UpdateAppScreen from '../screens/updateApp/UpdateAppScreen';
 import {getVersion} from 'react-native-device-info';
+import DrawerNav from './DrawerNav';
 // import {Alert} from 'react-native';
 // import messaging from '@react-native-firebase/messaging';
 // import {useState} from '.';
@@ -136,7 +137,7 @@ const AppStacks = () => {
       <SafeAreaProvider>
         <>
           <NavigationContainer>
-            <StackNav />
+            <DrawerNav />
           </NavigationContainer>
           <ErrorModal />
         </>

@@ -22,6 +22,13 @@ export const SiniatHeader = () => {
           <Feather name={'arrow-left'} size={30} />
         </TouchableOpacity>
       )}
+      {route.name === 'Home' && (
+        <TouchableOpacity
+          onPress={() => navigation.openDrawer()}
+          style={styles.backArrow}>
+          <Feather name={'menu'} size={30} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
