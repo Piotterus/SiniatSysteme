@@ -4,6 +4,7 @@ import {BoldText} from '../texts/CustomText';
 import icons from '../../assets/icons';
 import styles from './CustomFilters.style';
 import {TooltipModal} from '../modals/CustomModals';
+import colors from '../../assets/colors';
 
 export const FilterSelect = props => {
   const [tooltipModalVisible, setTooltipModalVisible] = useState(false);
@@ -80,7 +81,12 @@ export const FilterInput = props => {
       <View style={styles.buttonView}>
         <TextInput
           onChangeText={text => props.onChangeText(text, props.index)}
-          style={{padding: 0, width: '100%'}}
+          style={{
+            padding: 0,
+            width: '100%',
+            fontWeight: 'bold',
+            color: colors.grey,
+          }}
           keyboardType={'numeric'}
           value={props.value}
         />

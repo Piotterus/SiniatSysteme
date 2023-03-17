@@ -5,14 +5,14 @@ const ApiContext = createContext();
 export const ApiProvider = props => {
   const [apiUrl, setApiUrl] = useState(() => {
     if (__DEV__) {
-      return 'https://systemselektor.siniat.de/api/';
+      return 'https://siniatapp-dev.verbum.com.pl/api/';
     } else {
       return 'https://systemselektor.siniat.de/api/';
     }
   });
   const [siteUrl, setSiteUrl] = useState(() => {
     if (__DEV__) {
-      return 'https://systemselektor.siniat.de/';
+      return 'https://siniatapp-dev.verbum.com.pl/';
     } else {
       return 'https://systemselektor.siniat.de/';
     }

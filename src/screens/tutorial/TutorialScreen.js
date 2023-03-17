@@ -58,7 +58,7 @@ const TutorialScreen = () => {
             uncheckedColor={colors.flirt}
             checkedColor={colors.flirt}
           />
-          <SmallText>Nicht mekr anzeigen</SmallText>
+          <SmallText>Nicht mehr anzeigen</SmallText>
         </View>
         <SmallText
           style={styles.purpleText}

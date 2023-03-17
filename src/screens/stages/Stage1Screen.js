@@ -28,14 +28,15 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
           {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
-          {
-            label: 'Nassraum',
+            label:
+              'Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)',
             breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
@@ -47,7 +48,7 @@ const Stage1Screen = () => {
             chosen: false,
           },
           {
-            label: 'Einbruchhemmung',
+            label: 'Einbruchhemmung (RC1/RC2/RC3)',
             breadcrumb: 'Einbruchhemmung',
             value: 'einbruchhemmung',
             chosen: false,
@@ -66,12 +67,12 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
-          {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
         ],
       },
       {
@@ -85,12 +86,12 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
-          {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
           {
             label: 'Außenwand',
             breadcrumb: 'Außenwand',
@@ -110,14 +111,15 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
           {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
-          {
-            label: 'Nassraum',
+            label:
+              'Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)',
             breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
@@ -141,14 +143,15 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
           {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
-          {
-            label: 'Nassraum',
+            label:
+              'Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)',
             breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
@@ -168,12 +171,12 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
-          {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
         ],
       },
       {
@@ -187,14 +190,15 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
           {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
-          {
-            label: 'Nassraum',
+            label:
+              'Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)',
             breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
@@ -224,14 +228,15 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
           {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
-          {
-            label: 'Nassraum',
+            label:
+              'Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)',
             breadcrumb: 'Nassraum',
             value: 'nassraum',
             chosen: false,
@@ -249,12 +254,12 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
-          {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
         ],
       },
       {
@@ -268,12 +273,12 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
-          {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
         ],
       },
     ],
@@ -289,12 +294,12 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
-          {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
         ],
       },
       {
@@ -308,12 +313,12 @@ const Stage1Screen = () => {
             value: 'standard',
             chosen: false,
           },
-          {
-            label: 'Feuchtraum',
-            breadcrumb: 'Feuchtraum',
-            value: 'feuchtraum',
-            chosen: false,
-          },
+          // {
+          //   label: 'Feuchtraum',
+          //   breadcrumb: 'Feuchtraum',
+          //   value: 'feuchtraum',
+          //   chosen: false,
+          // },
         ],
       },
     ],
@@ -395,15 +400,22 @@ const Stage1Screen = () => {
   const goNext = option => {
     // console.log(option);
     setNextOption(option.value);
-    if (option.optionList !== undefined) {
-      setModalOptions(option);
-      setStageModalVisible(true);
-    } else {
+
+    if (option.optionList === undefined) {
       navigation.navigate('Stage2', {
         system: route.params.system,
         step2: option,
         step3: {},
       });
+    } else if (option.optionList.length === 1) {
+      navigation.navigate('Stage2', {
+        system: route.params.system,
+        step2: option,
+        step3: option.optionList[0],
+      });
+    } else {
+      setModalOptions(option);
+      setStageModalVisible(true);
     }
   };
 
