@@ -25,6 +25,61 @@ const styles = StyleSheet.create({
     width: '80%',
     textAlign: 'center',
   },
+  languageButton: {
+    backgroundColor: colors.wenge,
+    height: 30,
+    width: 30,
+    borderRadius: 15,
+    position: 'absolute',
+    // top: 10,
+    right: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  languageView: {
+    animated: {
+      width: '100%',
+      alignItems: 'center',
+      position: 'absolute',
+      top: 70,
+      backgroundColor: colors.white,
+      zIndex: 1000,
+      overflow: 'hidden',
+    },
+    scrollView: {
+      width: '100%',
+      borderTopWidth: 1,
+      borderTopColor: colors.grey,
+    },
+    containerScrollView: {
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexGrow: 1,
+    },
+    languageList: {
+      alignItems: 'center',
+      width: '100%',
+    },
+    closeButton: {
+      padding: 20,
+    },
+    languageText: {
+      padding: 20,
+    },
+    activeText: {
+      fontWeight: 'bold',
+      color: colors.wenge,
+    },
+    languageItem: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+    },
+    checkImage: {
+      position: 'absolute',
+      left: 60,
+    },
+  },
 });
 
 export default styles;

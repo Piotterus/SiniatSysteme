@@ -45,6 +45,8 @@ const icons = {
     question: require('./icons/questionSystem.png'),
   },
   systemImage: require('./icons/systemImage.png'),
+  xCircleFill: require('./icons/x-circle-fill.png'),
+  langCheckmark: require('./icons/langCheckmark.png'),
 };
 
 export default icons;
