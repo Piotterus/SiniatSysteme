@@ -18,10 +18,10 @@ const HomeScreen = () => {
       imageStage: icons.stage.wande,
       imageSquare: icons.mainMenu.wandeSquare,
       color: colors.wande,
-      text: 'Wändsysteme - Schachtwände -Vorsatzschalen - Trockenputz',
-      upperText: 'Wändsysteme - ',
+      text: 'Wandsysteme - Schachtwände -Vorsatzschalen - Trockenputz',
+      upperText: 'Wandsysteme - ',
       lowerText: 'Schachtwände -Vorsatzschalen - Trockenputz',
-      breadcrumb: 'Wände',
+      breadcrumb: 'Wande',
       value: 'wande',
     },
     {

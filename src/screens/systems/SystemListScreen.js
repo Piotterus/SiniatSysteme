@@ -160,7 +160,7 @@ const SystemListScreen = () => {
         getData,
         postData,
       );
-    }, []),
+    }, [route.params]),
   );
 
   console.log(route.params);

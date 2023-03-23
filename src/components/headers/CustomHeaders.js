@@ -22,14 +22,14 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {ScreenHeight} from '@rneui/base';
-import LanguageContext from '../../contexts/LanguageContext';
+// import LanguageContext from '../../contexts/LanguageContext';
 
 export const SiniatHeader = () => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const {languageList, setActiveLanguageCode, activeLanguageCode} =
-    useContext(LanguageContext);
+  // const {languageList, setActiveLanguageCode, activeLanguageCode} =
+  //   useContext(LanguageContext);
 
   const animatedHeight = useSharedValue(0);
   const style = useAnimatedStyle(() => {
@@ -73,52 +73,52 @@ export const SiniatHeader = () => {
             <Feather name={'menu'} size={30} />
           </TouchableOpacity>
         )}
-        <TouchableOpacity
-          onPress={() => openLanguage()}
-          style={styles.languageButton}>
-          <WhiteText>De</WhiteText>
-        </TouchableOpacity>
+        {/*<TouchableOpacity*/}
+        {/*  onPress={() => openLanguage()}*/}
+        {/*  style={styles.languageButton}>*/}
+        {/*  <WhiteText>De</WhiteText>*/}
+        {/*</TouchableOpacity>*/}
       </View>
-      <Animated.View style={[styles.languageView.animated, style]}>
-        <ScrollView
-          style={styles.languageView.scrollView}
-          contentContainerStyle={styles.languageView.containerScrollView}>
-          <View style={styles.languageView.languageList}>
-            <BoldText style={styles.languageView.languageText}>
-              Sprache wählen
-            </BoldText>
-            {languageList.map((item, index) => {
-              return (
-                <TouchableOpacity
-                  style={styles.languageView.languageItem}
-                  onPress={() => setActiveLanguageCode(item.value)}
-                  key={index}>
-                  {activeLanguageCode === item.value ? (
-                    <Image
-                      source={icons.langCheckmark}
-                      style={styles.languageView.checkImage}
-                    />
-                  ) : null}
-                  <SmallText
-                    style={[
-                      styles.languageView.languageText,
-                      activeLanguageCode === item.value
-                        ? styles.languageView.activeText
-                        : null,
-                    ]}>
-                    {item.label}
-                  </SmallText>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-          <TouchableOpacity
-            style={styles.languageView.closeButton}
-            onPress={() => closeLanguage()}>
-            <Image source={icons.xCircleFill} />
-          </TouchableOpacity>
-        </ScrollView>
-      </Animated.View>
+      {/*<Animated.View style={[styles.languageView.animated, style]}>*/}
+      {/*  <ScrollView*/}
+      {/*    style={styles.languageView.scrollView}*/}
+      {/*    contentContainerStyle={styles.languageView.containerScrollView}>*/}
+      {/*    <View style={styles.languageView.languageList}>*/}
+      {/*      <BoldText style={styles.languageView.languageText}>*/}
+      {/*        Sprache wählen*/}
+      {/*      </BoldText>*/}
+      {/*      {languageList.map((item, index) => {*/}
+      {/*        return (*/}
+      {/*          <TouchableOpacity*/}
+      {/*            style={styles.languageView.languageItem}*/}
+      {/*            onPress={() => setActiveLanguageCode(item.value)}*/}
+      {/*            key={index}>*/}
+      {/*            {activeLanguageCode === item.value ? (*/}
+      {/*              <Image*/}
+      {/*                source={icons.langCheckmark}*/}
+      {/*                style={styles.languageView.checkImage}*/}
+      {/*              />*/}
+      {/*            ) : null}*/}
+      {/*            <SmallText*/}
+      {/*              style={[*/}
+      {/*                styles.languageView.languageText,*/}
+      {/*                activeLanguageCode === item.value*/}
+      {/*                  ? styles.languageView.activeText*/}
+      {/*                  : null,*/}
+      {/*              ]}>*/}
+      {/*              {item.label}*/}
+      {/*            </SmallText>*/}
+      {/*          </TouchableOpacity>*/}
+      {/*        );*/}
+      {/*      })}*/}
+      {/*    </View>*/}
+      {/*    <TouchableOpacity*/}
+      {/*      style={styles.languageView.closeButton}*/}
+      {/*      onPress={() => closeLanguage()}>*/}
+      {/*      <Image source={icons.xCircleFill} />*/}
+      {/*    </TouchableOpacity>*/}
+      {/*  </ScrollView>*/}
+      {/*</Animated.View>*/}
     </>
   );
 };

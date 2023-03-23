@@ -39,7 +39,7 @@ import {UserProvider} from './src/contexts/UserContext';
 import AppStacks from './src/stacks/AppStacks';
 import {SystemProvider} from './src/contexts/SystemContext';
 import {TutorialProvider} from './src/contexts/TutorialContext';
-import {LanguageProvider} from './src/contexts/LanguageContext';
+// import {LanguageProvider} from './src/contexts/LanguageContext';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -75,21 +75,21 @@ const App: () => Node = () => {
   };
 
   return (
-    <LanguageProvider>
-      <AuthProvider>
-        <ErrorProvider>
-          <ApiProvider>
-            <UserProvider>
-              <SystemProvider>
-                <TutorialProvider>
-                  <AppStacks />
-                </TutorialProvider>
-              </SystemProvider>
-            </UserProvider>
-          </ApiProvider>
-        </ErrorProvider>
-      </AuthProvider>
-    </LanguageProvider>
+    /*<LanguageProvider>*/
+    <AuthProvider>
+      <ErrorProvider>
+        <ApiProvider>
+          <UserProvider>
+            <SystemProvider>
+              <TutorialProvider>
+                <AppStacks />
+              </TutorialProvider>
+            </SystemProvider>
+          </UserProvider>
+        </ApiProvider>
+      </ErrorProvider>
+    </AuthProvider>
+    /*</LanguageProvider>*/
   );
 };
 

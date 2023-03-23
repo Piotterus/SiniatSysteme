@@ -72,17 +72,17 @@ const StageNavigation = () => {
   return (
     <View style={styles.mainView}>
       <NavigationCircle
-        text={'1'}
+        text={'0'}
         ring={route.name === 'Stage1'}
         active={true}
       />
       <NavigationCircle
-        text={'2'}
+        text={'1'}
         ring={route.name === 'Stage2'}
         active={route.name === 'Stage2' || route.name === 'Stage3'}
       />
       <NavigationCircle
-        text={'3'}
+        text={'2'}
         ring={route.name === 'Stage3'}
         active={route.name === 'Stage3'}
       />
