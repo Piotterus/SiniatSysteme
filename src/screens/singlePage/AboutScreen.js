@@ -4,6 +4,7 @@ import CustomFooter from '../../components/footers/CustomFooter';
 import ApiContext from '../../contexts/ApiContext';
 import {SafeAreaView} from 'react-native';
 import {SiniatHeader} from '../../components/headers/CustomHeaders';
+import {ScreenWidth} from '@rneui/base';
 
 const AboutScreen = () => {
   const {siteUrl} = useContext(ApiContext);
@@ -12,7 +13,7 @@ const AboutScreen = () => {
     <SafeAreaView style={{flex: 1}}>
       <SiniatHeader />
       <WebView
-        style={{flex: 1}}
+        style={{flex: 1, width: ScreenWidth}}
         source={{uri: siteUrl + 'about'}}
         cacheEnabled={false}
       />
