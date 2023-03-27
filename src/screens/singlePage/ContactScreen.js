@@ -20,6 +20,7 @@ const ContactScreen = () => {
         source={{uri: siteUrl + 'kontakt'}}
         injectedJavaScript={INJECTEDJAVASCRIPT}
         cacheEnabled={false}
+        useWebkit={false}
       />
       <CustomFooter />
     </SafeAreaView>
