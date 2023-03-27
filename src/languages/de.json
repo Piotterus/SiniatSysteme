@@ -1,0 +1,268 @@
+{
+  "wande": {
+    "text": "Wandsysteme - Schachtwände -Vorsatzschalen - Trockenputz",
+    "upperText": "Wandsysteme - ",
+    "lowerText": "Schachtwände -Vorsatzschalen - Trockenputz",
+    "metallstanderwande": {
+      "label": "Metallständerwände",
+      "breadcrumb": "Metallständerwände",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      },
+      "nassraum": {
+        "label": "Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)",
+        "breadcrumb": "Nassraum"
+      },
+      "strahlenschutz": {
+        "label": "Strahlenschutz",
+        "breadcrumb": "Strahlenschutz"
+      },
+      "einbruchhemmung": {
+        "label": "Einbruchhemmung (RC1/RC2/RC3)",
+        "breadcrumb": "Einbruchhemmung"
+      }
+    },
+    "brandwande": {
+      "label": "\"Brandwände\" Nichtragende raumabschliessende Wände mit prüftechnisch nachgewiesener Stoßbeanspruchung",
+      "breadcrumb": "Brandwände",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      }
+    },
+    "holzstanderwande": {
+      "label": "Holzständerwände",
+      "breadcrumb": "Holzständerwände",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      },
+      "ausenwand": {
+        "label": "Außenwand",
+        "breadcrumb": "Außenwand"
+      }
+    },
+    "schachtwande-vorsatzschalen": {
+      "label": "Schachtwände/Vorsatzschalen",
+      "breadcrumb": "Schachtwände/Vorsatzschalen",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      },
+      "nassraum": {
+        "label": "Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)",
+        "breadcrumb": "Nassraum"
+      },
+      "strahlenschutz": {
+        "label": "Strahlenschutz",
+        "breadcrumb": "Strahlenschutz"
+      }
+    },
+    "trockenputz": {
+      "label": "Trockenputz",
+      "breadcrumb": "Trockenputz",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      },
+      "nassraum": {
+        "label": "Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)",
+        "breadcrumb": "Nassraum"
+      }
+    }
+  },
+  "decken": {
+    "text": "Deckensysteme",
+    "upperText": "Deckensysteme",
+    "lowerText": "",
+    "freitragende-unterdecken": {
+      "label": "Freitragende Unterdecken",
+      "breadcrumb": "Freitragende Unterdecken",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      }
+    },
+    "unterdecken-und-deckenbekleidungen": {
+      "label": "Unterdecken und Deckenbekleidungen",
+      "breadcrumb": "Unterdecken und Deckenbekleidungen",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      },
+      "nassraum": {
+        "label": "Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)",
+        "breadcrumb": "Nassraum"
+      },
+      "strahlenschutz": {
+        "label": "Strahlenschutz",
+        "breadcrumb": "Strahlenschutz"
+      },
+      "ausendecken": {
+        "label": "Außendecken",
+        "breadcrumb": "Außendecken"
+      }
+    },
+    "ertuchtigung-massivdecken": {
+      "label": "Ertüchtigung Massivdecken",
+      "breadcrumb": "Ertüchtigung Massivdecken",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      },
+      "nassraum": {
+        "label": "Nassraum (Wassereinwirkung gemäß DIN 18534-1  W2-I und W3-I)",
+        "breadcrumb": "Nassraum"
+      }
+    },
+    "ertuchtigung-holzbalkendecken": {
+      "label": "Ertüchtigung Holzbalkendecken",
+      "breadcrumb": "Ertüchtigung Holzbalkendecken",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      }
+    },
+    "trapezblechdecken": {
+      "label": "Ertüchtigung Trapezblechdecken",
+      "breadcrumb": "Ertüchtigung Trapezblechdecken",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      }
+    }
+  },
+  "dacher": {
+    "text": "Dachsysteme",
+    "upperText": "Dachsysteme",
+    "lowerText": "",
+    "dacher": {
+      "label": "Holzbalkendächer",
+      "breadcrumb": "Holzbalkendächer",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      }
+    },
+    "trapezblechdacher-ertuchtigung-trapezblechdacher": {
+      "label": "Trapezblechdächer Ertüchtigung Trapezblechdächer",
+      "breadcrumb": "Trapezblechdächer Ertüchtigung Trapezblechdächer",
+      "standard": {
+        "label": "Standard",
+        "breadcrumb": "Standard"
+      },
+      "fechtraum": {
+        "label": "Feuchtraum",
+        "breadcrumb": "Feuchtraum"
+      }
+    }
+  },
+  "stutzen": {
+    "text": "Stützen - und Trägerbekleidungen",
+    "upperText": "Stützen - und Trägerbekleidungen",
+    "lowerText": "",
+    "stahl": {
+      "label": "Stahl",
+      "breadcrumb": "Stahl",
+      "stahlstutze": {
+        "label": "Stahlstütze",
+        "breadcrumb": "Stahlstütze"
+      },
+      "stahltrager": {
+        "label": "Stahlträger",
+        "breadcrumb": "Stahlträger"
+      }
+    },
+    "holz": {
+      "label": "Holz",
+      "breadcrumb": "Holz",
+      "holzstutze": {
+        "label": "Holzstütze",
+        "breadcrumb": "Holzstütze"
+      },
+      "holzbalken": {
+        "label": "Holzbalken",
+        "breadcrumb": "Holzbalken"
+      }
+    }
+  },
+  "kabelkanale": {
+    "text": "Kabelkanäle",
+    "upperText": "Kabelkanäle",
+    "lowerText": "",
+    "e-kanale": {
+      "label": "E-Kanäle",
+      "breadcrumb": "E-Kanäle"
+    },
+    "i-kanale": {
+      "label": "I-Kanäle",
+      "breadcrumb": "I-Kanäle"
+    }
+  },
+  "step": "Schritt",
+  "next": "Weiter",
+  "myFilters": "Meine Filter",
+  "thereAre": "Es wurden",
+  "systemVariantFound": "Systemvarianten gefunden",
+  "seek": "Suchen",
+  "productBrochure": "Productbrochure",
+  "fireProtectionCertificate": "Brandschutznachweis",
+  "proofOfSoundProofing": "Schallschutznachweis",
+  "commentPlaceholder": "Hinweisfeld für Anmerkungen zum Bauvorhaben",
+  "tutorial": {
+    "text1": "Mit dem Siniat Systemselektor zur richtigen Lösung.",
+    "text2": "Geben Sie die konkreten Anforderungen und Vorgaben ihres Projektes in den Siniat Systemselektor ein und finden Sie die passende Trockenbau-Lösung von Siniat.",
+    "text3": "Jetz alle Trockenbausysteme auf einen klick!",
+    "doNotShowAgain": "Nicht mehr anzeigen",
+    "skip": "ÜBERSPRINGEN"
+  },
+  "updateApp": {
+    "newApp": "Das neue App-Update ist jetzt verfügbar.",
+    "updateNow": "Jetzt aktualisieren."
+  }
+}
