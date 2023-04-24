@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  languageText: {
+    textTransform: 'uppercase',
+  },
   languageView: {
     animated: {
       width: '100%',
@@ -65,6 +68,8 @@ const styles = StyleSheet.create({
     },
     languageText: {
       padding: 20,
+      textTransform: 'uppercase',
+      fontWeight: 'bold',
     },
     activeText: {
       fontWeight: 'bold',

@@ -9,10 +9,12 @@ import {PinkButton} from '../../components/buttons/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from '../../assets/colors';
 import TutorialContext from '../../contexts/TutorialContext';
+import useTranslation from '../../hooks/useTranslations';
 
 const TutorialScreen = () => {
   const [checkBox, setCheckBox] = useState(false);
   const {setShowTutorial} = useContext(TutorialContext);
+  const {t} = useTranslation();
 
   return (
     <CustomBackground header={'tutorial'}>
@@ -28,21 +30,15 @@ const TutorialScreen = () => {
       />
       <View style={styles.whiteView}>
         <View style={styles.textView}>
-          <BoldText style={styles.centerText}>
-            Mit dem Siniat Systemselektor zur richtigen Lösung.
-          </BoldText>
-          <SmallText style={styles.centerText}>
-            Geben Sie die konkreten Anforderungen und Vorgaben ihres Projektes
-            in den Siniat Systemselektor ein und finden Sie die passende
-            Trockenbau-Lösung von Siniat.
-          </SmallText>
+          <BoldText style={styles.centerText}>{t('tutorial.text1')}</BoldText>
+          <SmallText style={styles.centerText}>{t('tutorial.text2')}</SmallText>
           <SmallText style={[styles.centerText, styles.pinkText]}>
-            Jetz alle Trockenbausysteme auf einen klick!
+            {t('tutorial.text3')}
           </SmallText>
         </View>
         <PinkButton
           style={styles.button}
-          text={'Suchen >>>'}
+          text={t('seek') + ' >>>'}
           onPress={async () => {
             if (checkBox) {
               await AsyncStorage.setItem('showTutorial', '0');
@@ -58,12 +54,12 @@ const TutorialScreen = () => {
             uncheckedColor={colors.flirt}
             checkedColor={colors.flirt}
           />
-          <SmallText>Nicht mehr anzeigen</SmallText>
+          <SmallText>{t('tutorial.doNotShowAgain')}</SmallText>
         </View>
         <SmallText
           style={styles.purpleText}
           onPress={() => setShowTutorial('0')}>
-          ÜBERSPRINGEN
+          {t('tutorial.skip')}
         </SmallText>
       </View>
     </CustomBackground>

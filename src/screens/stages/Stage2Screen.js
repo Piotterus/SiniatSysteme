@@ -23,6 +23,7 @@ import {
 } from '@react-navigation/native';
 import useFetch from '../../hooks/useFetch';
 import Breadcrumps from '../../components/breadcrumbs/Breadcrumps';
+import useTranslation from '../../hooks/useTranslations';
 
 const Stage2Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
@@ -34,6 +35,7 @@ const Stage2Screen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const {fetchData} = useFetch();
+  const {t} = useTranslation();
 
   useEffect(() => {
     console.log('FilterList UseEffect');
@@ -324,19 +326,19 @@ const Stage2Screen = () => {
         text2={route.params?.step3?.breadcrumb}
       />
       <View style={styles.stage2.filterView}>
-        <SmallText>1. Schritt</SmallText>
+        <SmallText>1. {t('step')}</SmallText>
         {createFiltersList()}
         <PinkButton
-          text={'Weiter >>>'}
+          text={t('next') + ' >>>'}
           style={{marginVertical: 20, width: '100%'}}
           onPress={() => {
             let wallHeightShow = checkWallHeight();
             if (!wallHeightShow) {
               processFilters();
-              console.log('KABELKANALE CHECK');
-              console.log(route.params?.system.value === 'kabelkanale');
+              // console.log('KABELKANALE CHECK');
+              // console.log(route.params?.system.value === 'kabelkanale');
               if (route.params?.system.value === 'kabelkanale') {
-                console.log('KABELKANALE');
+                // console.log('KABELKANALE');
                 const [selectedFiltersL1, selectedFiltersL2] =
                   getSelectedFilters();
                 const data = {

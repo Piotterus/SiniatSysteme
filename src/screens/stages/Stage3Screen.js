@@ -19,6 +19,7 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import useFetch from '../../hooks/useFetch';
+import useTranslation from '../../hooks/useTranslations';
 
 const Stage3Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
@@ -28,6 +29,7 @@ const Stage3Screen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const {fetchData} = useFetch();
+  const {t} = useTranslation();
 
   useFocusEffect(
     useCallback(() => {
@@ -309,9 +311,9 @@ const Stage3Screen = () => {
         text2={route.params?.step3?.breadcrumb}
       />
       <View style={styles.stage2.filterView}>
-        <SmallText>1. Schritt</SmallText>
+        <SmallText>1. {t('step')}</SmallText>
         {createSelectedFiltersList()}
-        <SmallText>2. Schritt</SmallText>
+        <SmallText>2. {t('step')}</SmallText>
         {createFiltersList()}
       </View>
     </CustomBackground>

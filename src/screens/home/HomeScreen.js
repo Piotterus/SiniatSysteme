@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {BoldText, PinkHeaderText} from '../../components/texts/CustomText';
 import {Text, View} from 'react-native';
@@ -8,19 +8,22 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './HomeScreen.style';
 import colors from '../../assets/colors';
 import {WallHeightModal} from '../../components/modals/CustomModals';
+import LanguageContext from '../../contexts/LanguageContext';
+import useTranslation from '../../hooks/useTranslations';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-
+  const {activeLanguage} = useContext(LanguageContext);
+  const {t} = useTranslation();
   const optionList = [
     {
       image: icons.mainMenu.wandeColor,
       imageStage: icons.stage.wande,
       imageSquare: icons.mainMenu.wandeSquare,
       color: colors.wande,
-      text: 'Wandsysteme - Schachtwände -Vorsatzschalen - Trockenputz',
-      upperText: 'Wandsysteme - ',
-      lowerText: 'Schachtwände -Vorsatzschalen - Trockenputz',
+      text: 'wande.text',
+      upperText: 'wande.upperText',
+      lowerText: 'wande.lowerText',
       breadcrumb: 'Wande',
       value: 'wande',
     },
@@ -29,8 +32,8 @@ const HomeScreen = () => {
       imageStage: icons.stage.decken,
       imageSquare: icons.mainMenu.deckenSquare,
       color: colors.decken,
-      text: 'Deckensysteme',
-      upperText: 'Deckensysteme',
+      text: 'decken.text',
+      upperText: 'decken.upperText',
       breadcrumb: 'Decken',
       value: 'decken',
     },
@@ -39,8 +42,8 @@ const HomeScreen = () => {
       imageStage: icons.stage.dacher,
       imageSquare: icons.mainMenu.dacherSquare,
       color: colors.dacher,
-      text: 'Dachsysteme',
-      upperText: 'Dachsysteme',
+      text: 'dacher.text',
+      upperText: 'dacher.upperText',
       breadcrumb: 'Dächer',
       value: 'dacher',
     },
@@ -49,8 +52,8 @@ const HomeScreen = () => {
       imageStage: icons.stage.stutzen,
       imageSquare: icons.mainMenu.stutzenSquare,
       color: colors.stutzen,
-      text: 'Stützen - und Trägerbekleidungen',
-      upperText: 'Stützen - und Trägerbekleidungen',
+      text: 'stutzen.text',
+      upperText: 'stutzen.upperText',
       breadcrumb: 'Stützen- Trägerbekleidungen',
       value: 'stutzentrager',
     },
@@ -59,8 +62,8 @@ const HomeScreen = () => {
       imageStage: icons.stage.kabelkanale,
       imageSquare: icons.mainMenu.kabelkanalSquare,
       color: colors.kabelkanale,
-      text: 'Kabelkanäle',
-      upperText: 'Kabelkanäle',
+      text: 'kabelkanale.text',
+      upperText: 'kabelkanale.upperText',
       breadcrumb: 'Kabelkanäle',
       value: 'kabelkanale',
     },
@@ -74,8 +77,8 @@ const HomeScreen = () => {
           <MainMenuButton
             key={index}
             image={item.imageSquare}
-            text={item.upperText}
-            lowerText={item.lowerText}
+            text={t(item.upperText)}
+            lowerText={t(item.lowerText)}
             onPress={() =>
               navigation.navigate('Stage1', {
                 system: item,

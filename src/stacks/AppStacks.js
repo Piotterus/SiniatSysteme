@@ -14,6 +14,7 @@ import TutorialScreen from '../screens/tutorial/TutorialScreen';
 import UpdateAppScreen from '../screens/updateApp/UpdateAppScreen';
 import {getVersion} from 'react-native-device-info';
 import DrawerNav from './DrawerNav';
+import LanguageContext from '../contexts/LanguageContext';
 // import {Alert} from 'react-native';
 // import messaging from '@react-native-firebase/messaging';
 // import {useState} from '.';
@@ -24,6 +25,8 @@ const AppStacks = () => {
   const {fetchData} = useFetch();
   const {showTutorial} = useContext(TutorialContext);
   const [updateRequired, setUpdateRequired] = useState(false);
+  const {activeLanguage, setLanguageList, languageList, setActiveLanguageCode} =
+    useContext(LanguageContext);
   console.log('ShowTutorial: ' + showTutorial);
 
   // useEffect(() => {
@@ -105,6 +108,19 @@ const AppStacks = () => {
         },
         'system/checkVersion',
         getData,
+        null,
+      );
+      const responseFetch = await fetchData(
+        async res => {
+          setLanguageList(res.data.list);
+          const code = await AsyncStorage.getItem('activeLanguageCode');
+          console.log('GetFromAsyncStorage: ', code);
+          if (code !== null) {
+            setActiveLanguageCode(code);
+          }
+        },
+        'languageList',
+        null,
         null,
       );
       await setIsSettingUp(false);

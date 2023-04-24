@@ -27,6 +27,7 @@ import {
 import useFetch from '../../hooks/useFetch';
 import ApiContext from '../../contexts/ApiContext';
 import base64 from 'react-native-base64';
+import useTranslation from '../../hooks/useTranslations';
 
 const SystemItem = props => {
   const navigation = useNavigation();
@@ -131,6 +132,7 @@ const SystemListScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const {fetchData} = useFetch();
+  const {t} = useTranslation();
 
   useFocusEffect(
     useCallback(() => {
@@ -198,19 +200,19 @@ const SystemListScreen = () => {
             <TouchableOpacity
               style={styles.systemListScreen.rowView}
               onPress={() => navigation.goBack()}>
-              <SmallText>Meine Filter</SmallText>
+              <SmallText>{t('myFilters')}</SmallText>
               <Image source={icons.filter} />
             </TouchableOpacity>
             <View style={styles.systemListScreen.rowView}>
-              <SmallText>Es wurden</SmallText>
+              <SmallText>{t('thereAre')}</SmallText>
               <SmallText>
-                {systemList.length} Systemvarianten gefunden
+                {systemList.length} {t('systemVariantFound')}
               </SmallText>
             </View>
             <View style={styles.systemListScreen.rowView}>
               <TextInput
                 style={styles.systemListScreen.textInput}
-                placeholder={'Suchen'}
+                placeholder={t('seek')}
                 value={suchenText}
                 onChangeText={text => setSuchenText(text)}
               />

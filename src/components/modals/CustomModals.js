@@ -23,6 +23,7 @@ import {PinkButton, WhiteButton} from '../buttons/CustomButton';
 import ErrorContext from '../../contexts/ErrorContext';
 import {useNavigation} from '@react-navigation/native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import useTranslation from '../../hooks/useTranslations';
 
 const OptionButton = props => {
   const [checked, setChecked] = useState(props.checked);
@@ -160,7 +161,7 @@ export const Stage2Modal = props => {
 
 export const Stage1Modal = props => {
   const navigation = useNavigation();
-
+  const {t} = useTranslation();
   useEffect(() => {
     console.log('Stage1Modal Refreshed');
   }, [props]);
@@ -173,9 +174,9 @@ export const Stage1Modal = props => {
           {backgroundColor: props.system?.color},
         ]}>
         <WhiteText style={styles.stage1Modal.headerText}>
-          {props.system?.breadcrumb}
+          {t(props.system?.breadcrumb)}
         </WhiteText>
-        <WhiteText>{props.option?.breadcrumb}</WhiteText>
+        <WhiteText>{t(props.option?.breadcrumb)}</WhiteText>
         <TouchableOpacity
           style={styles.stage1Modal.arrow}
           onPress={() => props.setVisible(false)}>
@@ -188,7 +189,7 @@ export const Stage1Modal = props => {
             return (
               <OptionButton
                 key={index}
-                text={item.label}
+                text={t(item.label)}
                 checked={item.chosen}
                 onPress={() => {
                   props.chooseOption(props.option?.value, item.value);

@@ -22,6 +22,7 @@ import useFetch from '../../hooks/useFetch';
 import base64 from 'react-native-base64';
 import ApiContext from '../../contexts/ApiContext';
 import ImageModal from '../../components/modals/ImageModal';
+import useTranslation from '../../hooks/useTranslations';
 
 const SystemItem = props => {
   const {siteUrl} = useContext(ApiContext);
@@ -134,6 +135,7 @@ const SystemItemScreen = () => {
   const navigation = useNavigation();
   const {fetchData} = useFetch();
   const {siteUrl} = useContext(ApiContext);
+  const {t} = useTranslation();
 
   useFocusEffect(
     useCallback(() => {
@@ -189,21 +191,21 @@ const SystemItemScreen = () => {
       {system?.brochure !== '' && system?.brochure !== undefined && (
         <ProductButton
           onPress={() => Linking.openURL(system?.brochure)}
-          text={'Productbrochure'}
+          text={t('productBrochure')}
         />
       )}
       {system?.constructionProof !== '' &&
         system?.constructionProof !== undefined && (
           <ProductButton
             onPress={() => Linking.openURL(system?.constructionProof)}
-            text={'Brandschutznachweis'}
+            text={t('fireProtectionCertificate')}
           />
         )}
       {system?.soundProtection !== '' &&
         system?.soundProtection !== undefined && (
           <ProductButton
             onPress={() => Linking.openURL(system?.soundProtection)}
-            text={'Schallschutznachweis'}
+            text={t('proofOfSoundProofing')}
           />
         )}
       <TextInput
@@ -218,7 +220,7 @@ const SystemItemScreen = () => {
           paddingHorizontal: 10,
           backgroundColor: colors.white,
         }}
-        placeholder={'Hinweisfeld für Anmerkungen zum Bauvorhaben'}
+        placeholder={t('commentPlaceholder')}
         placeholderTextColor={colors.grey}
         value={note}
         onChangeText={text => setNote(text)}
