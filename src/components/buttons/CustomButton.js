@@ -81,12 +81,13 @@ export const ProductButton = props => {
 };
 
 export const SendButton = props => {
+  const {t} = useTranslation();
   return (
     <TouchableOpacity
       {...props}
       style={[styles.sendButton.mainView, props.style]}>
       <SmallText style={[styles.sendButton.text, props.textStyle]}>
-        Systemkarte
+        {t('systemCard')}
       </SmallText>
     </TouchableOpacity>
   );
