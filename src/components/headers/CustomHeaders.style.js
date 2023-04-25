@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     },
     closeButton: {
       padding: 20,
+      marginBottom: 20,
     },
     languageText: {
       padding: 20,

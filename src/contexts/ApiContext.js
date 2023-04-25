@@ -7,14 +7,16 @@ export const ApiProvider = props => {
     if (__DEV__) {
       return 'https://siniatapp-dev.verbum.com.pl/api/';
     } else {
-      return 'https://systemselektor.siniat.de/api/';
+      // return 'https://systemselektor.siniat.de/api/';
+      return 'https://siniatapp-dev.verbum.com.pl/api/';
     }
   });
   const [siteUrl, setSiteUrl] = useState(() => {
     if (__DEV__) {
       return 'https://siniatapp-dev.verbum.com.pl/';
     } else {
-      return 'https://systemselektor.siniat.de/';
+      // return 'https://systemselektor.siniat.de/';
+      return 'https://siniatapp-dev.verbum.com.pl/';
     }
   });
   const [apiKey, setApiKey] = useState(
