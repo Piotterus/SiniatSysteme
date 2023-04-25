@@ -199,7 +199,7 @@ export const Stage1Modal = props => {
           })}
       </View>
       <PinkButton
-        text={'Weiter >>>'}
+        text={t('seek') + ' >>>'}
         style={{marginVertical: 20}}
         onPress={() => {
           props.setVisible(false);

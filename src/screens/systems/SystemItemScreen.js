@@ -23,9 +23,11 @@ import base64 from 'react-native-base64';
 import ApiContext from '../../contexts/ApiContext';
 import ImageModal from '../../components/modals/ImageModal';
 import useTranslation from '../../hooks/useTranslations';
+import LanguageContext from '../../contexts/LanguageContext';
 
 const SystemItem = props => {
   const {siteUrl} = useContext(ApiContext);
+  const {t} = useTranslation();
   return (
     <View style={styles.systemItemScreen.systemItem.mainView}>
       <BoldText style={styles.systemItemScreen.systemItem.title}>
@@ -34,8 +36,7 @@ const SystemItem = props => {
       <View style={styles.systemItemScreen.systemItem.descriptionRow}>
         <BoldText
           style={[styles.systemItemScreen.systemItem.desciptionRowItem]}>
-          Für detailliertere Informationen öffnen Sie bitte die Systemkarte oder
-          die verknüpften Dokumente.
+          {t('detailedInformation')}
         </BoldText>
         <TouchableOpacity
           onPress={() => props.setImageModalVisible(true)}
@@ -66,7 +67,7 @@ const SystemItem = props => {
       />
       <View style={styles.systemItemScreen.systemItem.systemItem}>
         <View style={styles.systemItemScreen.systemItem.systemItemTitleRow}>
-          <BoldText>GRUNDDATEN</BoldText>
+          <BoldText>{t('basicData')}</BoldText>
         </View>
         {props.system?.fields?.basic.map((item, index) => {
           return (
@@ -93,7 +94,7 @@ const SystemItem = props => {
           );
         })}
         <View style={styles.systemItemScreen.systemItem.systemItemTitleRow}>
-          <BoldText>ANGABEN</BoldText>
+          <BoldText>{t('specificData')}</BoldText>
         </View>
         {props.system?.fields?.extra.map((item, index) => {
           return (
@@ -136,6 +137,7 @@ const SystemItemScreen = () => {
   const {fetchData} = useFetch();
   const {siteUrl} = useContext(ApiContext);
   const {t} = useTranslation();
+  const {activeLanguageCode} = useContext(LanguageContext);
 
   useFocusEffect(
     useCallback(() => {
@@ -157,7 +159,7 @@ const SystemItemScreen = () => {
         getData,
         null,
       );
-    }, []),
+    }, [route.params, activeLanguageCode]),
   );
 
   if (system?.image !== undefined) {

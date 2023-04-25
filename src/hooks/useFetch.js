@@ -3,10 +3,12 @@ import ApiContext from '../contexts/ApiContext';
 import ErrorContext from '../contexts/ErrorContext';
 import AuthContext from '../contexts/AuthContext';
 import UserContext from '../contexts/UserContext';
+import LanguageContext from '../contexts/LanguageContext';
 
 const UseFetch = () => {
   const {apiUrl, apiKey} = useContext(ApiContext);
   const {token, isLoading, setIsLoading} = useContext(AuthContext);
+  const {activeLanguageCode} = useContext(LanguageContext);
   const defaultError = {
     code: '1',
     message: 'Wystąpił niespodziewany błąd',
@@ -24,7 +26,8 @@ const UseFetch = () => {
     return keyValuePairs.join('&');
   };
 
-  const queryString = data => objToQueryString({...data, key: apiKey});
+  const queryString = data =>
+    objToQueryString({...data, key: apiKey, lang: activeLanguageCode});
 
   const fetchData = async (callback, endPoint, getData, postData = null) => {
     setIsLoading(true);

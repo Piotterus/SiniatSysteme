@@ -28,6 +28,7 @@ import useFetch from '../../hooks/useFetch';
 import ApiContext from '../../contexts/ApiContext';
 import base64 from 'react-native-base64';
 import useTranslation from '../../hooks/useTranslations';
+import LanguageContext from '../../contexts/LanguageContext';
 
 const SystemItem = props => {
   const navigation = useNavigation();
@@ -133,6 +134,7 @@ const SystemListScreen = () => {
   const navigation = useNavigation();
   const {fetchData} = useFetch();
   const {t} = useTranslation();
+  const {activeLanguageCode} = useContext(LanguageContext);
 
   useFocusEffect(
     useCallback(() => {
@@ -162,7 +164,7 @@ const SystemListScreen = () => {
         getData,
         postData,
       );
-    }, [route.params]),
+    }, [route.params, activeLanguageCode]),
   );
 
   console.log(route.params);

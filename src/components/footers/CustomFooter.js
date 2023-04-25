@@ -12,6 +12,7 @@ import styles from './CustomFooter.style';
 import {SmallText} from '../texts/CustomText';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScreenHeight, ScreenWidth} from '@rneui/base';
+import useTranslation from '../../hooks/useTranslations';
 // import {useNavigation, useRoute} from '@react-navigation/native';
 
 const FooterItem = props => {
@@ -32,6 +33,7 @@ const CustomFooter = props => {
   const [open, setOpen] = useState(false);
   const navigation = useNavigation();
   const route = useRoute();
+  const {t} = useTranslation();
 
   return (
     <View style={styles.mainView}>
@@ -57,19 +59,19 @@ const CustomFooter = props => {
           style={styles.extra.overView}>
           <View style={styles.extra.mainView}>
             <FooterItem
-              text={'Über Siniat Selektor'}
+              text={t('menu.about')}
               navigateTo={'About'}
               setOpen={setOpen}
             />
             <View style={styles.extra.line} />
             <FooterItem
-              text={'Loyalitätsprogramm'}
+              text={t('menu.loyalty')}
               navigateTo={'Pallas'}
               setOpen={setOpen}
             />
             <View style={styles.extra.line} />
             <FooterItem
-              text={'Kontakt'}
+              text={t('menu.contact')}
               navigateTo={'Contact'}
               setOpen={setOpen}
             />

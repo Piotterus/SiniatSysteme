@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, {useState, useCallback, useEffect, useContext} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {Stage2Modal} from '../../components/modals/CustomModals';
 import {Image, View} from 'react-native';
@@ -20,6 +20,7 @@ import {
 } from '@react-navigation/native';
 import useFetch from '../../hooks/useFetch';
 import useTranslation from '../../hooks/useTranslations';
+import LanguageContext from '../../contexts/LanguageContext';
 
 const Stage3Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
@@ -30,6 +31,7 @@ const Stage3Screen = () => {
   const navigation = useNavigation();
   const {fetchData} = useFetch();
   const {t} = useTranslation();
+  const {activeLanguageCode} = useContext(LanguageContext);
 
   useFocusEffect(
     useCallback(() => {
@@ -56,7 +58,7 @@ const Stage3Screen = () => {
         getData,
         postData,
       );
-    }, [route.params]),
+    }, [route.params, activeLanguageCode]),
   );
 
   const addSelectedValues = filters => {

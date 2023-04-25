@@ -4,6 +4,7 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {BoldText, MainMenuText, SmallText} from '../texts/CustomText';
 import styles from './CustomButton.style';
 import icons from '../../assets/icons';
+import useTranslation from '../../hooks/useTranslations';
 
 export const PinkButton = props => {
   return (
@@ -53,12 +54,13 @@ export const WhiteButton = props => {
 };
 
 export const SystemKarteButton = props => {
+  const {t} = useTranslation();
   return (
     <TouchableOpacity
       {...props}
       style={[styles.systemKarteButton.mainView, props.style]}>
       <SmallText style={[styles.systemKarteButton.text, props.textStyle]}>
-        Systemkarte
+        {t('systemCard')}
       </SmallText>
       <Image source={icons.arrow.right} />
     </TouchableOpacity>

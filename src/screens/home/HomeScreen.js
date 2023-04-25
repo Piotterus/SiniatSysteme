@@ -24,7 +24,7 @@ const HomeScreen = () => {
       text: 'wande.text',
       upperText: 'wande.upperText',
       lowerText: 'wande.lowerText',
-      breadcrumb: 'Wande',
+      breadcrumb: 'wande.breadcrumb',
       value: 'wande',
     },
     {
@@ -34,7 +34,7 @@ const HomeScreen = () => {
       color: colors.decken,
       text: 'decken.text',
       upperText: 'decken.upperText',
-      breadcrumb: 'Decken',
+      breadcrumb: 'decken.breadcrumb',
       value: 'decken',
     },
     {
@@ -44,7 +44,7 @@ const HomeScreen = () => {
       color: colors.dacher,
       text: 'dacher.text',
       upperText: 'dacher.upperText',
-      breadcrumb: 'Dächer',
+      breadcrumb: 'dacher.breadcrumb',
       value: 'dacher',
     },
     {
@@ -54,7 +54,7 @@ const HomeScreen = () => {
       color: colors.stutzen,
       text: 'stutzen.text',
       upperText: 'stutzen.upperText',
-      breadcrumb: 'Stützen- Trägerbekleidungen',
+      breadcrumb: 'stutzen.breadcrumb',
       value: 'stutzentrager',
     },
     {
@@ -64,7 +64,7 @@ const HomeScreen = () => {
       color: colors.kabelkanale,
       text: 'kabelkanale.text',
       upperText: 'kabelkanale.upperText',
-      breadcrumb: 'Kabelkanäle',
+      breadcrumb: 'kabelkanale.breadcrumb',
       value: 'kabelkanale',
     },
   ];

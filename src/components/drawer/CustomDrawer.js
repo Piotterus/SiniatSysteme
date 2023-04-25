@@ -9,23 +9,24 @@ import icons from '../../assets/icons';
 import Feather from 'react-native-vector-icons/Feather';
 import colors from '../../assets/colors';
 import {BoldText, SmallText} from '../texts/CustomText';
+import useTranslation from '../../hooks/useTranslations';
 
 const CustomDrawer = props => {
   const {rulesFile} = useContext(UserContext);
   const [menuItems, setMenuItems] = useState([
     {
       name: 'About',
-      label: 'Über Siniat Selektor',
+      label: 'menu.about',
       onPressType: 'navigate',
     },
     {
       name: 'Pallas',
-      label: 'Loyalitätsprogramm',
+      label: 'menu.loyalty',
       onPressType: 'navigate',
     },
     {
       name: 'Contact',
-      label: 'Kontakt',
+      label: 'menu.contact',
       onPressType: 'navigate',
     },
     {
@@ -36,6 +37,7 @@ const CustomDrawer = props => {
   ]);
   const navigation = useNavigation();
   const {logout} = useContext(AuthContext);
+  const {t} = useTranslation();
 
   return (
     <SafeAreaView style={styles.safeView}>
@@ -62,7 +64,7 @@ const CustomDrawer = props => {
                 }
                 style={styles.itemView}
                 key={index}>
-                <SmallText style={{fontSize: 14}}>{item.label}</SmallText>
+                <SmallText style={{fontSize: 14}}>{t(item.label)}</SmallText>
               </TouchableOpacity>
               <View style={styles.borderView} />
             </React.Fragment>

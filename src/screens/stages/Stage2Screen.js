@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState, useContext} from 'react';
 import CustomBackground from '../../components/backgrounds/CustomBackground';
 import {
   Stage1Modal,
@@ -24,6 +24,7 @@ import {
 import useFetch from '../../hooks/useFetch';
 import Breadcrumps from '../../components/breadcrumbs/Breadcrumps';
 import useTranslation from '../../hooks/useTranslations';
+import LanguageContext from '../../contexts/LanguageContext';
 
 const Stage2Screen = () => {
   const [stageModalVisible, setStageModalVisible] = useState(false);
@@ -36,6 +37,7 @@ const Stage2Screen = () => {
   const navigation = useNavigation();
   const {fetchData} = useFetch();
   const {t} = useTranslation();
+  const {activeLanguageCode} = useContext(LanguageContext);
 
   useEffect(() => {
     console.log('FilterList UseEffect');
@@ -68,7 +70,7 @@ const Stage2Screen = () => {
           null,
         );
       },
-      [route.params],
+      [route.params, activeLanguageCode],
     ),
   );
 
