@@ -65,7 +65,9 @@ const styles = StyleSheet.create({
     },
     closeButton: {
       padding: 20,
-      marginBottom: 60,
+    },
+    closeButtoniOS: {
+      marginBottom: 70,
     },
     languageText: {
       padding: 20,

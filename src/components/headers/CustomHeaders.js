@@ -1,5 +1,12 @@
 import React, {useContext} from 'react';
-import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Platform,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import icons from '../../assets/icons';
 import styles from './CustomHeaders.style';
 import {
@@ -120,7 +127,10 @@ export const SiniatHeader = () => {
             })}
           </View>
           <TouchableOpacity
-            style={styles.languageView.closeButton}
+            style={[
+              styles.languageView.closeButton,
+              Platform.OS === 'ios' ? styles.languageView.closeButtoniOS : '',
+            ]}
             onPress={() => closeLanguage()}>
             <Image source={icons.xCircleFill} />
           </TouchableOpacity>
