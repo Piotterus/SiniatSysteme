@@ -53,6 +53,7 @@ const OptionButton = props => {
 
 export const Stage2Modal = props => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
   // console.log('Values', props.filterList[props.chosenFilter]?.values);
   // console.log(
   //   'SelectedValues',
@@ -87,8 +88,8 @@ export const Stage2Modal = props => {
           styles.stage2Modal.headerView,
           {backgroundColor: props.system?.color},
         ]}>
-        <WhiteText>{props.step2?.breadcrumb} ></WhiteText>
-        <WhiteText>{props.step3?.breadcrumb}</WhiteText>
+        <WhiteText>{t(props.step2?.breadcrumb)} ></WhiteText>
+        <WhiteText>{t(props.step3?.breadcrumb)}</WhiteText>
         <WhiteText style={styles.stage2Modal.headerText}>
           {props.filterList[props.chosenFilter]?.german}
         </WhiteText>
@@ -120,7 +121,7 @@ export const Stage2Modal = props => {
         {/*<OptionButton text={'ohne'} />*/}
       </ScrollView>
       <PinkButton
-        text={'Weiter >>>'}
+        text={t('next') + ' >>>'}
         style={{marginVertical: 20}}
         onPress={() => {
           props.setVisible(false);

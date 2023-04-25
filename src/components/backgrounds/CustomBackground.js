@@ -20,11 +20,13 @@ import {
 import CustomFooter from '../footers/CustomFooter';
 import {PinkButton} from '../buttons/CustomButton';
 import {useNavigation} from '@react-navigation/native';
+import useTranslation from '../../hooks/useTranslations';
 
 const CustomBackground = props => {
   // const navigation = useNavigation();
   const scrollViewRef = useRef();
   const [keyboardStatus, setKeyboardStatus] = useState('closed');
+  const {t} = useTranslation();
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -76,7 +78,8 @@ const CustomBackground = props => {
         {props.showButton && (
           <PinkButton
             text={
-              'Suchen (' +
+              t('seek') +
+              ' (' +
               props.buttonCount +
               ')' +
               (props.buttonCount > 0 ? ' >>>' : '')
