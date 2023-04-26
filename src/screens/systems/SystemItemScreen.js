@@ -28,6 +28,7 @@ import LanguageContext from '../../contexts/LanguageContext';
 const SystemItem = props => {
   const {siteUrl} = useContext(ApiContext);
   const {t} = useTranslation();
+  const {activeLanguageCode} = useContext(LanguageContext);
   return (
     <View style={styles.systemItemScreen.systemItem.mainView}>
       <BoldText style={styles.systemItemScreen.systemItem.title}>
@@ -61,7 +62,9 @@ const SystemItem = props => {
               '/' +
               base64.encode(props.system?.systemID) +
               '/' +
-              props.system?.id,
+              props.system?.id +
+              '/' +
+              activeLanguageCode,
           )
         }
       />
@@ -238,6 +241,8 @@ const SystemItemScreen = () => {
               base64.encode(system?.systemID) +
               '/' +
               system?.id +
+              '/' +
+              activeLanguageCode +
               '/' +
               base64.encode(note),
           )

@@ -214,9 +214,7 @@ const Stage2Screen = () => {
       if (filterList.wallHeight !== undefined) {
         if (filterList.wallHeight.selectedValues !== undefined) {
         } else {
-          setWallHeightModalText(
-            'Sie haben die Höhe der Wand nicht angegeben. Bitte geben Sie eine Mindesthöhe ein und wir zeigen Ihnen die für Sie passenden Systeme an.',
-          );
+          setWallHeightModalText(t('popupWande'));
           setWallHeightModalShowed(true);
           setWallHeightModalVisible(true);
           return true;
@@ -225,9 +223,7 @@ const Stage2Screen = () => {
       if (filterList.spanWidth !== undefined) {
         if (filterList.spanWidth.selectedValues !== undefined) {
         } else {
-          setWallHeightModalText(
-            'Sie haben die Spannweite nicht angegeben. Bitte geben Sie eine Spannweite ein und wir zeigen Ihnen die für Sie passenden Systeme an.',
-          );
+          setWallHeightModalText(t('popupDecken'));
           setWallHeightModalShowed(true);
           setWallHeightModalVisible(true);
           return true;

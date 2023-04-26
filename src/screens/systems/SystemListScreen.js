@@ -33,6 +33,7 @@ import LanguageContext from '../../contexts/LanguageContext';
 const SystemItem = props => {
   const navigation = useNavigation();
   const {siteUrl} = useContext(ApiContext);
+  const {activeLanguageCode} = useContext(LanguageContext);
 
   const createData = () => {
     let dataList = [];
@@ -71,7 +72,9 @@ const SystemItem = props => {
                 '/' +
                 base64.encode(props.data?.systemID) +
                 '/' +
-                props.data?.id,
+                props.data?.id +
+                '/' +
+                activeLanguageCode,
             )
           }
         />
