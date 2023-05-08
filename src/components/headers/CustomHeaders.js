@@ -120,7 +120,7 @@ export const SiniatHeader = () => {
                         ? styles.languageView.activeText
                         : null,
                     ]}>
-                    {item.code}
+                    {item.name}
                   </SmallText>
                 </TouchableOpacity>
               );
