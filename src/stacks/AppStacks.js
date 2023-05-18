@@ -15,8 +15,8 @@ import UpdateAppScreen from '../screens/updateApp/UpdateAppScreen';
 import {getVersion} from 'react-native-device-info';
 import DrawerNav from './DrawerNav';
 import LanguageContext from '../contexts/LanguageContext';
-// import {Alert} from 'react-native';
-// import messaging from '@react-native-firebase/messaging';
+import {Alert} from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 // import {useState} from '.';
 
 const AppStacks = () => {
@@ -29,67 +29,67 @@ const AppStacks = () => {
     useContext(LanguageContext);
   console.log('ShowTutorial: ' + showTutorial);
 
-  // useEffect(() => {
-  //   requestUserPermission();
-  //   messaging().onNotificationOpenedApp(remoteMessage => {
-  //     console.log(
-  //       'Notification caused app to open from background state:',
-  //       remoteMessage.notification,
-  //     );
-  //     Alert.alert(
-  //       remoteMessage.notification.title,
-  //       remoteMessage.notification.body,
-  //     );
-  //   });
-  //   messaging()
-  //     .getInitialNotification()
-  //     .then(remoteMessage => {
-  //       if (remoteMessage) {
-  //         console.log(
-  //           'Notification caused app to open from quit state:',
-  //           remoteMessage.notification,
-  //         );
-  //         Alert.alert(
-  //           remoteMessage.notification.title,
-  //           remoteMessage.notification.body,
-  //         );
-  //       }
-  //     });
-  //   const unsubscribe = messaging().onMessage(async remoteMessage => {
-  //     console.log(
-  //       'Notification caused app to open from foreground state:',
-  //       remoteMessage.notification,
-  //     );
-  //     Alert.alert(
-  //       remoteMessage.notification.title,
-  //       remoteMessage.notification.body,
-  //     );
-  //   });
-  //
-  //   return () => {
-  //     unsubscribe();
-  //   };
-  // }, []);
-  //
-  // const requestUserPermission = async () => {
-  //   const authorizationStatus = await messaging().requestPermission();
-  //
-  //   if (authorizationStatus) {
-  //     console.log('Permission status:', authorizationStatus);
-  //     getFCMToken();
-  //   }
-  // };
-  //
-  // const getFCMToken = () => {
-  //   messaging()
-  //     .getToken()
-  //     .then(fcmToken => {
-  //       if (fcmToken) {
-  //         setFcmToken(fcmToken);
-  //       }
-  //     })
-  //     .catch(error => {});
-  // };
+  useEffect(() => {
+    requestUserPermission();
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log(
+        'Notification caused app to open from background state:',
+        remoteMessage.notification,
+      );
+      Alert.alert(
+        remoteMessage.notification.title,
+        remoteMessage.notification.body,
+      );
+    });
+    messaging()
+      .getInitialNotification()
+      .then(remoteMessage => {
+        if (remoteMessage) {
+          console.log(
+            'Notification caused app to open from quit state:',
+            remoteMessage.notification,
+          );
+          Alert.alert(
+            remoteMessage.notification.title,
+            remoteMessage.notification.body,
+          );
+        }
+      });
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log(
+        'Notification caused app to open from foreground state:',
+        remoteMessage.notification,
+      );
+      Alert.alert(
+        remoteMessage.notification.title,
+        remoteMessage.notification.body,
+      );
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const requestUserPermission = async () => {
+    const authorizationStatus = await messaging().requestPermission();
+
+    if (authorizationStatus) {
+      console.log('Permission status:', authorizationStatus);
+      getFCMToken();
+    }
+  };
+
+  const getFCMToken = () => {
+    messaging()
+      .getToken()
+      .then(fcmToken => {
+        if (fcmToken) {
+          setFcmToken(fcmToken);
+        }
+      })
+      .catch(error => {});
+  };
 
   useEffect(() => {
     const setup = async () => {
