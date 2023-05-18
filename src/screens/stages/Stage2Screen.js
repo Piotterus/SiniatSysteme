@@ -76,16 +76,16 @@ const Stage2Screen = () => {
 
   const addSelectedValues = filters => {
     console.log('UseEffect');
-    console.log(filterList);
+    console.log('FilterList: ', filterList);
     for (let i in filters) {
-      console.log(i);
+      console.log('i in filters: ', i);
       if (filterList[i] !== undefined) {
         console.log(filterList[i]);
         console.log(filterList[i].name);
-        if (filterList[i].selectedValues !== undefined) {
-          // console.log(route.params.filter[i].selectedValues);
-          filters[i].selectedValues = filterList[i].selectedValues;
-        }
+        // if (filterList[i].selectedValues !== undefined) {
+        //   // console.log(route.params.filter[i].selectedValues);
+        //   filters[i].selectedValues = filterList[i].selectedValues;
+        // }
       }
     }
     return filters;

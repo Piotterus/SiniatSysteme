@@ -391,7 +391,10 @@ const Stage1Screen = () => {
     useCallback(() => {
       setStep1(route.params.system.value);
 
-      return () => setStep1(undefined);
+      return () => {
+        resetOptions();
+        setStep1(undefined);
+      };
     }, [route.params]),
   );
 
@@ -442,6 +445,25 @@ const Stage1Screen = () => {
         });
       }
     });
+    // console.log(newOptionList[step1]);
+    setOptionList(newOptionList);
+  };
+
+  const resetOptions = () => {
+    let newOptionList = optionList;
+    console.log('New Option List: ', newOptionList);
+    for (let step in newOptionList) {
+      console.log('Step: ', step);
+      newOptionList[step].forEach((item1, index1) => {
+        // console.log(item1);
+        if (item1.optionList !== undefined) {
+          item1.optionList.forEach((item2, index2) => {
+            item2.chosen = false;
+          });
+        }
+      });
+    }
+
     // console.log(newOptionList[step1]);
     setOptionList(newOptionList);
   };
