@@ -12,7 +12,21 @@ import {ErrorModal} from '../components/modals/CustomModals';
 import TutorialContext from '../contexts/TutorialContext';
 import TutorialScreen from '../screens/tutorial/TutorialScreen';
 import UpdateAppScreen from '../screens/updateApp/UpdateAppScreen';
-import {getVersion} from 'react-native-device-info';
+import {
+  getBrand,
+  getDeviceName,
+  getDeviceNameSync,
+  getFirstInstallTime,
+  getFirstInstallTimeSync,
+  getIpAddress,
+  getIpAddressSync,
+  getLastUpdateTimeSync,
+  getSystemName,
+  getSystemVersion,
+  getUniqueId,
+  getUniqueIdSync,
+  getVersion,
+} from 'react-native-device-info';
 import DrawerNav from './DrawerNav';
 import LanguageContext from '../contexts/LanguageContext';
 import {Alert} from 'react-native';
@@ -86,10 +100,40 @@ const AppStacks = () => {
       .then(fcmToken => {
         if (fcmToken) {
           setFcmToken(fcmToken);
+          let postData = {
+            deviceId: getUniqueIdSync(),
+            fcmToken: fcmToken,
+            appVersion: getVersion(),
+            systemName: getSystemName(),
+            systemVersion: getSystemVersion(),
+            deviceBrand: getBrand(),
+            deviceName: getDeviceNameSync(),
+            ipAddress: getIpAddressSync(),
+            installTime: getFirstInstallTimeSync(),
+            updateTime: getLastUpdateTimeSync(),
+          };
+          let response = fetchData(
+            res => {
+              console.log('Odpowiedź od Device: ', res);
+            },
+            'system/device',
+            null,
+            postData,
+          );
         }
       })
       .catch(error => {});
   };
+
+  // console.log('FCMToken: ', fcmToken);
+  // console.log('UniqueId: ', getUniqueIdSync());
+  // console.log('SystemName: ', getSystemName());
+  // console.log('SystemVersion: ', getSystemVersion());
+  // console.log('Brand: ', getBrand());
+  // console.log('DeviceName: ', getDeviceNameSync());
+  // console.log('IPAddress: ', getIpAddressSync());
+  // console.log('1st Install: ', getFirstInstallTimeSync());
+  // console.log('Update Time: ', getLastUpdateTimeSync());
 
   useEffect(() => {
     const setup = async () => {
