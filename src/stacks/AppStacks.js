@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, {useEffect, useContext, useState, useRef} from 'react';
 import AuthContext from '../contexts/AuthContext';
 import useFetch from '../hooks/useFetch';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -31,6 +31,7 @@ import DrawerNav from './DrawerNav';
 import LanguageContext from '../contexts/LanguageContext';
 import {Alert} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
+import analytics from '@react-native-firebase/analytics';
 // import {useState} from '.';
 
 const AppStacks = () => {
@@ -41,6 +42,8 @@ const AppStacks = () => {
   const [updateRequired, setUpdateRequired] = useState(false);
   const {activeLanguage, setLanguageList, languageList, setActiveLanguageCode} =
     useContext(LanguageContext);
+  const routeNameRef = useRef();
+  const navigationRef = useRef();
   console.log('ShowTutorial: ' + showTutorial);
 
   useEffect(() => {
@@ -196,7 +199,25 @@ const AppStacks = () => {
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
         <>
-          <NavigationContainer>
+          <NavigationContainer
+            ref={navigationRef}
+            onReady={() => {
+              routeNameRef.current =
+                navigationRef.current.getCurrentRoute().name;
+            }}
+            onStateChange={async () => {
+              const previousRouteName = routeNameRef.current;
+              const currentRouteName =
+                navigationRef.current.getCurrentRoute().name;
+
+              if (previousRouteName !== currentRouteName) {
+                await analytics().logScreenView({
+                  screen_name: currentRouteName,
+                  screen_class: currentRouteName,
+                });
+              }
+              routeNameRef.current = currentRouteName;
+            }}>
             <DrawerNav />
           </NavigationContainer>
           <ErrorModal />
