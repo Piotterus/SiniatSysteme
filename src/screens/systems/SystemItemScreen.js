@@ -206,6 +206,13 @@ const SystemItemScreen = () => {
             text={t('fireProtectionCertificate')}
           />
         )}
+      {system?.assemblyInstructions !== '' &&
+        system?.assemblyInstructions !== undefined && (
+          <ProductButton
+            onPress={() => Linking.openURL(system?.assemblyInstructions)}
+            text={t('assemblyInstructions')}
+          />
+        )}
       {system?.soundProtection !== '' &&
         system?.soundProtection !== undefined && (
           <ProductButton
