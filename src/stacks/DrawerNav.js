@@ -11,6 +11,7 @@ import ContactScreen from '../screens/singlePage/ContactScreen';
 import PallasScreen from '../screens/singlePage/PallasScreen';
 import PrivacyScreen from '../screens/singlePage/PrivacyScreen';
 import CustomDrawer from '../components/drawer/CustomDrawer';
+import EasyboardScreen from '../screens/singlePage/EasyboardScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -55,6 +56,9 @@ const DrawerNav = () => {
         </Drawer.Screen>
         <Drawer.Screen name={'Privacy'}>
           {props => <PrivacyScreen {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen name={'Easyboard'}>
+          {props => <EasyboardScreen {...props} />}
         </Drawer.Screen>
       </>
     </Drawer.Navigator>

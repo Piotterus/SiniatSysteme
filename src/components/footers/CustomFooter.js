@@ -81,6 +81,12 @@ const CustomFooter = props => {
               navigateTo={'Privacy'}
               setOpen={setOpen}
             />
+            <View style={styles.extra.line} />
+            <FooterItem
+              text={'Easyboard-Rechner'}
+              navigateTo={'Easyboard'}
+              setOpen={setOpen}
+            />
           </View>
         </TouchableOpacity>
       )}
