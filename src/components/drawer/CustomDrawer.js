@@ -25,6 +25,11 @@ const CustomDrawer = props => {
       onPressType: 'navigate',
     },
     {
+      name: 'Easyboard',
+      label: 'Easyboard-Rechner',
+      onPressType: 'navigate',
+    },
+    {
       name: 'Contact',
       label: 'menu.contact',
       onPressType: 'navigate',

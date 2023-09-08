@@ -71,6 +71,12 @@ const CustomFooter = props => {
             />
             <View style={styles.extra.line} />
             <FooterItem
+              text={'Easyboard-Rechner'}
+              navigateTo={'Easyboard'}
+              setOpen={setOpen}
+            />
+            <View style={styles.extra.line} />
+            <FooterItem
               text={t('menu.contact')}
               navigateTo={'Contact'}
               setOpen={setOpen}
@@ -79,12 +85,6 @@ const CustomFooter = props => {
             <FooterItem
               text={'Datenschutzbestimmungen'}
               navigateTo={'Privacy'}
-              setOpen={setOpen}
-            />
-            <View style={styles.extra.line} />
-            <FooterItem
-              text={'Easyboard-Rechner'}
-              navigateTo={'Easyboard'}
               setOpen={setOpen}
             />
           </View>
