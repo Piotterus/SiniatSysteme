@@ -20,11 +20,6 @@ const CustomDrawer = props => {
       onPressType: 'navigate',
     },
     {
-      name: 'Pallas',
-      label: 'menu.loyalty',
-      onPressType: 'navigate',
-    },
-    {
       name: 'Easyboard',
       label: 'Easyboard-Rechner',
       onPressType: 'navigate',

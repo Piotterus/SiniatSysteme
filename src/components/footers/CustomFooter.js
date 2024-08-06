@@ -65,12 +65,6 @@ const CustomFooter = props => {
             />
             <View style={styles.extra.line} />
             <FooterItem
-              text={t('menu.loyalty')}
-              navigateTo={'Pallas'}
-              setOpen={setOpen}
-            />
-            <View style={styles.extra.line} />
-            <FooterItem
               text={'Easyboard-Rechner'}
               navigateTo={'Easyboard'}
               setOpen={setOpen}

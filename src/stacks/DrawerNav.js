@@ -51,9 +51,6 @@ const DrawerNav = () => {
         <Drawer.Screen name={'Contact'}>
           {props => <ContactScreen {...props} />}
         </Drawer.Screen>
-        <Drawer.Screen name={'Pallas'}>
-          {props => <PallasScreen {...props} />}
-        </Drawer.Screen>
         <Drawer.Screen name={'Privacy'}>
           {props => <PrivacyScreen {...props} />}
         </Drawer.Screen>

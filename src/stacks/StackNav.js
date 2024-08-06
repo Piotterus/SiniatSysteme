@@ -101,13 +101,6 @@ const StackNav = () => {
           {props => <ContactScreen {...props} />}
         </Stack.Screen>
         <Stack.Screen
-          name={'Pallas'}
-          option={{
-            gestureEnabled: false,
-          }}>
-          {props => <PallasScreen {...props} />}
-        </Stack.Screen>
-        <Stack.Screen
           name={'Privacy'}
           option={{
             gestureEnabled: false,
