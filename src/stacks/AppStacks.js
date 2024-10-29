@@ -195,6 +195,25 @@ const AppStacks = () => {
     );
   }
 
+  const screenAliases = {
+    Home: 'Strona Główna',
+    Stage1: 'Krok 1',
+    Stage2: 'Krok 2',
+    Stage3: 'Krok 3',
+    SystemList: 'Lista Systemów',
+    SystemItem: 'Szczegóły Systemu',
+    About: 'O Nas',
+    Contact: 'Kontakt',
+    Privacy: 'Polityka Prywatności',
+    Easyboard: 'Easyboard',
+  };
+
+  const ignoredScreens = [
+    'RNSScreen',
+    'UIViewController',
+    'RCTModalHostViewController',
+  ];
+
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
@@ -209,11 +228,18 @@ const AppStacks = () => {
               const previousRouteName = routeNameRef.current;
               const currentRouteName =
                 navigationRef.current.getCurrentRoute().name;
+              const currentScreenAlias =
+                screenAliases[currentRouteName] || currentRouteName; // pobierz alias lub użyj oryginalnej nazwy
 
-              if (previousRouteName !== currentRouteName) {
+              console.log('Aktualna trasa:', currentScreenAlias);
+              if (
+                !ignoredScreens.includes(currentRouteName) &&
+                previousRouteName !== currentRouteName
+              ) {
+                console.log('Wysłano do analityki:', currentScreenAlias);
                 await analytics().logScreenView({
-                  screen_name: currentRouteName,
-                  screen_class: currentRouteName,
+                  screen_name: currentScreenAlias,
+                  screen_class: currentScreenAlias,
                 });
               }
               routeNameRef.current = currentRouteName;
